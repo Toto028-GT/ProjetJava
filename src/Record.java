@@ -1,10 +1,16 @@
 import java.io.Serializable;
+import com.fasterxml.jackson.dataformat.xml.annotation.JacksonXmlProperty;
+import com.fasterxml.jackson.dataformat.xml.annotation.JacksonXmlRootElement;
 
 public class Record implements Serializable{
 	
 	private static final long serialVersionUID = 1L;
 	
 	public String A,B,C,D,E,F,G,H,I,J,K,L,M,N;
+	@JacksonXmlProperty(localName = "Game Title", isAttribute = true)
+    private String GameTitle;
+    @JacksonXmlProperty(localName = "Game Poster", isAttribute = true)
+    private int GamePoster;
 
 	public Record() {
 		this.A = "Game Title";
