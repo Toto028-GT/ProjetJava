@@ -3,7 +3,8 @@ import java.io.File;
 import java.io.FileOutputStream;
 import java.io.ObjectOutputStream;
 import java.util.ArrayList;
-
+import java.util.Arrays;
+import java.util.Comparator;
 
 
 public class Modele {
@@ -58,5 +59,41 @@ public class Modele {
 		p.enregistrer();
 		
 	}
+	
+	
+	public ArrayList<String> recherche(String o) {		
+		Record record = new Record();
+		ArrayList<String> ret = new ArrayList<String>();
+		
+		if (record.getA().contains(o)) {
+			 ret.add(record.getA());
+		}
+		return ret;
+		
+	}
+	
+	/*public ArrayList<String> croissant(){
+		Record record = new Record();
+		ArrayList<String> ret = new ArrayList<String>();
+		
+		Arrays.sort(ret.add(record.getH()));
+	}*/
+	
+	/*public ArrayList<String> decroissant(){
+	Record record = new Record();
+	ArrayList<String> ret = new ArrayList<String>();
+	
+	Arrays.sort(ret.add(record.getH()),Comparator.reverseOrder());
+}*/
+	
+	/*public ArrayList<String> genre(){
+	Record record = new Record();
+	ArrayList<String> ret = new ArrayList<String>();
+	
+	Arrays.sort(ret.add(record.getH()));
+	*/
+	
+	
+	
 
 }

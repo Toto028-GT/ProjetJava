@@ -13,7 +13,7 @@ public class Record implements Serializable{
     private int GamePoster;
 
 	public Record() {
-		this.A = "Game Title";
+		this.A="Game Title";
 		this.B="Game Poster";
 		this.C="Game Release Date";
 		this.D="Game Developer";
