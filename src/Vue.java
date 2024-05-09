@@ -15,13 +15,18 @@ import java.awt.event.KeyListener;
 import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
 import java.awt.image.BufferedImage;
+import java.io.ByteArrayInputStream;
+import java.io.ByteArrayOutputStream;
 import java.io.File;
 import java.io.IOException;
+import java.io.ObjectInputStream;
+import java.io.ObjectOutputStream;
 
 import javax.imageio.ImageIO;
 import javax.swing.BorderFactory;
 import javax.swing.Box;
 import javax.swing.BoxLayout;
+import javax.swing.Icon;
 import javax.swing.JButton;
 import javax.swing.JFrame;
 import javax.swing.JLabel;
@@ -301,7 +306,7 @@ public class Vue {
         lOtherGame.setFont(new Font("Arial", Font.PLAIN, 24));
         lOtherGame.setBorder(BorderFactory.createEmptyBorder(10, 0, 0, 75));
         
-        JButton game = jbGameTab.get(99);
+        JButton game = jbGameTab.get(3);
         game.setPreferredSize(new Dimension(200,300));
         
         JButton game2 = jbGameTab.get(1);
@@ -369,6 +374,36 @@ public class Vue {
         pGenreTag.add(taGenre);
         
         pBodyGamePage.add(rpBodyGamePage, BorderLayout.EAST);
+        
+        /* --------------------------------------- */
+        
+        JPanel pGamesHome = new JPanel();
+        pGamesHome.setLayout(new FlowLayout(FlowLayout.LEFT));
+        pGamesHome.setPreferredSize(new Dimension(1050,330));
+        pGamesHome.setBorder(BorderFactory.createEmptyBorder(10, 10, 0, 0));
+        
+        JButton GameHome1 = jbGameTab.get(99);
+        GameHome1.setPreferredSize(new Dimension(200,300));
+        
+        JButton GameHome2 = jbGameTab.get(99);
+        GameHome2.setPreferredSize(new Dimension(200,300));
+        
+        JButton GameHome3 = jbGameTab.get(97);
+        GameHome3.setPreferredSize(new Dimension(200,300));      
+        
+        JButton GameHome4 = jbGameTab.get(96);
+        GameHome4.setPreferredSize(new Dimension(200,300));  
+        
+        JButton GameHome5 = jbGameTab.get(12);
+        GameHome5.setPreferredSize(new Dimension(200,300));  
+        
+        pBodyHome.add(pGamesHome);
+        
+        pGamesHome.add(GameHome1);
+        pGamesHome.add(GameHome2);
+        pGamesHome.add(GameHome3);
+        pGamesHome.add(GameHome4);
+        pGamesHome.add(GameHome5);
         
     	/* --------------------------------------- */
     	
@@ -451,6 +486,7 @@ public class Vue {
                 }
                 public void mouseClicked(MouseEvent e) {
                 	ShowPage(index,pTab,spTab);
+                	System.out.println(index);
                 }
         	});
         }
@@ -464,6 +500,9 @@ public class Vue {
                 	
                 	pBodyGame.setVisible(false);
                 	pFootGame.setVisible(false);
+                	
+                	pBodyHome.setVisible(false);
+                	pFootHome.setVisible(false);
                 	
                 	spTab[0].setVisible(false);
                 }
