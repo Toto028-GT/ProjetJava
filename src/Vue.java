@@ -377,33 +377,69 @@ public class Vue {
         
         /* --------------------------------------- */
         
+        JPanel pGameMainHome = new JPanel();
+        pGameMainHome.setLayout(new BoxLayout(pGameMainHome, BoxLayout.Y_AXIS));
+        
         JPanel pGamesHome = new JPanel();
         pGamesHome.setLayout(new FlowLayout(FlowLayout.LEFT));
         pGamesHome.setPreferredSize(new Dimension(1050,330));
         pGamesHome.setBorder(BorderFactory.createEmptyBorder(10, 10, 0, 0));
+          
+        JLabel lTitle = new JLabel("LES 5 JEUX LES MIEUX NOTES");
+        lTitle.setFont(new Font("Arial", Font.PLAIN, 24));
+        lTitle.setBorder(BorderFactory.createEmptyBorder(0, 0, 0, 60));
+        pBodyHome.add(lTitle);
         
-        JButton GameHome1 = jbGameTab.get(99);
-        GameHome1.setPreferredSize(new Dimension(200,300));
+        pGameMainHome.add(lTitle);
+        pGameMainHome.add(pGamesHome);
         
-        JButton GameHome2 = jbGameTab.get(99);
-        GameHome2.setPreferredSize(new Dimension(200,300));
+        JButton BGameHome1 = jbGameTab.get(99);
+        BGameHome1.setPreferredSize(new Dimension(200,300));
         
-        JButton GameHome3 = jbGameTab.get(97);
-        GameHome3.setPreferredSize(new Dimension(200,300));      
+        JButton BGameHome2 = jbGameTab.get(95);
+        BGameHome2.setPreferredSize(new Dimension(200,300));
         
-        JButton GameHome4 = jbGameTab.get(96);
-        GameHome4.setPreferredSize(new Dimension(200,300));  
+        JButton BGameHome3 = jbGameTab.get(97);
+        BGameHome3.setPreferredSize(new Dimension(200,300));      
         
-        JButton GameHome5 = jbGameTab.get(12);
-        GameHome5.setPreferredSize(new Dimension(200,300));  
+        JButton BGameHome4 = jbGameTab.get(96);
+        BGameHome4.setPreferredSize(new Dimension(200,300));  
         
-        pBodyHome.add(pGamesHome);
+        JButton BGameHome5 = jbGameTab.get(12);
+        BGameHome5.setPreferredSize(new Dimension(200,300));  
         
-        pGamesHome.add(GameHome1);
-        pGamesHome.add(GameHome2);
-        pGamesHome.add(GameHome3);
-        pGamesHome.add(GameHome4);
-        pGamesHome.add(GameHome5);
+        JPanel pReviewTab = new JPanel();
+        pReviewTab.setLayout(new FlowLayout(FlowLayout.LEFT));
+        pReviewTab.setPreferredSize(new Dimension(1520,500));
+        
+        for(int i=0;i<9;i++) {
+            JPanel pReview = new JPanel();
+            pReview.setLayout(new FlowLayout(FlowLayout.LEFT));
+            pReview.setPreferredSize(new Dimension(500,160));
+            JButton bReviewGameHome = jbGameTab.get(i);
+            bReviewGameHome.setPreferredSize(new Dimension(100,150));
+            
+            JTextArea lReviewGameHome = new JTextArea("bon bah voila c'est un bon jeu, plutot de la frappe sah");
+            lReviewGameHome.setPreferredSize(new Dimension(350,150));
+            lReviewGameHome.setFont(new Font("Arial", Font.PLAIN, 16));
+            
+            lReviewGameHome.setEditable(false);
+            lReviewGameHome.setLineWrap(true);
+            lReviewGameHome.setWrapStyleWord(true);
+            
+            pReview.add(bReviewGameHome);
+            pReview.add(lReviewGameHome);
+            pReviewTab.add(pReview);
+        }
+        
+        pBodyHome.add(pGameMainHome);
+        pBodyHome.add(pReviewTab);
+        
+        pGamesHome.add(BGameHome1);
+        pGamesHome.add(BGameHome2);
+        pGamesHome.add(BGameHome3);
+        pGamesHome.add(BGameHome4);
+        pGamesHome.add(BGameHome5);
         
     	/* --------------------------------------- */
     	
