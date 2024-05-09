@@ -1,5 +1,6 @@
 import java.awt.BorderLayout;
 import java.awt.Color;
+import java.awt.Component;
 import java.awt.Dimension;
 import java.awt.FlowLayout;
 import java.awt.Font;
@@ -19,6 +20,7 @@ import java.io.IOException;
 
 import javax.imageio.ImageIO;
 import javax.swing.BorderFactory;
+import javax.swing.Box;
 import javax.swing.BoxLayout;
 import javax.swing.JButton;
 import javax.swing.JFrame;
@@ -26,6 +28,7 @@ import javax.swing.JLabel;
 import javax.swing.JPanel;
 import javax.swing.JScrollBar;
 import javax.swing.JScrollPane;
+import javax.swing.JTextArea;
 import javax.swing.JTextField;
 import javax.swing.SwingConstants;
 import javax.swing.SwingUtilities;
@@ -212,7 +215,6 @@ public class Vue {
         pBodyGamePage.setVisible(false);
         pBodyGamePage.setBackground(Color.white);
         pBodyGamePage.setLayout(new BorderLayout());
-        pBodyGamePage.add(new JLabel("GAME PAGE"), BorderLayout.EAST);
         pBodyGamePage.setPreferredSize(new Dimension(1280,1080));
         
         // PANEL FOOT GAMEPAGE
@@ -257,7 +259,117 @@ public class Vue {
         pTextGame.add(title);
         pTextGame.add(date);
         pTextGame.add(author);
-      	
+        
+        // PANEL CENTRAL BODY GAMEPAGE   
+        
+        // PARTIE DESCRITPTION
+        
+        JPanel pcBodyGamePage = new JPanel();
+        pcBodyGamePage.setBackground(Color.white);
+        pcBodyGamePage.setLayout(new BoxLayout(pcBodyGamePage, BoxLayout.Y_AXIS));
+        pcBodyGamePage.setBorder(BorderFactory.createEmptyBorder(0, 50, 0, 0));
+        
+        JPanel pDescGame = new JPanel();
+        pDescGame.setLayout(new FlowLayout(FlowLayout.LEFT));
+        pDescGame.setBorder(BorderFactory.createEmptyBorder(10, 0, 0, 0));
+        pDescGame.setPreferredSize(new Dimension(400,500));
+        pDescGame.setBackground(Color.white);
+        
+        JTextArea lDescGame = new JTextArea("Le jeu est une activité, humaine ou animale, pratiquée pour se divertir. Propre aux mammifères, cette activité d'ordre psychique ou bien physique crée une dépense d'énergie décorrélée des intérêts essentiels immédiats autres que le plaisir.");
+        lDescGame.setFont(new Font("Arial", Font.PLAIN, 24));
+        lDescGame.setPreferredSize(new Dimension(900,600));
+        lDescGame.setEditable(false);
+        lDescGame.setLineWrap(true);
+        lDescGame.setWrapStyleWord(true);
+        
+        // PARTIE AUTRE JEU RECOMMANDE
+        
+        JPanel pRecommendedGame = new JPanel();
+        pRecommendedGame.setBackground(Color.white);
+        pRecommendedGame.setLayout(new FlowLayout(FlowLayout.LEFT));
+        pRecommendedGame.setPreferredSize(new Dimension(900,500));
+        
+        JPanel pYAxisPanel = new JPanel();
+        pYAxisPanel.setPreferredSize(new Dimension(900,1000));
+        pYAxisPanel.setLayout(new BoxLayout(pYAxisPanel, BoxLayout.Y_AXIS));
+        
+        JPanel pGames = new JPanel();
+        pGames.setLayout(new FlowLayout(FlowLayout.LEFT));
+        pGames.setBorder(BorderFactory.createEmptyBorder(50, 150, 0, 0));
+        
+        JLabel lOtherGame = new JLabel("JEU RECOMMANDE");
+        lOtherGame.setFont(new Font("Arial", Font.PLAIN, 24));
+        lOtherGame.setBorder(BorderFactory.createEmptyBorder(10, 0, 0, 75));
+        
+        JButton game = jbGameTab.get(99);
+        game.setPreferredSize(new Dimension(200,300));
+        
+        JButton game2 = jbGameTab.get(1);
+        game2.setPreferredSize(new Dimension(200,300));
+        
+        JButton game3 = jbGameTab.get(2);
+        game3.setPreferredSize(new Dimension(200,300));      
+        
+        pRecommendedGame.add(pYAxisPanel);
+        pYAxisPanel.add(lOtherGame);
+        pYAxisPanel.add(pGames);   
+        
+        pGames.add(game);
+        pGames.add(game2);
+        pGames.add(game3);
+        
+        pDescGame.add(lDescGame);
+        
+        pcBodyGamePage.add(pDescGame);
+        pcBodyGamePage.add(pRecommendedGame);
+        
+        pBodyGamePage.add(pcBodyGamePage, BorderLayout.CENTER);
+
+        // RIGHT PANEL BODY GAMEPAGE
+        
+        JPanel rpBodyGamePage = new JPanel();
+        rpBodyGamePage.setPreferredSize(new Dimension(450,500));
+        rpBodyGamePage.setBackground(Color.white);
+        
+        // LISTE DES TAGS
+        
+        JPanel pGenreTag = new JPanel();
+        pGenreTag.setLayout(new FlowLayout(FlowLayout.LEFT));
+        pGenreTag.setPreferredSize(new Dimension(400,200));
+        pGenreTag.setBorder(BorderFactory.createEmptyBorder(5, 0, 0, 0));
+        pGenreTag.setBackground(Color.white);
+        
+        JTextArea taGenre = new JTextArea("genre1 " + "genre2 " + "genre3 " + "genre4 " + "genre5 " + "genre6 ");
+        taGenre.setFont(new Font("Arial", Font.PLAIN, 24));
+        taGenre.setPreferredSize(new Dimension(400,200));
+        taGenre.setEditable(false);
+        taGenre.setLineWrap(true);
+        taGenre.setWrapStyleWord(true);
+        
+        // NOTE DU JEU
+        
+        JPanel pNote = new JPanel();
+        pNote.setPreferredSize(new Dimension(390,50));
+        
+        JLabel lNote = new JLabel("20/20");
+        lNote.setFont(new Font("Arial", Font.PLAIN, 24));
+        lNote.setBorder(BorderFactory.createEmptyBorder(5, 0, 0, 0));
+        
+        pNote.add(lNote);
+        
+        // BOUTTON AJOUTER FAVORIS
+        
+        JButton bAddFavorite = new JButton("AJOUTER AUX FAVORIS");
+        bAddFavorite.setFont(new Font("Arial", Font.PLAIN, 24));
+        bAddFavorite.setPreferredSize(new Dimension(390,50));
+        
+        rpBodyGamePage.add(pGenreTag);
+        rpBodyGamePage.add(pNote);
+        rpBodyGamePage.add(bAddFavorite);
+        pGenreTag.add(taGenre);
+        
+        pBodyGamePage.add(rpBodyGamePage, BorderLayout.EAST);
+        
     	/* --------------------------------------- */
     	
     	// SEARCH BAR FOOT
@@ -324,7 +436,7 @@ public class Vue {
         
         // ACTION DE L'UTILISATEUR 
         
-        JButton[] bHeadTab = {nameB,jvB,favB,myGameB};
+        JButton[] bHeadTab = {nameB,jvB,favB,myGameB,bAddFavorite};
         JPanel[][] pTab = { {pBodyHome,pFootHome} , {pBodyGame, pFootGame}, {pBodyFav,pFootFav}, {pBodyMyGame,pFootMyGame}, {pBodyGamePage,pFootGamePage}};
         JScrollPane[] spTab = {scrollListGameBodyHome};
         
@@ -358,8 +470,6 @@ public class Vue {
         	});
         	
         }
-        
-        
         
         /* --------------------------------------- */
         
