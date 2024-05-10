@@ -249,7 +249,6 @@ public class Vue {
     	
         // PANEL BODY GAMEPAGE
 
-        JPanel pBodyGamePage = new JPanel();
 
         pBodyGamePage.setVisible(false);
         pBodyGamePage.setBackground(Color.white);
@@ -257,8 +256,6 @@ public class Vue {
         pBodyGamePage.setPreferredSize(new Dimension(1280,1080));
         
         // PANEL FOOT GAMEPAGE
-
-    	JPanel pFootGamePage = new JPanel();
 
     	pFootGamePage.setVisible(false);
     	pFootGamePage.add(new JLabel("FOOT GAME PAGE"));
@@ -343,13 +340,13 @@ public class Vue {
         lOtherGame.setBorder(BorderFactory.createEmptyBorder(10, 0, 0, 75));
         
 
-        JButton game = jbGameTab.get(3);
+        JButton game =  cloneJButton(jbGameTab.get(3));
         game.setPreferredSize(new Dimension(200,300));
         
-        JButton game2 = jbGameTab.get(1);
+        JButton game2 =  cloneJButton(jbGameTab.get(1));
         game2.setPreferredSize(new Dimension(200,300));
         
-        JButton game3 = jbGameTab.get(2);
+        JButton game3 =  cloneJButton(jbGameTab.get(2));
 
         game3.setPreferredSize(new Dimension(200,300));      
         
@@ -432,19 +429,19 @@ public class Vue {
         pGameMainHome.add(pGamesHome);
         
 
-        JButton BGameHome1 = jbGameTab.get(99);
+        JButton BGameHome1 = cloneJButton(jbGameTab.get(99));
         BGameHome1.setPreferredSize(new Dimension(200,300));
         
-        JButton BGameHome2 = jbGameTab.get(95);
+        JButton BGameHome2 = cloneJButton(jbGameTab.get(99));
         BGameHome2.setPreferredSize(new Dimension(200,300));
         
-        JButton BGameHome3 = jbGameTab.get(97);
+        JButton BGameHome3 = cloneJButton(jbGameTab.get(97));
         BGameHome3.setPreferredSize(new Dimension(200,300));      
         
-        JButton BGameHome4 = jbGameTab.get(96);
+        JButton BGameHome4 = cloneJButton(jbGameTab.get(96));
         BGameHome4.setPreferredSize(new Dimension(200,300));  
         
-        JButton BGameHome5 = jbGameTab.get(12);
+        JButton BGameHome5 = cloneJButton(jbGameTab.get(12));
 
         BGameHome5.setPreferredSize(new Dimension(200,300));  
         
@@ -457,7 +454,7 @@ public class Vue {
             pReview.setLayout(new FlowLayout(FlowLayout.LEFT));
             pReview.setPreferredSize(new Dimension(500,160));
 
-            JButton bReviewGameHome = jbGameTab.get(i);
+            JButton bReviewGameHome =  cloneJButton(jbGameTab.get(i));
 
             bReviewGameHome.setPreferredSize(new Dimension(100,150));
             
