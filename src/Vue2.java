@@ -83,7 +83,7 @@ class ImagePanel extends JPanel {
     }
 }
 
-public class Vue {
+public class Vue2 {
 	
 	static ArrayList<JButton> jbGameTab = new ArrayList<JButton>();
 
@@ -579,6 +579,6 @@ public class Vue {
     }
     
     public static void main(final String[] args) {
-        SwingUtilities.invokeLater(Vue::createAndShowGUI);
+        SwingUtilities.invokeLater(Vue2::createAndShowGUI);
     }
 }

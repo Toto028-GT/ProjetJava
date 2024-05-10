@@ -2,41 +2,37 @@ import java.io.Serializable;
 import com.fasterxml.jackson.dataformat.xml.annotation.JacksonXmlProperty;
 import com.fasterxml.jackson.dataformat.xml.annotation.JacksonXmlRootElement;
 
-public class Record {
+public class RecordBackup {
 	
 	private static final long serialVersionUID = 1L;
 	
-	@JacksonXmlProperty(localName = "GameTitle", isAttribute = false)
-    private String GameTitle = "default";
-    @JacksonXmlProperty(localName = "GamePoster", isAttribute = false)
-    private String GamePoster = "default";
-    @JacksonXmlProperty(localName = "GameReleaseDate", isAttribute = false)
-    private String GameReleaseDate = "default";
-    @JacksonXmlProperty(localName = "GameDeveloper", isAttribute = false)
-    private String GameDeveloper = "default";
+	@JacksonXmlProperty(localName = "Game Title", isAttribute = false)
+    private String GameTitle;
+    @JacksonXmlProperty(localName = "Game Poster", isAttribute = false)
+    private String GamePoster;
+    @JacksonXmlProperty(localName = "Game Release Date", isAttribute = false)
+    private String GameReleaseDate;
+    @JacksonXmlProperty(localName = "Game Developer", isAttribute = false)
+    private String GameDeveloper;
     @JacksonXmlProperty(localName = "Genre", isAttribute = false)
-    private String Genre = "default";
+    private String Genre;
     @JacksonXmlProperty(localName = "Platforms", isAttribute = false)
-    private String Platforms = "default";
-    @JacksonXmlProperty(localName = "ProductRating", isAttribute = false)
-    private String ProductRating = "default";
-    @JacksonXmlProperty(localName = "OverallMetascore", isAttribute = false)
-    private float OverallMetascore = 0;
-    @JacksonXmlProperty(localName = "OverallUserRating", isAttribute = false)
-    private float OverallUserRating = 0;
+    private String Platforms;
+    @JacksonXmlProperty(localName = "Product Rating", isAttribute = false)
+    private String ProductRating;
+    @JacksonXmlProperty(localName = "Overall Metascore", isAttribute = false)
+    private int OverallMetascore;
+    @JacksonXmlProperty(localName = "Overall User Rating", isAttribute = false)
+    private int OverallUserRating;
     @JacksonXmlProperty(localName = "ReviewerName", isAttribute = false)
-    private String ReviewerName = "default";
+    private String ReviewerName;
     @JacksonXmlProperty(localName = "ReviewerType", isAttribute = false)
-    private String ReviewerType = "default";
-    @JacksonXmlProperty(localName = "RatingGivenByTheReviewer", isAttribute = false)
-    private float RatingGivenByTheReviewer = 0;
-    @JacksonXmlProperty(localName = "ReviewText", isAttribute = false)
-    private String ReviewText = "default";
+    private String ReviewerType;
+    @JacksonXmlProperty(localName = "Rating Given By The Reviewer", isAttribute = false)
+    private int RatingGivenByTheReviewer;
+    @JacksonXmlProperty(localName = "Review Text", isAttribute = false)
+    private String ReviewText;
     
-    @Override
-    public String toString() {
-    	return this.GameTitle;
-    }
     
 	public String getGameTitle() {
 		return GameTitle;
@@ -80,13 +76,13 @@ public class Record {
 	public void setProductRating(String productRating) {
 		ProductRating = productRating;
 	}
-	public float getOverallMetascore() {
+	public int getOverallMetascore() {
 		return OverallMetascore;
 	}
 	public void setOverallMetascore(int overallMetascore) {
 		OverallMetascore = overallMetascore;
 	}
-	public float getOverallUserRating() {
+	public int getOverallUserRating() {
 		return OverallUserRating;
 	}
 	public void setOverallUserRating(int overallUserRating) {
@@ -104,7 +100,7 @@ public class Record {
 	public void setReviewerType(String reviewerType) {
 		ReviewerType = reviewerType;
 	}
-	public float getRatingGivenByTheReviewer() {
+	public int getRatingGivenByTheReviewer() {
 		return RatingGivenByTheReviewer;
 	}
 	public void setRatingGivenByTheReviewer(int ratingGivenByTheReviewer) {

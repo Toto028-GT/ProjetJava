@@ -6,7 +6,7 @@ public class Person {
     
 	@JacksonXmlProperty(localName = "name")
     private String name;
-    @JacksonXmlProperty(localName = "age", isAttribute = true)
+    @JacksonXmlProperty(localName = "age")
     private int age;
 	public String getName() {
 		return name;
@@ -21,5 +21,10 @@ public class Person {
 		this.age = age;
 	}
 
+	@Override
+	public String toString() {
+		return this.name + "(" + this.age + ")";
+	}
+	
     // Constructors, getters, and setters
 }

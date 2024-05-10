@@ -1,61 +1,56 @@
 import java.beans.XMLEncoder;
 import java.io.File;
 import java.io.FileOutputStream;
+import java.io.IOException;
 import java.io.ObjectOutputStream;
 import java.util.ArrayList;
+import java.util.Arrays;
 
+import com.fasterxml.jackson.core.exc.StreamReadException;
+import com.fasterxml.jackson.databind.DatabindException;
+import com.fasterxml.jackson.dataformat.xml.XmlMapper;
+
+import javax.xml.stream.XMLStreamReader;
 
 
 public class Modele {
 	
-	public ArrayList<String> jeux;
-	File fichier = new File("output.xml");
+	public Record[] game;
+	public File fichier;
+	public XmlMapper xmlMapper = new XmlMapper();
 	
-	public Modele() {
-		
-		/*XMLDecoder decoder = null;
-        try {
-            FileInputStream fis = new FileInputStream(fichier);
-            decoder = new XMLDecoder(fis);
-
-            this.jeux = (ArrayList<Record>) decoder.readObject();
-
-            fis.close();
-        } catch (Exception e) {
-            throw new RuntimeException("Impossible de lire les données");
-        } finally {
-            if (decoder != null) decoder.close();
-        }*/
-		this.jeux = new ArrayList<>();
-		this.jeux.add("un");
-		this.jeux.add("deux");
-		this.jeux.add("trois");
-		
+	public Modele(String file) {
+		this.fichier=new File(file);
 		
 	}
 	
-	public void enregistrer () {
-		XMLEncoder encoder = null;
-        try {
-        	FileOutputStream fos = new FileOutputStream(fichier);
-			ObjectOutputStream bos = new ObjectOutputStream(fos);
-            encoder = new XMLEncoder(bos);
-            encoder.writeObject(this.jeux);
-            encoder.flush();
-            encoder.close();
-            bos.close();
-            fos.close();
-        } catch (final java.io.IOException e) {
-            throw new RuntimeException("écriture impossible");
-        } finally {
-        	System.out.println("Terminé");
-        }
+	public void sauvgarder (Record[] game) throws StreamReadException, DatabindException, IOException {
+		
+		 // Serialize the object to XML
+        String xml = xmlMapper.writeValueAsString(game);
+        System.out.println(xml);
+	}
+	
+	public void enregistrer () throws StreamReadException, DatabindException, IOException {
+		
+        // Deserialize XML into a Java object
+        Record[] tlp = xmlMapper.readValue(fichier, Record[].class);
+
+        this.game=tlp;
+	}
+	
+	public String toString() {
+		String txt="[ -";
+		for(int i=0; i<game.length; i++) {
+			txt+=" "+game[i].toString()+" -";
+		}
+		return txt +" ]"; 
 	}
 
-	public static void main(String[] args) {
-		Modele p = new Modele();
-		System.out.println(p.jeux);
+	public static void main(String[] args) throws StreamReadException, DatabindException, IOException {
+		Modele p = new Modele("./BDDtest.xml");
 		p.enregistrer();
+		System.out.println(p.toString());
 		
 	}
 
