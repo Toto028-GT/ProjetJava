@@ -21,12 +21,15 @@ import java.io.File;
 import java.io.IOException;
 import java.io.ObjectInputStream;
 import java.io.ObjectOutputStream;
+import java.net.MalformedURLException;
+import java.net.URL;
 
 import javax.imageio.ImageIO;
 import javax.swing.BorderFactory;
 import javax.swing.Box;
 import javax.swing.BoxLayout;
 import javax.swing.Icon;
+import javax.swing.ImageIcon;
 import javax.swing.JButton;
 import javax.swing.JFrame;
 import javax.swing.JLabel;
@@ -45,10 +48,19 @@ import com.formdev.flatlaf.FlatDarkLaf;
 class ImagePanel extends JPanel {
     private BufferedImage image;
 
+    // Constructeur initial
     public ImagePanel(String imagePath) {
+        loadImage(imagePath);
+    }
+
+    // Méthode pour charger une nouvelle image
+    public void loadImage(String imagePath) {
         try {
-            // Charger l'image depuis le fichier
-            image = ImageIO.read(new File(imagePath));
+            // Charger l'image depuis l'URL
+            URL url = new URL(imagePath);
+            image = ImageIO.read(url);
+            // Redessiner le composant pour refléter le changement d'image
+            repaint();
         } catch (IOException e) {
             e.printStackTrace();
         }
@@ -85,21 +97,44 @@ class ImagePanel extends JPanel {
 
 public class Vue {
 	
+	public static Record[] r;
+	public static Controleur c;
+	public static int gameIndex;
+	 
+	public Vue(Record[] r, Controleur c) {
+		this.r = r;
+		this.c = c;
+	}
+	
 	static ArrayList<JButton> jbGameTab = new ArrayList<JButton>();
 	
 	static JPanel pBodyGamePage = new JPanel();
 	static JPanel pFootGamePage = new JPanel();
+	
 	static JPanel pBodyGame = new JPanel();
 	static JPanel pFootGame = new JPanel();
+	
 	static JPanel pBodyHome = new JPanel();
 	static JPanel pFootHome = new JPanel();
+	
 	static JScrollPane scrollListGameBodyHome = new JScrollPane(pBodyGame); 
 	static JScrollPane[] spTab = {scrollListGameBodyHome};
 	
+	static JLabel title = new JLabel("TITRE");
+	static JLabel date = new JLabel("DATE");
+	static JLabel author = new JLabel("AUTEUR");
+	static JTextArea lDescGame = new JTextArea("REVIEW");
+	static JTextArea taGenre = new JTextArea("GENRE");
+	static JLabel lNote = new JLabel("NOTE");
+	static JTextArea[] lReviewGameHome = new JTextArea[9];
+	static ImagePanel imagePanel = new ImagePanel("https://static.metacritic.com/images/products/games/5/98ded8914dd98a1efd777a592289c756-98.jpg");
+	
     // Méthode pour cloner un JButton
     public static JButton cloneJButton(JButton originalButton) {
-        JButton clonedButton = new JButton(originalButton.getText());
+        JButton clonedButton = new JButton(originalButton.getIcon());
         // Copier d'autres propriétés si nécessaire
+        
+        final int index = jbGameTab.indexOf(originalButton);
         
         clonedButton.addMouseListener(new MouseAdapter() {
     		
@@ -115,6 +150,12 @@ public class Vue {
             	pFootHome.setVisible(false);
             	
             	spTab[0].setVisible(false);
+            	
+            	System.out.println(index);
+            	gameIndex = index;
+            	System.out.println(gameIndex);
+            	
+            	c.SetGamePage(r, gameIndex);
             }
         });
         
@@ -143,12 +184,14 @@ public class Vue {
 	}
 	
     public static void createAndShowGUI() {
+    	
     	FlatDarkLaf.setup();  
     	try {
     	    UIManager.setLookAndFeel( new FlatDarkLaf() );
     	} catch( Exception ex ) {
     	    System.err.println( "Failed to initialize LaF" );
     	}
+
     	
     	/* ----------------------------------------- */
     	
@@ -195,11 +238,22 @@ public class Vue {
         pBodyGame.setPreferredSize(new Dimension(1280,1080));
         
         // PANEL LIST JEUX (BODY HOME)
-        for(int i=0; i<150;i++) {
-        	JButton jLGame = new JButton("JEU " +i);
-        	jLGame.setPreferredSize(new Dimension(200,300));
-        	jbGameTab.add(jLGame);
-        	pBodyGame.add(jLGame);
+        for(int i=0; i<r.length;i++) {
+        	try {
+				URL imageURL = new URL(r[i].getGamePoster());
+				ImageIcon icon = new ImageIcon(imageURL);
+				
+	        	JButton jLGame = new JButton(icon);
+	        	jLGame.setPreferredSize(new Dimension(200,300));
+
+	        	jbGameTab.add(jLGame);
+	        	pBodyGame.add(jLGame);
+	        	
+			} catch (MalformedURLException e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+			}
+        	
         }
 
         JScrollPane scrollListGameBodyHome = new JScrollPane(pBodyGame); 
@@ -269,19 +323,17 @@ public class Vue {
     	lpBodyGamePage.setBorder(BorderFactory.createEmptyBorder(20, 50, 100, 0));
     	lpBodyGamePage.setLayout(new BorderLayout());
     	
-    	String imagePath = "/home/egazzoli/Documents/test.jpg";
-        ImagePanel imagePanel = new ImagePanel(imagePath);  
+    	
         lpBodyGamePage.add(imagePanel, BorderLayout.CENTER);
+    	//String imagePath = "/home/egazzoli/Documents/test.jpg";
         
-        JLabel title = new JLabel("TITRE JEU");
+        System.out.println(r[gameIndex].getGameTitle());
         title.setFont(new Font("Arial", Font.PLAIN, 48));
         title.setForeground(Color.BLACK);
         
-        JLabel date = new JLabel("DATE");
         date.setFont(new Font("Arial", Font.PLAIN, 24));
         date.setForeground(Color.BLACK);
         
-        JLabel author = new JLabel("AUTEUR");
         author.setFont(new Font("Arial", Font.PLAIN, 24));
         author.setForeground(Color.BLACK);
         
@@ -313,7 +365,6 @@ public class Vue {
         pDescGame.setPreferredSize(new Dimension(400,500));
         pDescGame.setBackground(Color.white);
         
-        JTextArea lDescGame = new JTextArea("Le jeu est une activité, humaine ou animale, pratiquée pour se divertir. Propre aux mammifères, cette activité d'ordre psychique ou bien physique crée une dépense d'énergie décorrélée des intérêts essentiels immédiats autres que le plaisir.");
         lDescGame.setFont(new Font("Arial", Font.PLAIN, 24));
         lDescGame.setPreferredSize(new Dimension(900,600));
         lDescGame.setEditable(false);
@@ -379,7 +430,6 @@ public class Vue {
         pGenreTag.setBorder(BorderFactory.createEmptyBorder(5, 0, 0, 0));
         pGenreTag.setBackground(Color.white);
         
-        JTextArea taGenre = new JTextArea("genre1 " + "genre2 " + "genre3 " + "genre4 " + "genre5 " + "genre6 ");
         taGenre.setFont(new Font("Arial", Font.PLAIN, 24));
         taGenre.setPreferredSize(new Dimension(400,200));
         taGenre.setEditable(false);
@@ -391,10 +441,10 @@ public class Vue {
         JPanel pNote = new JPanel();
         pNote.setPreferredSize(new Dimension(390,50));
         
-        JLabel lNote = new JLabel("20/20");
         lNote.setFont(new Font("Arial", Font.PLAIN, 24));
+        lNote.setForeground(Color.white);
         lNote.setBorder(BorderFactory.createEmptyBorder(5, 0, 0, 0));
-        
+     
         pNote.add(lNote);
         
         // BOUTTON AJOUTER FAVORIS
@@ -429,19 +479,19 @@ public class Vue {
         pGameMainHome.add(pGamesHome);
         
 
-        JButton BGameHome1 = cloneJButton(jbGameTab.get(99));
+        JButton BGameHome1 = cloneJButton(jbGameTab.get(0));
         BGameHome1.setPreferredSize(new Dimension(200,300));
         
-        JButton BGameHome2 = cloneJButton(jbGameTab.get(99));
+        JButton BGameHome2 = cloneJButton(jbGameTab.get(1));
         BGameHome2.setPreferredSize(new Dimension(200,300));
         
-        JButton BGameHome3 = cloneJButton(jbGameTab.get(97));
+        JButton BGameHome3 = cloneJButton(jbGameTab.get(2));
         BGameHome3.setPreferredSize(new Dimension(200,300));      
         
-        JButton BGameHome4 = cloneJButton(jbGameTab.get(96));
+        JButton BGameHome4 = cloneJButton(jbGameTab.get(3));
         BGameHome4.setPreferredSize(new Dimension(200,300));  
         
-        JButton BGameHome5 = cloneJButton(jbGameTab.get(12));
+        JButton BGameHome5 = cloneJButton(jbGameTab.get(4));
 
         BGameHome5.setPreferredSize(new Dimension(200,300));  
         
@@ -458,16 +508,19 @@ public class Vue {
 
             bReviewGameHome.setPreferredSize(new Dimension(100,150));
             
-            JTextArea lReviewGameHome = new JTextArea("bon bah voila c'est un bon jeu, plutot de la frappe sah");
-            lReviewGameHome.setPreferredSize(new Dimension(350,150));
-            lReviewGameHome.setFont(new Font("Arial", Font.PLAIN, 16));
+            lReviewGameHome[i] = new JTextArea("REVIEW");
             
-            lReviewGameHome.setEditable(false);
-            lReviewGameHome.setLineWrap(true);
-            lReviewGameHome.setWrapStyleWord(true);
+            lReviewGameHome[i].setPreferredSize(new Dimension(350,150));
+            lReviewGameHome[i].setFont(new Font("Arial", Font.PLAIN, 16));
+            
+            lReviewGameHome[i].setEditable(false);
+            lReviewGameHome[i].setLineWrap(true);
+            lReviewGameHome[i].setWrapStyleWord(true);
+            
+            c.SetReviewHomePage(r ,i);
             
             pReview.add(bReviewGameHome);
-            pReview.add(lReviewGameHome);
+            pReview.add(lReviewGameHome[i]);
             pReviewTab.add(pReview);
         }
         
@@ -540,7 +593,6 @@ public class Vue {
         pHead.add(pName, BorderLayout.WEST);
         pHead.add(pButton, BorderLayout.CENTER);
         pHead.add(searchBar, BorderLayout.EAST);
-        //pHead.add(searchButton, BorderLayout.EAST);
         
         /* --------------------------------------- */
         
@@ -563,12 +615,12 @@ public class Vue {
                 }
                 public void mouseClicked(MouseEvent e) {
                 	ShowPage(index,pTab,spTab);
-                	System.out.println(index);
                 }
         	});
         }
         
         for(int i=0;i<jbGameTab.size();i++) {
+        	final int index = i;
         	jbGameTab.get(i).addMouseListener(new MouseAdapter() {
         		
                 public void mouseClicked(MouseEvent e) {
@@ -582,11 +634,17 @@ public class Vue {
                 	pFootHome.setVisible(false);
                 	
                 	spTab[0].setVisible(false);
+                	
+                	System.out.println(index);
+                	gameIndex = index;
+                	System.out.println(gameIndex);
+                	
+                	c.SetGamePage(r, gameIndex);
+                	
                 }
         	});
         	
         }
-        
 
         /* --------------------------------------- */
         
@@ -620,7 +678,15 @@ public class Vue {
         frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE); 
     }
     
-    public static void main(final String[] args) {
-        SwingUtilities.invokeLater(Vue::createAndShowGUI);
+    // Méthode pour charger une image depuis une URL et la convertir en ImageIcon
+    protected static ImageIcon createImageIcon(String path) {
+        URL imageURL = Vue.class.getResource(path);
+        if (imageURL != null) {
+            return new ImageIcon(imageURL);
+        } else {
+            System.err.println("Impossible de charger l'image : " + path);
+            return null;
+        }
     }
+    
 }
