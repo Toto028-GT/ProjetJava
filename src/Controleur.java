@@ -17,16 +17,10 @@ public class Controleur {
 		p.enregistrer();
 		Controleur c = new Controleur();
 		Vue v = new Vue(p.game, c);
-		System.out.println(p.toString());
-		System.out.println("ff");
-		System.out.println(p.game[6].getGamePoster());
-
 		SwingUtilities.invokeLater(Vue::createAndShowGUI);
 	}
 	
-	public void SetGamePage(Record[] r, int gameIndex) {
-		System.out.println("azehaozehi");
-		
+	public void SetGamePage(Record[] r, int gameIndex) {	
 		Vue.title.setText(r[gameIndex].getGameTitle());
 		Vue.date.setText(r[gameIndex].getGameReleaseDate());
 		Vue.author.setText(r[gameIndex].getGameDeveloper());
@@ -34,9 +28,7 @@ public class Controleur {
 		Vue.taGenre.setText(r[gameIndex].getGenre());
 		Vue.lNote.setText(r[gameIndex].getOverallMetascore() + " / 100");
 		Vue.imagePanel.loadImage(r[gameIndex].getGamePoster());
-		
-
-		
+	
 	}
 	
 	public void SetReviewHomePage(Record[] r, int gameIndex) {

@@ -107,6 +107,7 @@ public class Vue {
 	}
 	
 	static ArrayList<JButton> jbGameTab = new ArrayList<JButton>();
+	static ArrayList<JButton> bFavGame  = new ArrayList<JButton>();
 	
 	static JPanel pBodyGamePage = new JPanel();
 	static JPanel pFootGamePage = new JPanel();
@@ -117,22 +118,26 @@ public class Vue {
 	static JPanel pBodyHome = new JPanel();
 	static JPanel pFootHome = new JPanel();
 	
+	static JPanel pBodyFav = new JPanel();
+	static JPanel pFootFav = new JPanel();
+	
 	static JScrollPane scrollListGameBodyHome = new JScrollPane(pBodyGame); 
-	static JScrollPane[] spTab = {scrollListGameBodyHome};
+	static JScrollPane scrollListBodyFav      = new JScrollPane(pBodyFav);
+	static JScrollPane[] spTab                = {scrollListGameBodyHome, scrollListBodyFav};
 	
-	static JLabel title = new JLabel("TITRE");
-	static JLabel date = new JLabel("DATE");
-	static JLabel author = new JLabel("AUTEUR");
-	static JTextArea lDescGame = new JTextArea("REVIEW");
-	static JTextArea taGenre = new JTextArea("GENRE");
-	static JLabel lNote = new JLabel("NOTE");
+	static JLabel title                = new JLabel("TITRE");
+	static JLabel date                 = new JLabel("DATE");
+	static JLabel author               = new JLabel("AUTEUR");
+	static JTextArea lDescGame         = new JTextArea("REVIEW");
+	static JTextArea taGenre           = new JTextArea("GENRE");
+	static JLabel lNote                = new JLabel("NOTE");
 	static JTextArea[] lReviewGameHome = new JTextArea[9];
-	static ImagePanel imagePanel = new ImagePanel("https://static.metacritic.com/images/products/games/5/98ded8914dd98a1efd777a592289c756-98.jpg");
+	static ImagePanel imagePanel       = new ImagePanel("https://static.metacritic.com/images/products/games/5/98ded8914dd98a1efd777a592289c756-98.jpg");
 	
-    // Méthode pour cloner un JButton
+	
+	
     public static JButton cloneJButton(JButton originalButton) {
         JButton clonedButton = new JButton(originalButton.getIcon());
-        // Copier d'autres propriétés si nécessaire
         
         final int index = jbGameTab.indexOf(originalButton);
         
@@ -149,11 +154,13 @@ public class Vue {
             	pBodyHome.setVisible(false);
             	pFootHome.setVisible(false);
             	
-            	spTab[0].setVisible(false);
+            	pBodyFav.setVisible(false);
+            	pFootFav.setVisible(false);
             	
-            	System.out.println(index);
+            	spTab[0].setVisible(false);
+            	spTab[1].setVisible(false);
+            	
             	gameIndex = index;
-            	System.out.println(gameIndex);
             	
             	c.SetGamePage(r, gameIndex);
             }
@@ -162,7 +169,8 @@ public class Vue {
         return clonedButton;
     }   
 
-    public static void ShowPage(int pageIndex, JPanel[][] pTab, JScrollPane[] spTab) {
+    public static void ShowPage(int pageIndex, JPanel[][] pTab, JScrollPane[] spTab) { 	
+    	
         for(int i=0;i<pTab.length;i++) {
         	for(int y=0;y<pTab[0].length;y++) {
         		if (i == pageIndex) {
@@ -179,6 +187,23 @@ public class Vue {
 			spTab[0].setVisible(true);
 		}else {
 			spTab[0].setVisible(false);
+		}
+		
+		if(pageIndex==2) {
+			spTab[1].setVisible(true);
+			
+			pBodyFav.removeAll();
+			
+			if(bFavGame.size() >0) {
+		        for(int i=0; i<bFavGame.size();i++) {
+		        	JButton gameToAdd = cloneJButton(bFavGame.get(i));
+		        	gameToAdd.setPreferredSize(new Dimension(200,300));
+		        	pBodyFav.add(gameToAdd);
+		        }
+			}
+			
+		}else {
+			spTab[1].setVisible(false);
 		}
         
 	}
@@ -256,8 +281,6 @@ public class Vue {
         	
         }
 
-        JScrollPane scrollListGameBodyHome = new JScrollPane(pBodyGame); 
-
         scrollListGameBodyHome.setVerticalScrollBarPolicy(JScrollPane.VERTICAL_SCROLLBAR_ALWAYS);
         scrollListGameBodyHome.setHorizontalScrollBarPolicy(JScrollPane.HORIZONTAL_SCROLLBAR_NEVER);
         
@@ -272,14 +295,17 @@ public class Vue {
         /* --------------------------------------- */
         
         // PANEL BODY FAVORIS
-        JPanel pBodyFav = new JPanel();
     	pBodyFav.setVisible(false);
     	pBodyFav.setBackground(Color.white);
-        pBodyFav.add(new JLabel("BODY FAVORIS"));
         pBodyFav.setPreferredSize(new Dimension(1280,1080));
+
+        scrollListBodyFav.setVerticalScrollBarPolicy(JScrollPane.VERTICAL_SCROLLBAR_ALWAYS);
+        scrollListBodyFav.setHorizontalScrollBarPolicy(JScrollPane.HORIZONTAL_SCROLLBAR_NEVER);
+        
+        scrollListBodyFav.getVerticalScrollBar().setUnitIncrement(20);
+        scrollListBodyFav.setVisible(false);
         
         // PANEL FOOT FAVORIS
-    	JPanel pFootFav = new JPanel();
     	pFootFav.setVisible(false);
         pFootFav.add(new JLabel("FOOT FAVORIS"));
         pFootFav.setPreferredSize(new Dimension(1280,75));
@@ -327,7 +353,6 @@ public class Vue {
         lpBodyGamePage.add(imagePanel, BorderLayout.CENTER);
     	//String imagePath = "/home/egazzoli/Documents/test.jpg";
         
-        System.out.println(r[gameIndex].getGameTitle());
         title.setFont(new Font("Arial", Font.PLAIN, 48));
         title.setForeground(Color.BLACK);
         
@@ -601,8 +626,6 @@ public class Vue {
         JButton[] bHeadTab = {nameB,jvB,favB,myGameB,bAddFavorite};
         JPanel[][] pTab = { {pBodyHome,pFootHome} , {pBodyGame, pFootGame}, {pBodyFav,pFootFav}, {pBodyMyGame,pFootMyGame}, {pBodyGamePage,pFootGamePage}};
 
-        JScrollPane[] spTab = {scrollListGameBodyHome};
-
         
         for(int i=0;i<bHeadTab.length;i++) {
         	int index = i;
@@ -634,17 +657,28 @@ public class Vue {
                 	pFootHome.setVisible(false);
                 	
                 	spTab[0].setVisible(false);
+                	spTab[1].setVisible(false);
                 	
-                	System.out.println(index);
                 	gameIndex = index;
-                	System.out.println(gameIndex);
-                	
+
                 	c.SetGamePage(r, gameIndex);
                 	
                 }
         	});
         	
         }
+
+        
+        bAddFavorite.addMouseListener(new MouseAdapter() {
+            public void mouseClicked(MouseEvent e) {
+            	
+            	if(!bFavGame.contains(jbGameTab.get(gameIndex)))
+            	{
+            		bFavGame.add(jbGameTab.get(gameIndex));
+            	}
+            	
+            }
+    	});
 
         /* --------------------------------------- */
         
@@ -660,7 +694,7 @@ public class Vue {
         container.add(scrollListGameBodyHome);
         container.add(pFootGame);
         
-        container.add(pBodyFav);
+        container.add(scrollListBodyFav);
         container.add(pFootFav);
         
         container.add(pBodyMyGame);
