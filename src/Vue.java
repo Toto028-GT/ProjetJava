@@ -53,6 +53,8 @@ class ImagePanel extends JPanel {
             e.printStackTrace();
         }
     }
+    
+    
 
     @Override
     protected void paintComponent(Graphics g) {
@@ -85,7 +87,41 @@ class ImagePanel extends JPanel {
 
 public class Vue {
 	
+	
 	static ArrayList<JButton> jbGameTab = new ArrayList<JButton>();
+	static JPanel pBodyGamePage = new JPanel();
+	static JPanel pFootGamePage = new JPanel();
+	static JPanel pBodyGame = new JPanel();
+	static JPanel pFootGame = new JPanel();
+	static JPanel pBodyHome = new JPanel();
+	static JPanel pFootHome = new JPanel();
+	static JScrollPane scrollListGameBodyHome = new JScrollPane(pBodyGame); 
+	static JScrollPane[] spTab = {scrollListGameBodyHome};
+	
+    // Méthode pour cloner un JButton
+    public static JButton cloneJButton(JButton originalButton) {
+        JButton clonedButton = new JButton(originalButton.getText());
+        // Copier d'autres propriétés si nécessaire
+        
+        clonedButton.addMouseListener(new MouseAdapter() {
+    		
+            public void mouseClicked(MouseEvent e)
+            {
+            	pBodyGamePage.setVisible(true);
+            	pFootGamePage.setVisible(true);
+            	
+            	pBodyGame.setVisible(false);
+            	pFootGame.setVisible(false);
+            	
+            	pBodyHome.setVisible(false);
+            	pFootHome.setVisible(false);
+            	
+            	spTab[0].setVisible(false);
+            }
+        });
+        
+        return clonedButton;
+    }   
 
     public static void ShowPage(int pageIndex, JPanel[][] pTab, JScrollPane[] spTab) {
         for(int i=0;i<pTab.length;i++) {
@@ -145,20 +181,17 @@ public class Vue {
         /* ----------------------------------------- */
         
         // PANEL BODY HOME
-        JPanel pBodyHome = new JPanel();
         pBodyHome.setBackground(Color.white);
         pBodyHome.setPreferredSize(new Dimension(1280,1080));
         
         
         // PANEL FOOT HOME
-    	JPanel pFootHome = new JPanel();
         pFootHome.add(new JLabel("FOOT HOME"));
         pFootHome.setPreferredSize(new Dimension(1280,75));
         
         /* --------------------------------------- */
         
         // PANEL BODY JEUX
-        JPanel pBodyGame = new JPanel();
     	pBodyGame.setVisible(false);
     	pBodyGame.setBackground(Color.white);
         pBodyGame.setPreferredSize(new Dimension(1280,1080));
@@ -170,7 +203,6 @@ public class Vue {
         	jbGameTab.add(jLGame);
         	pBodyGame.add(jLGame);
         }
-        JScrollPane scrollListGameBodyHome = new JScrollPane(pBodyGame); 
         scrollListGameBodyHome.setVerticalScrollBarPolicy(JScrollPane.VERTICAL_SCROLLBAR_ALWAYS);
         scrollListGameBodyHome.setHorizontalScrollBarPolicy(JScrollPane.HORIZONTAL_SCROLLBAR_NEVER);
         
@@ -178,7 +210,6 @@ public class Vue {
         scrollListGameBodyHome.setVisible(false);
         
         // PANEL FOOT JEUX
-        JPanel pFootGame = new JPanel();
     	pFootGame.setVisible(false);
         pFootGame.add(new JLabel("FOOT JEUX"));
         pFootGame.setPreferredSize(new Dimension(1280,75));
@@ -216,14 +247,12 @@ public class Vue {
     	/* --------------------------------------- */
     	
         // PANEL BODY GAMEPAGE
-        JPanel pBodyGamePage = new JPanel();
         pBodyGamePage.setVisible(false);
         pBodyGamePage.setBackground(Color.white);
         pBodyGamePage.setLayout(new BorderLayout());
         pBodyGamePage.setPreferredSize(new Dimension(1280,1080));
         
         // PANEL FOOT GAMEPAGE
-    	JPanel pFootGamePage = new JPanel();
     	pFootGamePage.setVisible(false);
     	pFootGamePage.add(new JLabel("FOOT GAME PAGE"));
     	pFootGamePage.setPreferredSize(new Dimension(1280,75));
@@ -306,13 +335,13 @@ public class Vue {
         lOtherGame.setFont(new Font("Arial", Font.PLAIN, 24));
         lOtherGame.setBorder(BorderFactory.createEmptyBorder(10, 0, 0, 75));
         
-        JButton game = jbGameTab.get(3);
+        JButton game = cloneJButton(jbGameTab.get(99));
         game.setPreferredSize(new Dimension(200,300));
         
-        JButton game2 = jbGameTab.get(1);
+        JButton game2 = cloneJButton(jbGameTab.get(99));
         game2.setPreferredSize(new Dimension(200,300));
         
-        JButton game3 = jbGameTab.get(2);
+        JButton game3 = cloneJButton(jbGameTab.get(99));
         game3.setPreferredSize(new Dimension(200,300));      
         
         pRecommendedGame.add(pYAxisPanel);
@@ -393,19 +422,19 @@ public class Vue {
         pGameMainHome.add(lTitle);
         pGameMainHome.add(pGamesHome);
         
-        JButton BGameHome1 = jbGameTab.get(99);
+        JButton BGameHome1 = cloneJButton(jbGameTab.get(99));
         BGameHome1.setPreferredSize(new Dimension(200,300));
         
-        JButton BGameHome2 = jbGameTab.get(95);
+        JButton BGameHome2 = cloneJButton(jbGameTab.get(99));
         BGameHome2.setPreferredSize(new Dimension(200,300));
         
-        JButton BGameHome3 = jbGameTab.get(97);
+        JButton BGameHome3 = cloneJButton(jbGameTab.get(99));
         BGameHome3.setPreferredSize(new Dimension(200,300));      
         
-        JButton BGameHome4 = jbGameTab.get(96);
+        JButton BGameHome4 = cloneJButton(jbGameTab.get(99));
         BGameHome4.setPreferredSize(new Dimension(200,300));  
         
-        JButton BGameHome5 = jbGameTab.get(12);
+        JButton BGameHome5 = cloneJButton(jbGameTab.get(99));
         BGameHome5.setPreferredSize(new Dimension(200,300));  
         
         JPanel pReviewTab = new JPanel();
@@ -416,7 +445,7 @@ public class Vue {
             JPanel pReview = new JPanel();
             pReview.setLayout(new FlowLayout(FlowLayout.LEFT));
             pReview.setPreferredSize(new Dimension(500,160));
-            JButton bReviewGameHome = jbGameTab.get(i);
+            JButton bReviewGameHome = cloneJButton(jbGameTab.get(i));
             bReviewGameHome.setPreferredSize(new Dimension(100,150));
             
             JTextArea lReviewGameHome = new JTextArea("bon bah voila c'est un bon jeu, plutot de la frappe sah");
@@ -509,7 +538,6 @@ public class Vue {
         
         JButton[] bHeadTab = {nameB,jvB,favB,myGameB,bAddFavorite};
         JPanel[][] pTab = { {pBodyHome,pFootHome} , {pBodyGame, pFootGame}, {pBodyFav,pFootFav}, {pBodyMyGame,pFootMyGame}, {pBodyGamePage,pFootGamePage}};
-        JScrollPane[] spTab = {scrollListGameBodyHome};
         
         for(int i=0;i<bHeadTab.length;i++) {
         	int index = i;
@@ -545,6 +573,8 @@ public class Vue {
         	});
         	
         }
+        
+        
         
         /* --------------------------------------- */
         
