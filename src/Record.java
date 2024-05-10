@@ -6,6 +6,7 @@ public class Record {
 	
 	private static final long serialVersionUID = 1L;
 	
+
 	@JacksonXmlProperty(localName = "GameTitle", isAttribute = false)
     private String GameTitle = "default";
     @JacksonXmlProperty(localName = "GamePoster", isAttribute = false)
