@@ -51,6 +51,7 @@ public class Modele {
 		Modele p = new Modele("./BDDtest.xml");
 		p.enregistrer();
 		System.out.println(p.toString());
+		System.out.println("ff");
 		
 	}
 
