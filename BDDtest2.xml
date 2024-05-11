@@ -4,7 +4,7 @@
 <GamePoster>https://static.metacritic.com/images/products/games/5/98ded8914dd98a1efd777a592289c756-98.jpg</GamePoster>
 <GameReleaseDate>28-Nov-02</GameReleaseDate>
 <GameDeveloper>Gearbox Software </GameDeveloper>
-<Genre>Genre(s):Action,Shooter,Shooter,First-Person,Modern,Modern,Arcade</Genre>
+<Genre>Genre(s):Action,Shooter,First-Person,Modern,Arcade</Genre>
 <Platforms>PC</Platforms>
 <ProductRating>T</ProductRating>
 <OverallMetascore>59.0</OverallMetascore>
@@ -34,7 +34,7 @@
 <GamePoster>https://static.metacritic.com/images/products/games/7/08cd69d0c852089778ef10bf072e1f2d-98.jpg</GamePoster>
 <GameReleaseDate>23-Mar-18</GameReleaseDate>
 <GameDeveloper>Hazelight </GameDeveloper>
-<Genre>Genre(s):Action,ActionAdventure,General,Linear</Genre>
+<Genre>Genre(s):Action,Adventure,General,Linear</Genre>
 <Platforms>PlayStation4,XboxOne,PC</Platforms>
 <ProductRating>M</ProductRating>
 <OverallMetascore>78.0</OverallMetascore>
@@ -79,7 +79,7 @@
 <GamePoster>https://pics.filmaffinity.com/alan_wake-860939484-large.jpg</GamePoster>
 <GameReleaseDate>16-Feb-12</GameReleaseDate>
 <GameDeveloper>Remedy Entertainment </GameDeveloper>
-<Genre>Genre(s):ActionAdventure,Modern,Horror,Horror,Survival</Genre>
+<Genre>Genre(s):Action,Adventure,Modern,Horror,Survival</Genre>
 <Platforms>Xbox360,PC</Platforms>
 <ProductRating>T</ProductRating>
 <OverallMetascore>83.0</OverallMetascore>
@@ -94,7 +94,7 @@
 <GamePoster>https://static.metacritic.com/images/products/games/4/0c04d078cc6b3fa146a9888b91a2a9cf-98.jpg</GamePoster>
 <GameReleaseDate>14-Jun-11</GameReleaseDate>
 <GameDeveloper>Spicy Horse </GameDeveloper>
-<Genre>Genre(s):ActionAdventure,Adventure,General,Horror,Horror,Survival</Genre>
+<Genre>Genre(s):Action,Adventure,General,Horror,Survival</Genre>
 <Platforms>PlayStation3,Xbox360,PC</Platforms>
 <ProductRating>M</ProductRating>
 <OverallMetascore>75.0</OverallMetascore>
@@ -109,7 +109,7 @@
 <GamePoster>https://static.metacritic.com/images/products/games/0/70118770cc97643cb99af5911c1e3068-98.jpg</GamePoster>
 <GameReleaseDate>1-Jun-10</GameReleaseDate>
 <GameDeveloper>Obsidian Entertainment </GameDeveloper>
-<Genre>Genre(s):Role-Playing,Console-styleRPG,Console-styleRPG,Western-Style</Genre>
+<Genre>Genre(s):Role-Playing,Console-styleRPG,Western-Style</Genre>
 <Platforms>PlayStation3,Xbox360,PC</Platforms>
 <ProductRating>M</ProductRating>
 <OverallMetascore>72.0</OverallMetascore>
@@ -124,7 +124,7 @@
 <GamePoster>https://static.metacritic.com/images/products/games/2/c92a41806f8829f33d60d5a0796508cb-98.jpg</GamePoster>
 <GameReleaseDate>16-Nov-18</GameReleaseDate>
 <GameDeveloper>Innersloth </GameDeveloper>
-<Genre>Genre(s):ActionAdventure,General,Survival</Genre>
+<Genre>Genre(s):Action,Adventure,General,Survival</Genre>
 <Platforms>iPhone/iPad,PlayStation4,PlayStation5,Switch,XboxOne,XboxSeriesX,PC</Platforms>
 <ProductRating>E10+</ProductRating>
 <OverallMetascore>85.0</OverallMetascore>
@@ -199,7 +199,7 @@
 <GamePoster>https://m.media-amazon.com/images/I/61JqwcIXBxL._AC_UF894,1000_QL80_.jpg</GamePoster>
 <GameReleaseDate>29-Aug-17</GameReleaseDate>
 <GameDeveloper>Studio Wildcard </GameDeveloper>
-<Genre>Genre(s):ActionAdventure,Survival,Sandbox</Genre>
+<Genre>Genre(s):Action,Adventure,Survival,Sandbox</Genre>
 <Platforms>iPhone/iPad,PlayStation4,Stadia,Switch,XboxOne,PC</Platforms>
 <ProductRating>T</ProductRating>
 <OverallMetascore>70.0</OverallMetascore>
@@ -214,7 +214,7 @@
 <GamePoster>https://cdn2.steamgriddb.com/thumb/930115bcc4ac4aa36f6efd7a90257f0e.jpg</GamePoster>
 <GameReleaseDate>5-Mar-13</GameReleaseDate>
 <GameDeveloper>Bohemia Interactive </GameDeveloper>
-<Genre>Genre(s):Simulation,General,General</Genre>
+<Genre>Genre(s):Action,Shooter,First-Person,Tactical,Modern,Arcade</Genre>
 <Platforms>PC</Platforms>
 <ProductRating>M</ProductRating>
 <OverallMetascore>74.0</OverallMetascore>
@@ -229,7 +229,7 @@
 <GamePoster>https://static.metacritic.com/images/products/games/2/9288a6466cb95f40ff94bcf11699ee37-98.jpg</GamePoster>
 <GameReleaseDate>7-Jul-09</GameReleaseDate>
 <GameDeveloper>Bohemia Interactive </GameDeveloper>
-<Genre>Genre(s):Action,Shooter,Shooter,First-Person,Modern,Tactical,Modern,Arcade</Genre>
+<Genre>Genre(s):Action,Shooter,First-Person,Tactical,Modern,Arcade</Genre>
 <Platforms>PC</Platforms>
 <ProductRating>M</ProductRating>
 <OverallMetascore>77.0</OverallMetascore>
@@ -244,7 +244,7 @@
 <GamePoster>https://static.metacritic.com/images/products/games/2/e3296bc1d511e1793d5a01aada53bbbc-98.jpg</GamePoster>
 <GameReleaseDate>20-Nov-12</GameReleaseDate>
 <GameDeveloper>Ubisoft </GameDeveloper>
-<Genre>Genre(s):ActionAdventure,Historic,Historic,Open-World</Genre>
+<Genre>Genre(s):Action,Adventure,Historic,Open-World</Genre>
 <Platforms>PlayStation3,WiiU,Xbox360,PC</Platforms>
 <ProductRating>M</ProductRating>
 <OverallMetascore>80.0</OverallMetascore>
@@ -259,7 +259,7 @@
 <GamePoster>https://static.metacritic.com/images/products/games/5/c5d98c5752c41ec3b14f6271b2bac14d-98.jpg</GamePoster>
 <GameReleaseDate>9-Mar-10</GameReleaseDate>
 <GameDeveloper>Ubisoft Montreal </GameDeveloper>
-<Genre>Genre(s):ActionAdventure,Historic,Historic,Open-World</Genre>
+<Genre>Genre(s):Action,Adventure,Historic,Open-World</Genre>
 <Platforms>PlayStation3,Xbox360,PC</Platforms>
 <ProductRating>M</ProductRating>
 <OverallMetascore>86.0</OverallMetascore>
@@ -274,7 +274,7 @@
 <GamePoster>https://static.posters.cz/image/750/affiches-et-posters/assassins-creed-origins-cover-i49105.jpg</GamePoster>
 <GameReleaseDate>27-Oct-17</GameReleaseDate>
 <GameDeveloper>Ubisoft, Ubisoft Montreal </GameDeveloper>
-<Genre>Genre(s):Miscellaneous,ActionAdventure,Edutainment,Open-World</Genre>
+<Genre>Genre(s):Miscellaneous,Action,Adventure,Open-World</Genre>
 <Platforms>PlayStation4,Stadia,XboxOne,PC</Platforms>
 <ProductRating>M</ProductRating>
 <OverallMetascore>84.0</OverallMetascore>
@@ -289,7 +289,7 @@
 <GamePoster>https://static.metacritic.com/images/products/games/0/27d7503488d6aed120e5234fd8417c94-98.jpg</GamePoster>
 <GameReleaseDate>11-Nov-14</GameReleaseDate>
 <GameDeveloper>Ubisoft, Ubisoft Montreal </GameDeveloper>
-<Genre>Genre(s):ActionAdventure,Historic,Open-World</Genre>
+<Genre>Genre(s):Action,Adventure,Historic,Open-World</Genre>
 <Platforms>PlayStation4,Stadia,XboxOne,PC</Platforms>
 <ProductRating>M</ProductRating>
 <OverallMetascore>70.0</OverallMetascore>
@@ -304,7 +304,7 @@
 <GamePoster>https://static.metacritic.com/images/products/games/0/935ed7fe727d0ce1c6107b00bdb7d6c7-98.jpg</GamePoster>
 <GameReleaseDate>12-Aug-21</GameReleaseDate>
 <GameDeveloper>Ubisoft Singapore </GameDeveloper>
-<Genre>Genre(s):ActionAdventure,Open-World</Genre>
+<Genre>Genre(s):Action,Adventure,Open-World</Genre>
 <Platforms>PlayStation4,PlayStation5,XboxOne,XboxSeriesX,PC</Platforms>
 <OverallMetascore>69.0</OverallMetascore>
 <OverallUserRating>7.2</OverallUserRating>
@@ -318,7 +318,7 @@
 <GamePoster>https://static.metacritic.com/images/products/games/4/e7c0f058158bbf7d35d6debee76fa8a8-98.jpg</GamePoster>
 <GameReleaseDate>22-Mar-11</GameReleaseDate>
 <GameDeveloper>Ubisoft Montreal </GameDeveloper>
-<Genre>Genre(s):ActionAdventure,Historic,Historic,Open-World</Genre>
+<Genre>Genre(s):Action,Adventure,Historic,Open-World</Genre>
 <Platforms>PlayStation3,Xbox360,PC</Platforms>
 <ProductRating>M</ProductRating>
 <OverallMetascore>88.0</OverallMetascore>
@@ -348,7 +348,7 @@
 <GamePoster>https://static.metacritic.com/images/products/games/2/89a0525888498746e946d4df9faeb383-98.jpg</GamePoster>
 <GameReleaseDate>21-Dec-98</GameReleaseDate>
 <GameDeveloper>BioWare </GameDeveloper>
-<Genre>Genre(s):Role-Playing,PC-styleRPG,PC-styleRPG,Western-Style</Genre>
+<Genre>Genre(s):Role-Playing,PC-styleRPG,Western-Style</Genre>
 <Platforms>PC</Platforms>
 <ProductRating>T</ProductRating>
 <OverallMetascore>91.0</OverallMetascore>
@@ -393,7 +393,7 @@
 <GamePoster>https://static.metacritic.com/images/products/games/1/d2f0e4e5cdb9eec66e1a8e5dcc7f9cf4-98.jpg</GamePoster>
 <GameReleaseDate>21-Jun-05</GameReleaseDate>
 <GameDeveloper>Digital Illusions </GameDeveloper>
-<Genre>Genre(s):Action,Shooter,Shooter,First-Person,Tactical,Modern,Modern</Genre>
+<Genre>Genre(s):Action,Shooter,First-Person,Tactical,Modern</Genre>
 <Platforms>PC</Platforms>
 <ProductRating>T</ProductRating>
 <OverallMetascore>91.0</OverallMetascore>
@@ -408,7 +408,7 @@
 <GamePoster>https://static.metacritic.com/images/products/games/6/c3f1462d44b37eb14de8c55a0180d400-98.jpg</GamePoster>
 <GameReleaseDate>25-Oct-11</GameReleaseDate>
 <GameDeveloper>EA DICE </GameDeveloper>
-<Genre>Genre(s):Action,Shooter,Shooter,First-Person,Modern,Tactical,Modern,Arcade</Genre>
+<Genre>Genre(s):Action,Shooter,First-Person,Tactical,Modern,Arcade</Genre>
 <Platforms>PlayStation3,Xbox360,PC</Platforms>
 <ProductRating>M</ProductRating>
 <OverallMetascore>89.0</OverallMetascore>
@@ -423,7 +423,7 @@
 <GamePoster>https://static.metacritic.com/images/products/games/7/b0a31021bbeb6b0ad036c1a26bde3135-98.jpg</GamePoster>
 <GameReleaseDate>19-Oct-13</GameReleaseDate>
 <GameDeveloper>EA DICE </GameDeveloper>
-<Genre>Genre(s):Action,Shooter,Shooter,First-Person,Modern,Modern,Arcade</Genre>
+<Genre>Genre(s):Action,Shooter,First-Person,Modern,Arcade</Genre>
 <Platforms>PlayStation3,PlayStation4,WiiU,Xbox360,XboxOne,PC</Platforms>
 <ProductRating>M</ProductRating>
 <OverallMetascore>81.0</OverallMetascore>
@@ -453,7 +453,7 @@
 <GamePoster>https://static.metacritic.com/images/products/games/6/6ab2ab8de374c0ee816e4033cf2d83ee-98.jpg</GamePoster>
 <GameReleaseDate>9-Feb-10</GameReleaseDate>
 <GameDeveloper>2K Marin </GameDeveloper>
-<Genre>Genre(s):Action,Shooter,Shooter,First-Person,Sci-Fi,Sci-Fi,Arcade</Genre>
+<Genre>Genre(s):Action,Shooter,First-Person,Sci-Fi,Arcade</Genre>
 <Platforms>PlayStation3,Xbox360,PC</Platforms>
 <ProductRating>M</ProductRating>
 <OverallMetascore>88.0</OverallMetascore>
@@ -468,7 +468,7 @@
 <GamePoster>https://static.metacritic.com/images/products/games/4/6e40cbab3978d4fe0c1390f8b46f23cc-98.jpg</GamePoster>
 <GameReleaseDate>21-Aug-07</GameReleaseDate>
 <GameDeveloper>Irrational Games, 2K Marin </GameDeveloper>
-<Genre>Genre(s):Action,Shooter,Shooter,First-Person,Sci-Fi,Sci-Fi,Arcade</Genre>
+<Genre>Genre(s):Action,Shooter,First-Person,Sci-Fi,Arcade</Genre>
 <Platforms>iPhone/iPad,PlayStation3,Xbox360,PC</Platforms>
 <ProductRating>M</ProductRating>
 <OverallMetascore>96.0</OverallMetascore>
@@ -497,7 +497,7 @@
 <GamePoster>https://static.metacritic.com/images/products/games/6/83a854e88e731ec780ae2d8e2e3659f7-98.jpg</GamePoster>
 <GameReleaseDate>17-Sep-12</GameReleaseDate>
 <GameDeveloper>Gearbox Software </GameDeveloper>
-<Genre>Genre(s):Action,Shooter,Shooter,First-Person,Sci-Fi,Sci-Fi,Arcade</Genre>
+<Genre>Genre(s):Action,Shooter,First-Person,Sci-Fi,Arcade</Genre>
 <Platforms>PlayStation3,PlayStationVita,Xbox360,XboxOne,PC</Platforms>
 <ProductRating>M</ProductRating>
 <OverallMetascore>89.0</OverallMetascore>
@@ -527,7 +527,7 @@
 <GamePoster>https://static.metacritic.com/images/products/games/9/b97530e0d5f7fd64448746c40cc52de6-98.jpg</GamePoster>
 <GameReleaseDate>25-Oct-05</GameReleaseDate>
 <GameDeveloper>Infinity Ward </GameDeveloper>
-<Genre>Genre(s):Action,Shooter,Shooter,First-Person,Historic,Historic,Arcade</Genre>
+<Genre>Genre(s):Action,Shooter,First-Person,Historic,Arcade</Genre>
 <Platforms>Xbox360,PC</Platforms>
 <ProductRating>T</ProductRating>
 <OverallMetascore>86.0</OverallMetascore>
@@ -557,7 +557,7 @@
 <GamePoster>https://static.metacritic.com/images/products/games/9/49a90d2e9f90df8d9e0ea57a0ac96a9d-98.jpg</GamePoster>
 <GameReleaseDate>9-Nov-10</GameReleaseDate>
 <GameDeveloper>Treyarch </GameDeveloper>
-<Genre>Genre(s):Action,Shooter,Shooter,First-Person,Historic,Tactical,Historic,Arcade</Genre>
+<Genre>Genre(s):Action,Shooter,First-Person,Tactical,Historic,Arcade</Genre>
 <Platforms>PlayStation3,Xbox360,PC</Platforms>
 <ProductRating>M</ProductRating>
 <OverallMetascore>81.0</OverallMetascore>
@@ -572,7 +572,7 @@
 <GamePoster>https://static.metacritic.com/images/products/games/1/0354194c1c44b8fe89de2e53bf34c98a-98.jpg</GamePoster>
 <GameReleaseDate>4-Nov-13</GameReleaseDate>
 <GameDeveloper>Infinity Ward </GameDeveloper>
-<Genre>Genre(s):Action,Shooter,Shooter,First-Person,Modern,Modern,Arcade</Genre>
+<Genre>Genre(s):Action,Shooter,First-Person,Modern,Arcade</Genre>
 <Platforms>PlayStation3,PlayStation4,WiiU,Xbox360,XboxOne,PC</Platforms>
 <ProductRating>M</ProductRating>
 <OverallMetascore>68.0</OverallMetascore>
@@ -617,7 +617,7 @@
 <GamePoster>https://static.metacritic.com/images/products/games/5/b1fb7d0529dc6a2ef9ab48be7054ecbf-98.jpg</GamePoster>
 <GameReleaseDate>29-Oct-03</GameReleaseDate>
 <GameDeveloper>Infinity Ward </GameDeveloper>
-<Genre>Genre(s):Action,Shooter,Shooter,First-Person,Third-Person,Historic,Tactical,Historic,Arcade</Genre>
+<Genre>Genre(s):Action,Shooter,First-Person,Third-Person,Historic,Tactical,Arcade</Genre>
 <Platforms>PlayStation3,Xbox360,PC</Platforms>
 <ProductRating>T</ProductRating>
 <OverallMetascore>91.0</OverallMetascore>
@@ -646,7 +646,7 @@
 <GamePoster>https://static.metacritic.com/images/products/games/0/16865bf00aaa59fdfdbdae076d37daf5-98.jpg</GamePoster>
 <GameReleaseDate>31-Aug-02</GameReleaseDate>
 <GameDeveloper>Ubisoft </GameDeveloper>
-<Genre>Genre(s):Miscellaneous,BoardGames,BoardGames,Board/CardGame</Genre>
+<Genre>Genre(s):Miscellaneous,BoardGames,Board/CardGame</Genre>
 <Platforms>PC</Platforms>
 <ProductRating>E</ProductRating>
 <OverallMetascore>81.0</OverallMetascore>
@@ -691,7 +691,7 @@
 <GamePoster>https://static.metacritic.com/images/products/games/6/c25c8c7ddbc9eaf2b566795753c29be8-98.jpg</GamePoster>
 <GameReleaseDate>21-Aug-12</GameReleaseDate>
 <GameDeveloper>Valve Software, Hidden Path Entertainment </GameDeveloper>
-<Genre>Genre(s):Action,Shooter,Shooter,First-Person,Modern,Tactical,Modern</Genre>
+<Genre>Genre(s):Action,Shooter,First-Person,Tactical,Modern</Genre>
 <Platforms>PlayStation3,Xbox360,PC</Platforms>
 <ProductRating>M</ProductRating>
 <OverallMetascore>83.0</OverallMetascore>
@@ -736,7 +736,7 @@
 <GamePoster>https://static.metacritic.com/images/products/games/8/3c939b96b0aac4a8338e6e49e16fddcd-98.jpg</GamePoster>
 <GameReleaseDate>13-Nov-07</GameReleaseDate>
 <GameDeveloper>Crytek </GameDeveloper>
-<Genre>Genre(s):Action,Shooter,Shooter,First-Person,Sci-Fi,Sci-Fi,Arcade</Genre>
+<Genre>Genre(s):Action,Shooter,First-Person,Sci-Fi,Arcade</Genre>
 <Platforms>PlayStation3,Xbox360,PC</Platforms>
 <ProductRating>M</ProductRating>
 <OverallMetascore>91.0</OverallMetascore>
@@ -765,7 +765,7 @@
 <GamePoster>https://static.metacritic.com/images/products/games/9/e6f3e91d6de4757b3a81886b520b5739-98.jpg</GamePoster>
 <GameReleaseDate>10-Dec-20</GameReleaseDate>
 <GameDeveloper>CD Projekt Red Studio </GameDeveloper>
-<Genre>Genre(s):ActionRPG,Role-Playing,ActionRPG</Genre>
+<Genre>Genre(s):ActionRPG,Role-Playing</Genre>
 <Platforms>PlayStation4,PlayStation5,Stadia,XboxOne,XboxSeriesX,PC</Platforms>
 <ProductRating>M</ProductRating>
 <OverallMetascore>86.0</OverallMetascore>
@@ -795,7 +795,7 @@
 <GamePoster>https://static.metacritic.com/images/products/games/4/086dbc6f10fc74f094f22a1cace576ba-98.jpg</GamePoster>
 <GameReleaseDate>25-Jan-11</GameReleaseDate>
 <GameDeveloper>Visceral Games </GameDeveloper>
-<Genre>Genre(s):Action,Shooter,Shooter,Third-Person,Sci-Fi,Sci-Fi,Arcade</Genre>
+<Genre>Genre(s):Action,Shooter,Third-Person,Sci-Fi,Arcade</Genre>
 <Platforms>PlayStation3,Xbox360,PC</Platforms>
 <ProductRating>M</ProductRating>
 <OverallMetascore>87.0</OverallMetascore>
@@ -810,7 +810,7 @@
 <GamePoster>https://static.metacritic.com/images/products/games/8/4149d91657176b530a38f25078849f17-98.jpg</GamePoster>
 <GameReleaseDate>5-Feb-13</GameReleaseDate>
 <GameDeveloper>Visceral Games </GameDeveloper>
-<Genre>Genre(s):Action,ActionAdventure,Shooter,Shooter,Linear,Third-Person,Sci-Fi,Sci-Fi</Genre>
+<Genre>Genre(s):Action,Adventure,Shooter,Linear,Third-Person,Sci-Fi</Genre>
 <Platforms>PlayStation3,Xbox360,PC</Platforms>
 <ProductRating>M</ProductRating>
 <OverallMetascore>78.0</OverallMetascore>
@@ -825,7 +825,7 @@
 <GamePoster>https://static.metacritic.com/images/products/games/0/f17a47eb53585a8ba40aa6b862c46851-98.jpg</GamePoster>
 <GameReleaseDate>27-Jan-23</GameReleaseDate>
 <GameDeveloper>Electronic Arts, Motive Studios </GameDeveloper>
-<Genre>Genre(s):ActionAdventure,Survival</Genre>
+<Genre>Genre(s):Action,Adventure,Survival</Genre>
 <Platforms>PlayStation5,XboxSeriesX,PC</Platforms>
 <ProductRating>M</ProductRating>
 <OverallMetascore>87.0</OverallMetascore>
@@ -840,7 +840,7 @@
 <GamePoster>https://static.metacritic.com/images/products/games/9/5be5bad50d3d2917003fe09fb4f5099e-98.jpg</GamePoster>
 <GameReleaseDate>14-Sep-21</GameReleaseDate>
 <GameDeveloper>Arkane Studios </GameDeveloper>
-<Genre>Genre(s):ActionAdventure,General,Action,Shooter,First-Person,Arcade</Genre>
+<Genre>Genre(s):Action,Adventure,General,Shooter,First-Person,Arcade</Genre>
 <Platforms>PlayStation5,XboxSeriesX,PC</Platforms>
 <ProductRating>M</ProductRating>
 <OverallMetascore>87.0</OverallMetascore>
@@ -915,7 +915,7 @@
 <GamePoster>https://static.metacritic.com/images/products/games/6/576a743c8c68aaf5c62378e372c5fdf5-98.jpg</GamePoster>
 <GameReleaseDate>9-Jul-13</GameReleaseDate>
 <GameDeveloper>Valve Software </GameDeveloper>
-<Genre>Genre(s):General,Fantasy,MOBA,Strategy,Real-Time,MOBA</Genre>
+<Genre>Genre(s):General,Fantasy,MOBA,Strategy,Real-Time</Genre>
 <Platforms>PC</Platforms>
 <OverallMetascore>90.0</OverallMetascore>
 <OverallUserRating>6.5</OverallUserRating>
@@ -944,7 +944,7 @@
 <GamePoster>https://static.metacritic.com/images/products/games/2/c971bd41766fefcb4ce2b9ab4b559f70-98.jpg</GamePoster>
 <GameReleaseDate>6-May-03</GameReleaseDate>
 <GameDeveloper>CCP </GameDeveloper>
-<Genre>Genre(s):Role-Playing,MassivelyMultiplayerOnline,MassivelyMultiplayer,Sci-Fi,Sci-Fi</Genre>
+<Genre>Genre(s):Role-Playing,MassivelyMultiplayerOnline,MassivelyMultiplayer,Sci-Fi</Genre>
 <Platforms>PC</Platforms>
 <ProductRating>T</ProductRating>
 <OverallMetascore>69.0</OverallMetascore>
@@ -989,7 +989,7 @@
 <GamePoster>https://static.metacritic.com/images/products/games/3/238d54d1a52ed5516801b82897e4f79b-98.jpg</GamePoster>
 <GameReleaseDate>28-Oct-08</GameReleaseDate>
 <GameDeveloper>Bethesda Game Studios </GameDeveloper>
-<Genre>Genre(s):Role-Playing,First-Person,First-Person,Western-Style</Genre>
+<Genre>Genre(s):Role-Playing,First-Person,Western-Style</Genre>
 <Platforms>PlayStation3,Xbox360,PC</Platforms>
 <ProductRating>M</ProductRating>
 <OverallMetascore>91.0</OverallMetascore>
@@ -1019,7 +1019,7 @@
 <GamePoster>https://static.metacritic.com/images/products/games/8/5d85507c8f39f0d8cb95d0f3d5a3fa60-98.jpg</GamePoster>
 <GameReleaseDate>4-Dec-12</GameReleaseDate>
 <GameDeveloper>Ubisoft Montreal </GameDeveloper>
-<Genre>Genre(s):Action,Shooter,Shooter,First-Person,Modern,Modern,Arcade</Genre>
+<Genre>Genre(s):Action,Shooter,First-Person,Modern,Arcade</Genre>
 <Platforms>PlayStation3,PlayStation4,Xbox360,XboxOne,PC</Platforms>
 <ProductRating>M</ProductRating>
 <OverallMetascore>88.0</OverallMetascore>
@@ -1064,7 +1064,7 @@
 <GamePoster>https://static.metacritic.com/images/products/games/3/57ff772b86017fc999049c6ae7669f16-98.jpg</GamePoster>
 <GameReleaseDate>13-Feb-17</GameReleaseDate>
 <GameDeveloper>Ubisoft Montreal </GameDeveloper>
-<Genre>Genre(s):ActionAdventure,General</Genre>
+<Genre>Genre(s):Action,Adventure,General</Genre>
 <Platforms>PlayStation4,PlayStation5,XboxOne,XboxSeriesX,PC</Platforms>
 <ProductRating>M</ProductRating>
 <OverallMetascore>76.0</OverallMetascore>
@@ -1109,7 +1109,7 @@
 <GamePoster>https://static.metacritic.com/images/products/games/2/bab786f634eee57a1c68be2dddf3d1e5-98.jpg</GamePoster>
 <GameReleaseDate>13-Apr-15</GameReleaseDate>
 <GameDeveloper>Rockstar North </GameDeveloper>
-<Genre>Genre(s):Modern,ActionAdventure,Open-World</Genre>
+<Genre>Genre(s):Modern,Action,Adventure,Open-World</Genre>
 <Platforms>PlayStation3,PlayStation4,PlayStation5,Xbox360,XboxOne,XboxSeriesX,PC</Platforms>
 <ProductRating>M</ProductRating>
 <OverallMetascore>96.0</OverallMetascore>
@@ -1139,7 +1139,7 @@
 <GamePoster>https://static.metacritic.com/images/products/games/4/dc07770252fb2ca3b0596a30cc91ee87-98.jpg</GamePoster>
 <GameReleaseDate>28-Feb-18</GameReleaseDate>
 <GameDeveloper>Daybreak Games </GameDeveloper>
-<Genre>Genre(s):Third-Person,Arcade,Action,ActionAdventure,Shooter,Survival,First-Person,Tactical</Genre>
+<Genre>Genre(s):Third-Person,Arcade,Action,Adventure,Shooter,Survival,First-Person,Tactical</Genre>
 <Platforms>PlayStation4,PC</Platforms>
 <ProductRating>T</ProductRating>
 <OverallMetascore>70.0</OverallMetascore>
@@ -1154,7 +1154,7 @@
 <GamePoster>https://static.metacritic.com/images/products/games/5/66a3bd7342bf5b122b92862a465177ed-98.jpg</GamePoster>
 <GameReleaseDate>17-Sep-20</GameReleaseDate>
 <GameDeveloper>Supergiant Games </GameDeveloper>
-<Genre>Genre(s):Role-Playing,ActionAdventure,General,Linear,Roguelike</Genre>
+<Genre>Genre(s):Role-Playing,Action,Adventure,General,Linear,Roguelike</Genre>
 <Platforms>PlayStation4,PlayStation5,Switch,XboxOne,XboxSeriesX,PC</Platforms>
 <ProductRating>T</ProductRating>
 <OverallMetascore>93.0</OverallMetascore>
@@ -1169,7 +1169,7 @@
 <GamePoster>https://static.metacritic.com/images/products/games/5/5764f80ddd3e67da3b29eb759e8a4737-98.jpg</GamePoster>
 <GameReleaseDate>19-Nov-98</GameReleaseDate>
 <GameDeveloper>Valve Software </GameDeveloper>
-<Genre>Genre(s):Action,Shooter,Shooter,First-Person,Sci-Fi,Sci-Fi,Arcade</Genre>
+<Genre>Genre(s):Action,Shooter,First-Person,Sci-Fi,Arcade</Genre>
 <Platforms>PlayStation2,PC</Platforms>
 <ProductRating>M</ProductRating>
 <OverallMetascore>96.0</OverallMetascore>
@@ -1184,7 +1184,7 @@
 <GamePoster>https://static.metacritic.com/images/products/games/2/1d646978a5fdb4b7c0c6441d6a2c2366-98.jpg</GamePoster>
 <GameReleaseDate>31-May-07</GameReleaseDate>
 <GameDeveloper>Microsoft Game Studios </GameDeveloper>
-<Genre>Genre(s):Action,Shooter,Shooter,First-Person,Sci-Fi,Sci-Fi,Arcade</Genre>
+<Genre>Genre(s):Action,Shooter,First-Person,Sci-Fi,Arcade</Genre>
 <Platforms>PC</Platforms>
 <ProductRating>M</ProductRating>
 <OverallMetascore>72.0</OverallMetascore>
@@ -1213,7 +1213,7 @@
 <GamePoster>https://static.metacritic.com/images/products/games/4/2aaefb253faa91ff86fc5ae0bb0b47ee-98.jpg</GamePoster>
 <GameReleaseDate>20-Jan-21</GameReleaseDate>
 <GameDeveloper>Io Interactive </GameDeveloper>
-<Genre>Genre(s):ActionAdventure,General</Genre>
+<Genre>Genre(s):Action,Adventure,General</Genre>
 <Platforms>PlayStation4,PlayStation5,Stadia,Switch,XboxOne,XboxSeriesX,PC</Platforms>
 <ProductRating>M</ProductRating>
 <OverallMetascore>87.0</OverallMetascore>
@@ -1228,7 +1228,7 @@
 <GamePoster>https://static.metacritic.com/images/products/games/6/fc2e376f50d347fb671091a272cd8cf8-98.jpg</GamePoster>
 <GameReleaseDate>7-Feb-23</GameReleaseDate>
 <GameDeveloper>Avalanche Software, Portkey Games </GameDeveloper>
-<Genre>Genre(s):ActionAdventure,Open-World,Role-Playing,Western-Style</Genre>
+<Genre>Genre(s):Action,Adventure,Open-World,Role-Playing,Western-Style</Genre>
 <Platforms>PlayStation4,PlayStation5,Switch,XboxOne,XboxSeriesX,PC</Platforms>
 <ProductRating>T</ProductRating>
 <OverallMetascore>83.0</OverallMetascore>
@@ -1243,7 +1243,7 @@
 <GamePoster>https://static.metacritic.com/images/products/games/4/d4d3032660ea1a0552c985031b9798b5-98.jpg</GamePoster>
 <GameReleaseDate>24-Feb-17</GameReleaseDate>
 <GameDeveloper>Team Cherry </GameDeveloper>
-<Genre>Genre(s):Action,ActionAdventure,General,Platformer,,Metroidvania</Genre>
+<Genre>Genre(s):Action,Adventure,General,Platformer,Metroidvania</Genre>
 <Platforms>PlayStation4,Switch,XboxOne,PC</Platforms>
 <ProductRating>E10+</ProductRating>
 <OverallMetascore>87.0</OverallMetascore>
@@ -1258,7 +1258,7 @@
 <GamePoster>https://static.metacritic.com/images/products/games/8/5410c3d455b9c0341ef7a3023f0e29e4-98.jpg</GamePoster>
 <GameReleaseDate>7-Aug-20</GameReleaseDate>
 <GameDeveloper>Guerrilla </GameDeveloper>
-<Genre>Genre(s):Role-Playing,ActionAdventure,ActionRPG,Open-World</Genre>
+<Genre>Genre(s):Role-Playing,Action,Adventure,ActionRPG,Open-World</Genre>
 <Platforms>PlayStation4,PC</Platforms>
 <ProductRating>T</ProductRating>
 <OverallMetascore>84.0</OverallMetascore>
@@ -1272,7 +1272,7 @@
 <GamePoster>https://static.metacritic.com/images/products/games/4/e37a3e4cdcb3b293e7de1146b8681ecb-98.jpg</GamePoster>
 <GameReleaseDate>4-Dec-18</GameReleaseDate>
 <GameDeveloper>Avalanche Studios </GameDeveloper>
-<Genre>Genre(s):ActionAdventure,Open-World</Genre>
+<Genre>Genre(s):Action,Adventure,Open-World</Genre>
 <Platforms>PlayStation4,XboxOne,PC</Platforms>
 <ProductRating>M</ProductRating>
 <OverallMetascore>68.0</OverallMetascore>
@@ -1287,7 +1287,7 @@
 <GamePoster>https://static.metacritic.com/images/products/games/9/c862f758fc03c711652ff0472e517609-98.jpg</GamePoster>
 <GameReleaseDate>27-Sep-06</GameReleaseDate>
 <GameDeveloper>Avalanche Studios </GameDeveloper>
-<Genre>Genre(s):ActionAdventure,Modern,Modern,Open-World</Genre>
+<Genre>Genre(s):Action,Adventure,Modern,Open-World</Genre>
 <Platforms>PlayStation2,Xbox360,PC</Platforms>
 <ProductRating>M</ProductRating>
 <OverallMetascore>75.0</OverallMetascore>
@@ -1302,7 +1302,7 @@
 <GamePoster>https://static.metacritic.com/images/products/games/7/94130400b7f0d8d9c27660e574b7cd1b-98.jpg</GamePoster>
 <GameReleaseDate>13-Feb-18</GameReleaseDate>
 <GameDeveloper>Warhorse Studios </GameDeveloper>
-<Genre>Genre(s):ActionAdventure,General,Historic,Role-Playing,ActionRPG</Genre>
+<Genre>Genre(s):Action,Adventure,General,Historic,Role-Playing,ActionRPG</Genre>
 <Platforms>PlayStation4,XboxOne,PC</Platforms>
 <ProductRating>M</ProductRating>
 <OverallMetascore>76.0</OverallMetascore>
@@ -1317,7 +1317,7 @@
 <GamePoster>https://static.metacritic.com/images/products/games/1/1d96e6170590ddadd3f9b13af803bc6d-98.jpg</GamePoster>
 <GameReleaseDate>27-Oct-09</GameReleaseDate>
 <GameDeveloper>Riot Games </GameDeveloper>
-<Genre>Genre(s):Role-Playing,Strategy,ActionRPG,Real-Time,MOBA,MOBA</Genre>
+<Genre>Genre(s):Role-Playing,Strategy,ActionRPG,Real-Time,MOBA</Genre>
 <Platforms>PC</Platforms>
 <ProductRating>T</ProductRating>
 <OverallMetascore>78.0</OverallMetascore>
@@ -1332,7 +1332,7 @@
 <GamePoster>https://static.metacritic.com/images/products/games/2/6f0396bc6ec7a3dc01f5a733cff32749-98.jpg</GamePoster>
 <GameReleaseDate>6-Oct-16</GameReleaseDate>
 <GameDeveloper>Hangar 13 </GameDeveloper>
-<Genre>Genre(s):ActionAdventure,Open-World</Genre>
+<Genre>Genre(s):Action,Adventure,Open-World</Genre>
 <Platforms>PlayStation4,XboxOne,PC</Platforms>
 <ProductRating>M</ProductRating>
 <OverallMetascore>62.0</OverallMetascore>
@@ -1347,7 +1347,7 @@
 <GamePoster>https://static.metacritic.com/images/products/games/6/12d7abb32cf48670cb041b5d956d05bf-98.jpg</GamePoster>
 <GameReleaseDate>23-Aug-10</GameReleaseDate>
 <GameDeveloper>2K Czech </GameDeveloper>
-<Genre>Genre(s):ActionAdventure,Historic,General,Historic,Open-World</Genre>
+<Genre>Genre(s):Action,Adventure,Historic,General,Historic,Open-World</Genre>
 <Platforms>PlayStation3,Xbox360,PC</Platforms>
 <ProductRating>M</ProductRating>
 <OverallMetascore>77.0</OverallMetascore>
@@ -1362,7 +1362,7 @@
 <GamePoster>https://static.metacritic.com/images/products/games/4/bac190c9aaf8534cd64e8ae08e5c43c9-98.jpg</GamePoster>
 <GameReleaseDate>27-Aug-02</GameReleaseDate>
 <GameDeveloper>Illusion Softworks </GameDeveloper>
-<Genre>Genre(s):ActionAdventure,Historic,Historic,Open-World</Genre>
+<Genre>Genre(s):Action,Adventure,Historic,Open-World</Genre>
 <Platforms>PlayStation2,PC</Platforms>
 <ProductRating>M</ProductRating>
 <OverallMetascore>88.0</OverallMetascore>
@@ -1392,7 +1392,7 @@
 <GamePoster>https://static.metacritic.com/images/products/games/2/0ec49754f864a372073dcc684094385d-98.jpg</GamePoster>
 <GameReleaseDate>18-Nov-11</GameReleaseDate>
 <GameDeveloper>Mojang AB </GameDeveloper>
-<Genre>Genre(s):ActionAdventure,Adventure,3D,Sandbox,First-Person,Fantasy,Fantasy</Genre>
+<Genre>Genre(s):Action,Adventure,3D,Sandbox,First-Person,Fantasy</Genre>
 <Platforms>3DS,PlayStation3,PlayStation4,PlayStationVita,Switch,WiiU,Xbox360,XboxOne,PC</Platforms>
 <ProductRating>E10+</ProductRating>
 <OverallMetascore>99.0</OverallMetascore>
@@ -1421,7 +1421,7 @@
 <GamePoster>https://static.metacritic.com/images/products/games/5/66cf3e915e0f2f47c6003b6e7f5ef03b-98.jpg</GamePoster>
 <GameReleaseDate>30-Mar-10</GameReleaseDate>
 <GameDeveloper>Taleworlds Entertainment </GameDeveloper>
-<Genre>Genre(s):Role-Playing,PC-styleRPG,PC-styleRPG,Western-Style</Genre>
+<Genre>Genre(s):Role-Playing,PC-styleRPG,Western-Style</Genre>
 <Platforms>PlayStation4,XboxOne,PC</Platforms>
 <ProductRating>T</ProductRating>
 <OverallMetascore>78.0</OverallMetascore>
@@ -1451,7 +1451,7 @@
 <GamePoster>https://static.metacritic.com/images/products/games/2/319a746f6007e5b8b28eddca24f26d94-98.jpg</GamePoster>
 <GameReleaseDate>30-May-19</GameReleaseDate>
 <GameDeveloper>Mobius Digital, LLC </GameDeveloper>
-<Genre>Genre(s):ActionAdventure,Open-World</Genre>
+<Genre>Genre(s):Action,Adventure,Open-World</Genre>
 <Platforms>PlayStation4,PlayStation5,XboxOne,XboxSeriesX,PC</Platforms>
 <ProductRating>E10+</ProductRating>
 <OverallMetascore>97.0</OverallMetascore>
@@ -1481,7 +1481,7 @@
 <GamePoster>https://static.metacritic.com/images/products/games/0/d6dd553940db0afd8bead17644d31f02-98.jpg</GamePoster>
 <GameReleaseDate>8-Aug-13</GameReleaseDate>
 <GameDeveloper>Lucas Pope </GameDeveloper>
-<Genre>Genre(s):Adventure,General,General</Genre>
+<Genre>Genre(s):Adventure,General</Genre>
 <Platforms>iPhone/iPad,PlayStationVita,PC</Platforms>
 <OverallMetascore>85.0</OverallMetascore>
 <OverallUserRating>8.5</OverallUserRating>
@@ -1495,7 +1495,7 @@
 <GamePoster>https://static.metacritic.com/images/products/games/7/ed6cef600ce7386aeb5734178cae0e16-98.jpg</GamePoster>
 <GameReleaseDate>10-Oct-07</GameReleaseDate>
 <GameDeveloper>Valve Software </GameDeveloper>
-<Genre>Genre(s):Action,Shooter,Shooter,First-Person,Sci-Fi,Sci-Fi,Arcade</Genre>
+<Genre>Genre(s):Action,Shooter,First-Person,Sci-Fi,Arcade</Genre>
 <Platforms>PC</Platforms>
 <ProductRating>T</ProductRating>
 <OverallMetascore>90.0</OverallMetascore>
@@ -1525,7 +1525,7 @@
 <GamePoster>https://static.metacritic.com/images/products/games/1/18d5baa3494a76108c7fd0c588268798-98.jpg</GamePoster>
 <GameReleaseDate>8-Feb-18</GameReleaseDate>
 <GameDeveloper>Facepunch Studios </GameDeveloper>
-<Genre>Genre(s):Historic,ActionAdventure,Survival</Genre>
+<Genre>Genre(s):Historic,Action,Adventure,Survival</Genre>
 <Platforms>PlayStation4,XboxOne,PC</Platforms>
 <OverallMetascore>69.0</OverallMetascore>
 <OverallUserRating>6.4</OverallUserRating>
@@ -1539,7 +1539,7 @@
 <GamePoster>https://static.metacritic.com/images/products/games/2/e7c904af1ce29b50be1ad577e85aea01-98.jpg</GamePoster>
 <GameReleaseDate>20-Mar-18</GameReleaseDate>
 <GameDeveloper>Rare Ltd. </GameDeveloper>
-<Genre>Genre(s):Role-Playing,ActionAdventure,MassivelyMultiplayer,Open-World</Genre>
+<Genre>Genre(s):Role-Playing,Action,Adventure,MassivelyMultiplayer,Open-World</Genre>
 <Platforms>XboxOne,XboxSeriesX,PC</Platforms>
 <ProductRating>T</ProductRating>
 <OverallMetascore>83.0</OverallMetascore>
@@ -1554,7 +1554,7 @@
 <GamePoster>https://static.metacritic.com/images/products/games/2/299287436d77bb79a9de85183b4e8970-98.jpg</GamePoster>
 <GameReleaseDate>31-Mar-98</GameReleaseDate>
 <GameDeveloper>Blizzard Entertainment </GameDeveloper>
-<Genre>Genre(s):Strategy,Real-Time,Sci-Fi,Sci-Fi,Command</Genre>
+<Genre>Genre(s):Strategy,Real-Time,Sci-Fi,Command</Genre>
 <Platforms>PC</Platforms>
 <ProductRating>T</ProductRating>
 <OverallMetascore>88.0</OverallMetascore>
@@ -1569,7 +1569,7 @@
 <GamePoster>https://static.metacritic.com/images/products/games/2/52bc32a53e6c0f4eb2e63e268d9209e5-98.jpg</GamePoster>
 <GameReleaseDate>26-Feb-16</GameReleaseDate>
 <GameDeveloper>Eric Barone, ConcernedApe </GameDeveloper>
-<Genre>Genre(s):General,Role-Playing,General</Genre>
+<Genre>Genre(s):General,Role-Playing</Genre>
 <Platforms>iPhone/iPad,PlayStation4,PlayStationVita,Switch,XboxOne,PC</Platforms>
 <ProductRating>E10+</ProductRating>
 <OverallMetascore>89.0</OverallMetascore>
@@ -1584,7 +1584,7 @@
 <GamePoster>https://static.metacritic.com/images/products/games/4/ae6f907bbe492cc8045d13df857cc588-98.jpg</GamePoster>
 <GameReleaseDate>23-Jan-18</GameReleaseDate>
 <GameDeveloper>Unknown Worlds Entertainment </GameDeveloper>
-<Genre>Genre(s):ActionAdventure,Adventure,General,Sandbox</Genre>
+<Genre>Genre(s):Action,Adventure,General,Sandbox</Genre>
 <Platforms>iPhone/iPad,PlayStation4,PlayStation5,Switch,XboxOne,PC</Platforms>
 <ProductRating>E10+</ProductRating>
 <OverallMetascore>87.0</OverallMetascore>
@@ -1599,7 +1599,7 @@
 <GamePoster>https://static.metacritic.com/images/products/games/0/f61ace508506554b4103acb7338c9fa8-98.jpg</GamePoster>
 <GameReleaseDate>4-Apr-14</GameReleaseDate>
 <GameDeveloper>ZeniMax Media </GameDeveloper>
-<Genre>Genre(s):First-Person,Role-Playing,First-Person,MassivelyMultiplayerOnline,MassivelyMultiplayer,Fantasy</Genre>
+<Genre>Genre(s):First-Person,Role-Playing,MassivelyMultiplayerOnline,MassivelyMultiplayer,Fantasy</Genre>
 <Platforms>Stadia,PC</Platforms>
 <ProductRating>M</ProductRating>
 <OverallMetascore>71.0</OverallMetascore>
@@ -1628,7 +1628,7 @@
 <GamePoster>https://static.metacritic.com/images/products/games/1/2ab4505b989717d20dc53160f0f84726-98.jpg</GamePoster>
 <GameReleaseDate>2-Sep-14</GameReleaseDate>
 <GameDeveloper>Maxis </GameDeveloper>
-<Genre>Genre(s):VirtualLife,Simulation,Miscellaneous,Virtual,VirtualLife</Genre>
+<Genre>Genre(s):VirtualLife,Simulation,Miscellaneous,Virtual</Genre>
 <Platforms>PlayStation4,XboxOne,XboxSeriesX,PC</Platforms>
 <ProductRating>T</ProductRating>
 <OverallMetascore>70.0</OverallMetascore>
@@ -1643,7 +1643,7 @@
 <GamePoster>https://static.metacritic.com/images/products/games/9/562c989431810e6aac45b6164ae0bfca-98.jpg</GamePoster>
 <GameReleaseDate>18-May-15</GameReleaseDate>
 <GameDeveloper>CD Projekt Red Studio </GameDeveloper>
-<Genre>Genre(s):ActionRPG,Role-Playing,ActionRPG</Genre>
+<Genre>Genre(s):ActionRPG,Role-Playing</Genre>
 <Platforms>PlayStation4,Switch,XboxOne,PC</Platforms>
 <ProductRating>M</ProductRating>
 <OverallMetascore>93.0</OverallMetascore>
@@ -1673,7 +1673,7 @@
 <GamePoster>https://static.metacritic.com/images/products/games/7/f6ff9864232833cf05db1913cf4808da-98.jpg</GamePoster>
 <GameReleaseDate>11-Mar-14</GameReleaseDate>
 <GameDeveloper>Respawn Entertainment </GameDeveloper>
-<Genre>Genre(s):Shooter,Sci-Fi,Miscellaneous,General,Action,Shooter,First-Person,Sci-Fi,Arcade</Genre>
+<Genre>Genre(s):Sci-Fi,Miscellaneous,General,Action,Shooter,First-Person,Arcade</Genre>
 <Platforms>Xbox360,XboxOne,PC</Platforms>
 <ProductRating>M</ProductRating>
 <OverallMetascore>86.0</OverallMetascore>
@@ -1688,7 +1688,7 @@
 <GamePoster>https://static.metacritic.com/images/products/games/2/6e1cd1cee54368df1abc843a347a4346-98.jpg</GamePoster>
 <GameReleaseDate>6-Mar-17</GameReleaseDate>
 <GameDeveloper>Ubisoft Paris </GameDeveloper>
-<Genre>Genre(s):ActionAdventure,Open-World</Genre>
+<Genre>Genre(s):Action,Adventure,Open-World</Genre>
 <Platforms>PlayStation4,Stadia,XboxOne,PC</Platforms>
 <ProductRating>M</ProductRating>
 <OverallMetascore>69.0</OverallMetascore>
@@ -1703,7 +1703,7 @@
 <GamePoster>https://static.metacritic.com/images/products/games/5/e49810b188759213b4bab2e4e7f85741-98.jpg</GamePoster>
 <GameReleaseDate>4-Oct-19</GameReleaseDate>
 <GameDeveloper>Ubisoft Paris </GameDeveloper>
-<Genre>Genre(s):ActionAdventure,Open-World</Genre>
+<Genre>Genre(s):Action,Adventure,Open-World</Genre>
 <Platforms>PlayStation4,Stadia,XboxOne,PC</Platforms>
 <ProductRating>M</ProductRating>
 <OverallMetascore>58.0</OverallMetascore>
@@ -1733,7 +1733,7 @@
 <GamePoster>https://static.metacritic.com/images/products/games/0/88aa3fd9016ed1c8da43d55a2a70e5f9-98.jpg</GamePoster>
 <GameReleaseDate>16-Mar-22</GameReleaseDate>
 <GameDeveloper>ISOMETRICORP Games </GameDeveloper>
-<Genre>Genre(s):Role-Playing,ActionAdventure,ActionRPG,Open-World</Genre>
+<Genre>Genre(s):Role-Playing,Action,Adventure,ActionRPG,Open-World</Genre>
 <Platforms>PlayStation4,PlayStation5,Switch,XboxOne,XboxSeriesX,PC</Platforms>
 <OverallMetascore>85.0</OverallMetascore>
 <OverallUserRating>7.7</OverallUserRating>
@@ -1762,7 +1762,7 @@
 <GamePoster>https://static.metacritic.com/images/products/games/3/c3383580eb989c3596326f861f063786-98.jpg</GamePoster>
 <GameReleaseDate>23-Nov-04</GameReleaseDate>
 <GameDeveloper>Blizzard Entertainment </GameDeveloper>
-<Genre>Genre(s):Role-Playing,Miscellaneous,MassivelyMultiplayerOnline,MassivelyMultiplayer,Board/CardGame,Fantasy,Fantasy</Genre>
+<Genre>Genre(s):Role-Playing,Miscellaneous,MassivelyMultiplayerOnline,MassivelyMultiplayer,Board/CardGame,Fantasy</Genre>
 <Platforms>PC</Platforms>
 <ProductRating>T</ProductRating>
 <OverallMetascore>93.0</OverallMetascore>
