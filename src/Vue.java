@@ -492,7 +492,7 @@ public class Vue {
         
         JPanel pGamesHome = new JPanel();
         pGamesHome.setLayout(new FlowLayout(FlowLayout.LEFT));
-        pGamesHome.setPreferredSize(new Dimension(1050,330));
+        pGamesHome.setPreferredSize(new Dimension((windowSize.width/100)*55,(windowSize.height/100)*32));
         pGamesHome.setBorder(BorderFactory.createEmptyBorder(10, 10, 0, 0));
           
         JLabel lTitle = new JLabel("LES 5 JEUX LES MIEUX NOTES");
@@ -503,39 +503,40 @@ public class Vue {
         pGameMainHome.add(lTitle);
         pGameMainHome.add(pGamesHome);
         
+        int homeButtonX = (int) ((windowSize.width/100)*10.4);
+        int homeButtonY = (int) ((windowSize.height/100)*30);
 
         JButton BGameHome1 = cloneJButton(jbGameTab.get(0));
-        BGameHome1.setPreferredSize(new Dimension(200,300));
+        BGameHome1.setPreferredSize(new Dimension(homeButtonX,homeButtonY));
         
         JButton BGameHome2 = cloneJButton(jbGameTab.get(1));
-        BGameHome2.setPreferredSize(new Dimension(200,300));
+        BGameHome2.setPreferredSize(new Dimension(homeButtonX,homeButtonY));
         
         JButton BGameHome3 = cloneJButton(jbGameTab.get(2));
-        BGameHome3.setPreferredSize(new Dimension(200,300));      
+        BGameHome3.setPreferredSize(new Dimension(homeButtonX,homeButtonY));      
         
         JButton BGameHome4 = cloneJButton(jbGameTab.get(3));
-        BGameHome4.setPreferredSize(new Dimension(200,300));  
+        BGameHome4.setPreferredSize(new Dimension(homeButtonX,homeButtonY));  
         
         JButton BGameHome5 = cloneJButton(jbGameTab.get(4));
-
-        BGameHome5.setPreferredSize(new Dimension(200,300));  
+        BGameHome5.setPreferredSize(new Dimension(homeButtonX,homeButtonY));  
         
         JPanel pReviewTab = new JPanel();
         pReviewTab.setLayout(new FlowLayout(FlowLayout.LEFT));
-        pReviewTab.setPreferredSize(new Dimension(1520,500));
+        pReviewTab.setPreferredSize(new Dimension((windowSize.width/100)*80,(windowSize.height/100)*50));
         
         for(int i=0;i<9;i++) {
             JPanel pReview = new JPanel();
             pReview.setLayout(new FlowLayout(FlowLayout.LEFT));
-            pReview.setPreferredSize(new Dimension(500,160));
+            pReview.setPreferredSize(new Dimension((windowSize.width/100)*26,(windowSize.height/100)*16));
 
             JButton bReviewGameHome =  cloneJButton(jbGameTab.get(i));
 
-            bReviewGameHome.setPreferredSize(new Dimension(100,150));
+            bReviewGameHome.setPreferredSize(new Dimension((int) ((windowSize.width/100)*5.2),(windowSize.height/100)*15));
             
             lReviewGameHome[i] = new JTextArea("REVIEW");
             
-            lReviewGameHome[i].setPreferredSize(new Dimension(350,150));
+            lReviewGameHome[i].setPreferredSize(new Dimension((int) ((windowSize.width/100)*18.2),(windowSize.height/100)*15));
             lReviewGameHome[i].setFont(new Font("Arial", Font.PLAIN, 16));
             
             lReviewGameHome[i].setEditable(false);
