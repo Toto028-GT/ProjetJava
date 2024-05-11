@@ -36,7 +36,7 @@ public class Record implements Comparable<Record>{
     
     @Override
     public String toString() {
-    	return this.GameTitle+"("+this.OverallMetascore+")"+"-("+this.RatingGivenByTheReviewer+")";
+    	return this.GameTitle+"("+this.OverallMetascore+")"+"-("+this.RatingGivenByTheReviewer+")"+"-("+this.Platforms+")";
     }
     
     public int compareTo(Record o) {

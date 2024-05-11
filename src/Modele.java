@@ -8,6 +8,7 @@ import java.util.Arrays;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
+import java.util.Set;
 
 import com.fasterxml.jackson.core.exc.StreamReadException;
 import com.fasterxml.jackson.databind.DatabindException;
@@ -18,7 +19,9 @@ import javax.xml.stream.XMLStreamReader;
 
 public class Modele {
 	
-	public Map<String, List<Record>> genreGame = new HashMap<String,List<Record>>();
+	public ArrayList<String> genreGame = new ArrayList<String>();
+	public ArrayList<String> devGame = new ArrayList<String>();
+	public ArrayList<String> platformGame = new ArrayList<String>();
 	public Record[] backupGame;
 	public Record[] game;
 	public File fichier;
@@ -43,27 +46,36 @@ public class Modele {
 
         this.game=tlp;
         this.backupGame=tlp;
+        this.getListGenre();
 	}
 	
 	public void getListGenre() {
 		for(int i=0; i<this.game.length; i++) {
-			String[] str2 = this.game[i].getGenre().split(":");
-	        String[] words = str2[1].split(",");
+			String[] str1 = this.game[i].getGenre().split(":");
+	        String[] genre = str1[1].split(",");
 	        
-	        for(int y=0; y<words.length; y++) {
-				if (this.genreGame.containsKey(words[y])) {
-					List<Record> x = this.genreGame.get(words[y]);
-					x.add(this.game[i]);
-					this.genreGame.put(words[y], x );
-				}
-				else {
-					List<Record> x = new ArrayList<>();
-					x.add(this.game[i]);
-					this.genreGame.put(words[y], x );
+	        for(int y=0; y<genre.length; y++) {
+				if (!(this.genreGame.contains(genre[y]))) {
+					this.genreGame.add(genre[y]);
 				}
 	        }
+	        
+	        String[] platform = this.game[i].getPlatforms().split(",");
+	        
+	        for(int y=0; y<platform.length; y++) {
+				if (!(this.platformGame.contains(platform[y]))) {
+					this.platformGame.add(platform[y]);
+				}
+	        }
+	        
+			if (!(this.devGame.contains(this.game[i].getGameDeveloper()))) {
+				this.devGame.add(this.game[i].getGameDeveloper());
+			}
+	        
 		}
 	}
+	
+	//################################## METHODE DE SPECIAL ##############################################################
 	
 	public int[] getReco(int indexA,Record gameA) {
 		int[] comun = new int[this.game.length];
@@ -95,6 +107,97 @@ public class Modele {
 		
 	}
 	
+	public Record[] fiveBest() throws StreamReadException, DatabindException, IOException {
+		this.game = this.backupGame;
+		this.sortByScore();
+		Record[] bestGame = new Record[5];
+
+		for(int i=0; i<bestGame.length; i++) {
+			bestGame[i] = this.game[i];
+		}
+		
+		this.enregistrer();
+		
+		return bestGame;
+	}
+	
+	public ArrayList<String> getGenre() {
+		return this.genreGame;
+	}
+	
+	public ArrayList<String> getDev() {
+		return this.devGame;
+	}
+	
+	public ArrayList<String> getPlatform() {
+		return this.platformGame;
+	}
+	
+	//################################## METHODE DE TRIE ##############################################################
+	public void findGame(String str) {
+		List<Record> newGame = new ArrayList<>();
+		
+		
+		for(int i=0; i<this.game.length; i++) {
+			int find = this.game[i].getGameTitle().toUpperCase().indexOf(str.toUpperCase());
+			if (find != -1 ) {
+				newGame.add(this.game[i]);
+			}
+		}
+		Record[] arr = newGame.toArray(new Record[newGame.size()]);
+		
+		this.game = arr;
+		
+	}
+	
+	public void sortByScore() {
+		Arrays.sort(this.game);
+	}
+	
+	public void sortByGenre(String genreA) {
+		List<Record> newGame = new ArrayList<>();
+		
+		for(int i=0; i<this.game.length; i++) {
+			int find = this.game[i].getGenre().toUpperCase().indexOf(genreA.toUpperCase());
+			if (find != -1 ) {
+				newGame.add(this.game[i]);
+			}
+		}
+		Record[] arr = newGame.toArray(new Record[newGame.size()]);
+		
+		this.game = arr;
+	}
+	
+	public void sortByPlatform(String PlatformA) {
+		List<Record> newGame = new ArrayList<>();
+		
+		for(int i=0; i<this.game.length; i++) {
+			int find = this.game[i].getPlatforms().toUpperCase().indexOf(PlatformA.toUpperCase());
+			if (find != -1 ) {
+				newGame.add(this.game[i]);
+			}
+		}
+		Record[] arr = newGame.toArray(new Record[newGame.size()]);
+		
+		this.game = arr;
+	}
+	
+	public void sortByDEV(String devA) {
+		List<Record> newGame = new ArrayList<>();
+		
+		for(int i=0; i<this.game.length; i++) {
+			int find = this.game[i].getGameDeveloper().toUpperCase().indexOf(devA.toUpperCase());
+			if (find != -1 ) {
+				newGame.add(this.game[i]);
+			}
+		}
+		Record[] arr = newGame.toArray(new Record[newGame.size()]);
+		
+		this.game = arr;
+	}
+	
+	//################################## METHODE AUXILIAIRE ##############################################################
+	
 	public static int indiceMax(int[] tableau) {
         int indiceMax = -1;
         int max = Integer.MIN_VALUE;
@@ -123,39 +226,6 @@ public class Modele {
         return compteur;
     }
 	
-	public void findGame(String str) {
-		List<Record> newGame = new ArrayList<>();
-		this.game = this.backupGame;
-		
-		for(int i=0; i<this.game.length; i++) {
-			int find = this.game[i].getGameTitle().toUpperCase().indexOf(str.toUpperCase());
-			if (find != -1 ) {
-				newGame.add(this.game[i]);
-			}
-		}
-		Record[] arr = newGame.toArray(new Record[newGame.size()]);
-		
-		this.game = arr;
-		
-	}
-	
-	public void sortByScore() {
-		this.game = this.backupGame;
-		Arrays.sort(this.game);
-	}
-	
-	public Record[] fiveBest() throws StreamReadException, DatabindException, IOException {
-		this.sortByScore();
-		Record[] bestGame = new Record[5];
-
-		for(int i=0; i<bestGame.length; i++) {
-			bestGame[i] = this.game[i];
-		}	
-		this.enregistrer();
-	
-		return bestGame;
-	}
-	
 	public String toString() {
 		String txt="[ -";
 		for(int i=0; i<this.game.length; i++) {
@@ -164,25 +234,56 @@ public class Modele {
 		return txt +" ]"; 
 	}
 
+	//#########################################################################################################################
+	
 	public static void main(String[] args) throws StreamReadException, DatabindException, IOException {
 		Modele p = new Modele("./BDDtest2.xml");
 		p.enregistrer();
 		System.out.println(p.toString());
-		p.findGame("Assassin's");
+		
+		System.out.println(p.getGenre().get(0));
+		
+		System.out.println(p.getDev());
+		
+		System.out.println(p.getPlatform());
+	
+		//p.findGame("Assassin's");
+		//System.out.println(p.toString());
+		p.sortByPlatform("PlayStation4");
 		System.out.println(p.toString());
+		
+		
+		p.sortByScore();
+		System.out.println(p.toString());
+		
+		p.sortByDEV("Ubisoft");
+		System.out.println(p.toString());
+		
+		
+		//p.findGame("Assassin's");
+		//System.out.println(p.toString());
+		
+		//p.sortByGenre("Historic");
+		//System.out.println(p.toString());
+		
+	
+		
+		
+		/*
 		Record[] test = new Record[5];
 		test=p.fiveBest();
 		for(int i=0; i<test.length; i++) {
 			System.out.println(test[i]);
 		}
 		System.out.println(p.toString());
+		
 		p.getListGenre();
 		
 		int[] x = p.getReco(3,p.game[3]);
 		System.out.println("----------------------");
 		for (int j : x) {
 		      System.out.println(j);
-		    }
+		    }*/
 		
 		
 	}
