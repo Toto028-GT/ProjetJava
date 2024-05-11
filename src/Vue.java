@@ -8,6 +8,8 @@ import java.awt.Graphics;
 import java.awt.GraphicsDevice;
 import java.awt.GraphicsEnvironment;
 import java.awt.GridLayout;
+import java.awt.Toolkit;
+import java.awt.Window;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.awt.event.KeyEvent;
@@ -125,6 +127,7 @@ public class Vue {
 	static JScrollPane scrollListBodyFav      = new JScrollPane(pBodyFav);
 	static JScrollPane[] spTab                = {scrollListGameBodyHome, scrollListBodyFav};
 	
+	static JPanel container            = new JPanel();
 	static JLabel title                = new JLabel("TITRE");
 	static JLabel date                 = new JLabel("DATE");
 	static JLabel author               = new JLabel("AUTEUR");
@@ -133,6 +136,12 @@ public class Vue {
 	static JTextArea[] lReviewGameHome = new JTextArea[9];
 	static JTextArea taGenre           = new JTextArea("GENRE");
 	static ImagePanel imagePanel       = new ImagePanel("https://static.metacritic.com/images/products/games/5/98ded8914dd98a1efd777a592289c756-98.jpg");
+	
+	static int numberOfElements = pBodyFav.getComponentCount();
+	
+	static Dimension windowSize = Toolkit.getDefaultToolkit().getScreenSize(); 	
+	static int maxXGame = windowSize.width/200;
+	static int maxYGame = windowSize.height/300;
 	
 	
 	
@@ -248,19 +257,18 @@ public class Vue {
         
         // PANEL BODY HOME
         pBodyHome.setBackground(Color.white);
-        pBodyHome.setPreferredSize(new Dimension(1280,1080));
+        pBodyHome.setPreferredSize(new Dimension(windowSize.width,(windowSize.height/100)*95));
         
         
         // PANEL FOOT HOME
-        pFootHome.add(new JLabel("FOOT HOME"));
-        pFootHome.setPreferredSize(new Dimension(1280,75));
+        pFootHome.setPreferredSize(new Dimension(windowSize.width,(windowSize.height/100)*0));
         
         /* --------------------------------------- */
         
         // PANEL BODY JEUX
     	pBodyGame.setVisible(false);
     	pBodyGame.setBackground(Color.white);
-        pBodyGame.setPreferredSize(new Dimension(1280,4300));
+        pBodyGame.setPreferredSize(new Dimension(windowSize.width,(windowSize.height/100)*95));
         
         // PANEL LIST JEUX (BODY HOME)
         for(int i=0; i<r.length;i++) {
@@ -273,6 +281,10 @@ public class Vue {
 
 	        	jbGameTab.add(jLGame);
 	        	pBodyGame.add(jLGame);
+            	
+            	if(jbGameTab.size() >= (maxXGame* maxYGame) && jbGameTab.size()%maxXGame == 0) {
+            		pBodyGame.setPreferredSize(new Dimension(1280,pBodyGame.getPreferredSize().height + 300));
+        		}
 	        	
 			} catch (MalformedURLException e) {
 				e.printStackTrace();
@@ -288,15 +300,14 @@ public class Vue {
         
         // PANEL FOOT JEUX
     	pFootGame.setVisible(false);
-        pFootGame.add(new JLabel("FOOT JEUX"));
-        pFootGame.setPreferredSize(new Dimension(1280,75));
+        pFootGame.setPreferredSize(new Dimension(windowSize.width,(windowSize.height/100)*0));
         
         /* --------------------------------------- */
         
         // PANEL BODY FAVORIS
     	pBodyFav.setVisible(false);
     	pBodyFav.setBackground(Color.white);
-        pBodyFav.setPreferredSize(new Dimension(1280,1080));
+        pBodyFav.setPreferredSize(new Dimension(windowSize.width,(windowSize.height/100)*95));
 
         scrollListBodyFav.setVerticalScrollBarPolicy(JScrollPane.VERTICAL_SCROLLBAR_ALWAYS);
         scrollListBodyFav.setHorizontalScrollBarPolicy(JScrollPane.HORIZONTAL_SCROLLBAR_NEVER);
@@ -306,8 +317,7 @@ public class Vue {
         
         // PANEL FOOT FAVORIS
     	pFootFav.setVisible(false);
-        pFootFav.add(new JLabel("FOOT FAVORIS"));
-        pFootFav.setPreferredSize(new Dimension(1280,75));
+        pFootFav.setPreferredSize(new Dimension(windowSize.width,(windowSize.height/100)*0));
         
         /* --------------------------------------- */
         
@@ -315,40 +325,31 @@ public class Vue {
         JPanel pBodyMyGame = new JPanel();
         pBodyMyGame.setVisible(false);
         pBodyMyGame.setBackground(Color.white);
-        pBodyMyGame.add(new JLabel("BODY MY GAME"));
-        pBodyMyGame.setPreferredSize(new Dimension(1280,1080));
+        pBodyMyGame.setPreferredSize(new Dimension(windowSize.width,(windowSize.height/100)*95));
         
         // PANEL FOOT myGAME
     	JPanel pFootMyGame = new JPanel();
     	pFootMyGame.setVisible(false);
-    	pFootMyGame.add(new JLabel("FOOT MY GAME"));
-    	pFootMyGame.setPreferredSize(new Dimension(1280,75));
+    	pFootMyGame.setPreferredSize(new Dimension(windowSize.width,(windowSize.height/100)*0));
     	
     	/* --------------------------------------- */
     	
         // PANEL BODY GAMEPAGE
-
-
         pBodyGamePage.setVisible(false);
         pBodyGamePage.setBackground(Color.white);
         pBodyGamePage.setLayout(new BorderLayout());
-        pBodyGamePage.setPreferredSize(new Dimension(1280,1080));
+        pBodyGamePage.setPreferredSize(new Dimension(windowSize.width,(windowSize.height/100)*95));
         
         // PANEL FOOT GAMEPAGE
-
     	pFootGamePage.setVisible(false);
-    	pFootGamePage.add(new JLabel("FOOT GAME PAGE"));
-    	pFootGamePage.setPreferredSize(new Dimension(1280,75));
+    	pFootGamePage.setPreferredSize(new Dimension(windowSize.width,(windowSize.height/100)*0));
     	
     	// LEFT PANEL BODY GAMEPAGE
-    	
     	JPanel lpBodyGamePage = new JPanel();
     	lpBodyGamePage.setBackground(Color.white);
     	lpBodyGamePage.setPreferredSize(new Dimension(500,500));
     	lpBodyGamePage.setBorder(BorderFactory.createEmptyBorder(20, 50, 100, 0));
     	lpBodyGamePage.setLayout(new BorderLayout());
-    	
-    	
         lpBodyGamePage.add(imagePanel, BorderLayout.CENTER);
         
         title.setFont(new Font("Arial", Font.PLAIN, 48));
@@ -376,7 +377,6 @@ public class Vue {
         // PANEL CENTRAL BODY GAMEPAGE   
         
         // PARTIE DESCRITPTION
-        
         JPanel pcBodyGamePage = new JPanel();
         pcBodyGamePage.setBackground(Color.white);
         pcBodyGamePage.setLayout(new BoxLayout(pcBodyGamePage, BoxLayout.Y_AXIS));
@@ -398,7 +398,6 @@ public class Vue {
         lDescGame.setWrapStyleWord(true);
         
         // PARTIE AUTRE JEU RECOMMANDE
-        
         JPanel pRecommendedGame = new JPanel();
         pRecommendedGame.setBackground(Color.white);
         pRecommendedGame.setLayout(new FlowLayout(FlowLayout.LEFT));
@@ -449,7 +448,6 @@ public class Vue {
         rpBodyGamePage.setBackground(Color.white);
         
         // LISTE DES TAGS
-        
         JPanel pGenreTag = new JPanel();
         pGenreTag.setLayout(new FlowLayout(FlowLayout.LEFT));
         pGenreTag.setPreferredSize(new Dimension(400,200));
@@ -466,7 +464,6 @@ public class Vue {
         taGenre.setWrapStyleWord(true);
         
         // NOTE DU JEU
-        
         JPanel pNote = new JPanel();
         pNote.setPreferredSize(new Dimension(390,50));
         
@@ -477,7 +474,6 @@ public class Vue {
         pNote.add(lNote);
         
         // BOUTTON AJOUTER FAVORIS
-        
         JButton bAddFavorite = new JButton("AJOUTER AUX FAVORIS");
         bAddFavorite.setFont(new Font("Arial", Font.PLAIN, 24));
         bAddFavorite.setPreferredSize(new Dimension(390,50));
@@ -607,18 +603,16 @@ public class Vue {
         pButton.setLayout(new GridLayout(0,2));
         pButton.add(jvB);
         pButton.add(favB);
-        //pButton.add(myGameB);
         
         // PANEL NOM (HEAD)
         JPanel pName = new JPanel();
         pName.setLayout(new BorderLayout());
-        pName.setPreferredSize(new Dimension(400,50));
         pName.add(nameB, BorderLayout.WEST);
 
         // PANEL HEAD
         JPanel pHead = new JPanel();
         pHead.setLayout(new BorderLayout());
-        pHead.setPreferredSize(new Dimension(1920,75));
+        pHead.setPreferredSize(new Dimension(windowSize.width,(windowSize.height/100)*5));
         pHead.add(pName, BorderLayout.WEST);
         pHead.add(pButton, BorderLayout.CENTER);
         pHead.add(searchBar, BorderLayout.EAST);
@@ -627,8 +621,8 @@ public class Vue {
         
         // ACTION DE L'UTILISATEUR 
         
-        JButton[] bHeadTab = {nameB,jvB,favB,myGameB,bAddFavorite};
-        JPanel[][] pTab = { {pBodyHome,pFootHome} , {pBodyGame, pFootGame}, {pBodyFav,pFootFav}, {pBodyMyGame,pFootMyGame}, {pBodyGamePage,pFootGamePage}};
+        JButton[] bHeadTab = {nameB,jvB,favB,/*myGameB ,*/bAddFavorite};
+        JPanel[][] pTab = { {pBodyHome,pFootHome} , {pBodyGame, pFootGame}, {pBodyFav,pFootFav}, /*{pBodyMyGame,pFootMyGame},*/ {pBodyGamePage,pFootGamePage}};
 
         
         for(int i=0;i<bHeadTab.length;i++) {
@@ -679,6 +673,16 @@ public class Vue {
             	if(!bFavGame.contains(jbGameTab.get(gameIndex)))
             	{
             		bFavGame.add(jbGameTab.get(gameIndex));
+                	numberOfElements = pBodyFav.getComponentCount();
+                	
+                	Dimension windowSize = container.getSize(); 	
+                	int maxXGame = windowSize.width/200;
+                	int maxYGame = windowSize.height/300;
+                	
+                	if(bFavGame.size() >= (maxXGame* maxYGame) && bFavGame.size()%maxXGame == 0) {
+                		pBodyFav.setPreferredSize(new Dimension(1280,pBodyFav.getPreferredSize().height + 300));
+                	}
+
             	}
             	
             }
@@ -687,7 +691,6 @@ public class Vue {
         /* --------------------------------------- */
         
         // CONTAINER DE TOUTS LES PANELS
-        JPanel container = new JPanel();
     	container.setLayout(new BoxLayout(container, BoxLayout.Y_AXIS));
  
     	container.add(pHead);
@@ -701,8 +704,8 @@ public class Vue {
         container.add(scrollListBodyFav);
         container.add(pFootFav);
         
-        container.add(pBodyMyGame);
-        container.add(pFootMyGame);  
+        //container.add(pBodyMyGame);
+        //container.add(pFootMyGame);  
         
         container.add(pBodyGamePage);
         container.add(pFootGamePage);
