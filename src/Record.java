@@ -2,7 +2,7 @@ import java.io.Serializable;
 import com.fasterxml.jackson.dataformat.xml.annotation.JacksonXmlProperty;
 import com.fasterxml.jackson.dataformat.xml.annotation.JacksonXmlRootElement;
 
-public class Record {
+public class Record implements Comparable<Record>{
 	
 	private static final long serialVersionUID = 1L;
 	
@@ -36,8 +36,20 @@ public class Record {
     
     @Override
     public String toString() {
-    	return this.GameTitle;
+    	return this.GameTitle+"("+this.OverallMetascore+")"+"-("+this.RatingGivenByTheReviewer+")";
     }
+    
+    public int compareTo(Record o) {
+        if (this.OverallMetascore != o.getOverallMetascore()) {
+          return (int)o.getOverallMetascore() - (int)this.OverallMetascore;
+        }
+        else {
+        	if (this.RatingGivenByTheReviewer != o.getRatingGivenByTheReviewer()) {
+                return (int)o.getRatingGivenByTheReviewer() - (int)this.RatingGivenByTheReviewer;
+              }
+              return this.GameTitle.compareTo(o.getGameTitle());
+        }
+      }
     
 	public String getGameTitle() {
 		return GameTitle;

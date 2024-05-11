@@ -5,6 +5,7 @@ import java.io.IOException;
 import java.io.ObjectOutputStream;
 import java.util.ArrayList;
 import java.util.Arrays;
+import java.util.List;
 
 import com.fasterxml.jackson.core.exc.StreamReadException;
 import com.fasterxml.jackson.databind.DatabindException;
@@ -15,6 +16,7 @@ import javax.xml.stream.XMLStreamReader;
 
 public class Modele {
 	
+	public Record[] backupGame;
 	public Record[] game;
 	public File fichier;
 	public XmlMapper xmlMapper = new XmlMapper();
@@ -37,17 +39,50 @@ public class Modele {
         Record[] tlp = xmlMapper.readValue(fichier, Record[].class);
 
         this.game=tlp;
+        this.backupGame=tlp;
+	}
+	
+	public void findGame(String str) {
+		List<Record> newGame = new ArrayList<>();
+		this.game = this.backupGame;
+		
+		for(int i=0; i<this.game.length; i++) {
+			int find = this.game[i].getGameTitle().toUpperCase().indexOf(str.toUpperCase());
+			if (find != -1 ) {
+				newGame.add(this.game[i]);
+			}
+		}
+		Record[] arr = newGame.toArray(new Record[newGame.size()]);
+		
+		this.game = arr;
+		
+	}
+	
+	public void sortByScore() {
+		this.game = this.backupGame;
+		Arrays.sort(this.game);
 	}
 	
 	public String toString() {
 		String txt="[ -";
-		for(int i=0; i<game.length; i++) {
-			txt+=" "+game[i].toString()+" -";
+		for(int i=0; i<this.game.length; i++) {
+			txt+=" "+this.game[i].toString()+" -";
 		}
 		return txt +" ]"; 
 	}
 
 	public static void main(String[] args) throws StreamReadException, DatabindException, IOException {
+		Modele p = new Modele("./BDDtest2.xml");
+		p.enregistrer();
+		System.out.println(p.toString());
+		p.findGame("Assassin's");
+		System.out.println(p.toString());
+		p.findGame("III");
+		System.out.println(p.toString());
+		
+		/*p.sortByScore();
+		System.out.println(p.toString());*/
+		
 	}
 
 }
