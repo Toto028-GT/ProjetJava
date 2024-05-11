@@ -69,7 +69,7 @@ public class Modele {
 
 		for(int i=0; i<bestGame.length; i++) {
 			bestGame[i] = this.game[i];
-		}
+		}	
 		this.enregistrer();
 	
 		return bestGame;
