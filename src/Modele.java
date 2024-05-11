@@ -63,21 +63,51 @@ public class Modele {
 				}
 	        }
 		}
-		System.out.println(this.genreGame);
 	}
 	
-	public void getReco(Record gameA) {
+	public int[] getReco(int indexA,Record gameA) {
 		int[] comun = new int[this.game.length];
 		
 		String[] str1 = gameA.getGenre().split(":");
         String[] genreGameA = str1[1].split(",");
 		
 		for(int i=0; i<this.game.length; i++) {
-			String[] str2 = this.game[i].getGenre().split(":");
-	        String[] genreJeux = str2[1].split(",");
-	        
+			if(i == indexA) {
+				comun[i] = -1;
+			}
+			else {
+				String[] str2 = this.game[i].getGenre().split(":");
+		        String[] genreJeux = str2[1].split(",");
+		        
+		        int x = this.comparerTableaux(genreGameA, genreJeux);
+		        comun[i] = x;
+			}
 		}
+		
+		int[] indicesMax = new int[3];
+
+        for (int i = 0; i < 3; i++) {
+            indicesMax[i] = indiceMax(comun);
+            comun[indicesMax[i]] = Integer.MIN_VALUE; // Mettre à une valeur très basse pour ne pas le réutiliser
+        }
+
+        return indicesMax;
+		
 	}
+	
+	public static int indiceMax(int[] tableau) {
+        int indiceMax = -1;
+        int max = Integer.MIN_VALUE;
+
+        for (int i = 0; i < tableau.length; i++) {
+            if (tableau[i] > max) {
+                max = tableau[i];
+                indiceMax = i;
+            }
+        }
+
+        return indiceMax;
+    }
 	
 	public int comparerTableaux(String[] tableau1, String[] tableau2) {
         int compteur = 0;
@@ -137,7 +167,7 @@ public class Modele {
 	public static void main(String[] args) throws StreamReadException, DatabindException, IOException {
 		Modele p = new Modele("./BDDtest2.xml");
 		p.enregistrer();
-		/*System.out.println(p.toString());
+		System.out.println(p.toString());
 		p.findGame("Assassin's");
 		System.out.println(p.toString());
 		Record[] test = new Record[5];
@@ -145,25 +175,15 @@ public class Modele {
 		for(int i=0; i<test.length; i++) {
 			System.out.println(test[i]);
 		}
-		System.out.println(p.toString());*/
+		System.out.println(p.toString());
 		p.getListGenre();
 		
-		String str = "Genre(s):Arcade,Action,Shooter,Modern,fgsjuf,test";
-        String[] str2 = str.split(":");
-        String[] words = str2[1].split(",");
-        for (String j : words) {
-            System.out.println(j);
-          }
+		int[] x = p.getReco(3,p.game[3]);
+		System.out.println("----------------------");
+		for (int j : x) {
+		      System.out.println(j);
+		    }
 		
-		String strt = "Genre(s):Action,Shooter,First-Person,Modern,Arcade";
-        String[] str2t = strt.split(":");
-        String[] wordst = str2t[1].split(",");
-        for (String j : wordst) {
-            System.out.println(j);
-          }
-        
-        
-        System.out.println(p.comparerTableaux(words, wordst));
 		
 	}
 
