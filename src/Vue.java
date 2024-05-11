@@ -129,9 +129,9 @@ public class Vue {
 	static JLabel date                 = new JLabel("DATE");
 	static JLabel author               = new JLabel("AUTEUR");
 	static JTextArea lDescGame         = new JTextArea("REVIEW");
-	static JTextArea taGenre           = new JTextArea("GENRE");
 	static JLabel lNote                = new JLabel("NOTE");
 	static JTextArea[] lReviewGameHome = new JTextArea[9];
+	static JTextArea taGenre           = new JTextArea("GENRE");
 	static ImagePanel imagePanel       = new ImagePanel("https://static.metacritic.com/images/products/games/5/98ded8914dd98a1efd777a592289c756-98.jpg");
 	
 	
@@ -392,6 +392,9 @@ public class Vue {
         
         lDescGame.setFont(new Font("Arial", Font.PLAIN, 24));
         lDescGame.setPreferredSize(new Dimension(900,600));
+        lDescGame.setBackground(Color.decode("#3c3f41"));
+        lDescGame.setForeground(Color.white);
+        lDescGame.setBorder(BorderFactory.createEmptyBorder(5, 5, 0, 0));
         lDescGame.setEditable(false);
         lDescGame.setLineWrap(true);
         lDescGame.setWrapStyleWord(true);
@@ -457,6 +460,9 @@ public class Vue {
         
         taGenre.setFont(new Font("Arial", Font.PLAIN, 24));
         taGenre.setPreferredSize(new Dimension(400,200));
+		taGenre.setBackground(Color.decode("#3c3f41"));
+		taGenre.setForeground(Color.white);
+		taGenre.setBorder(BorderFactory.createEmptyBorder(5, 5, 0, 0));
         taGenre.setEditable(false);
         taGenre.setLineWrap(true);
         taGenre.setWrapStyleWord(true);
