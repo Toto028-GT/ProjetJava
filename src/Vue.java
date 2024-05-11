@@ -4,6 +4,7 @@ import java.awt.Component;
 import java.awt.Dimension;
 import java.awt.FlowLayout;
 import java.awt.Font;
+import java.awt.FontMetrics;
 import java.awt.Graphics;
 import java.awt.GraphicsDevice;
 import java.awt.GraphicsEnvironment;
@@ -12,6 +13,8 @@ import java.awt.Toolkit;
 import java.awt.Window;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.awt.event.ComponentAdapter;
+import java.awt.event.ComponentEvent;
 import java.awt.event.KeyEvent;
 import java.awt.event.KeyListener;
 import java.awt.event.MouseAdapter;
@@ -142,6 +145,9 @@ public class Vue {
 	static Dimension windowSize = Toolkit.getDefaultToolkit().getScreenSize(); 	
 	static int maxXGame = windowSize.width/200;
 	static int maxYGame = windowSize.height/300;
+	
+	static JPanel pReviewTab = new JPanel();
+	static JScrollPane scrollPaneReview;
 	
 	
 	
@@ -521,7 +527,6 @@ public class Vue {
         JButton BGameHome5 = cloneJButton(jbGameTab.get(4));
         BGameHome5.setPreferredSize(new Dimension(homeButtonX,homeButtonY));  
         
-        JPanel pReviewTab = new JPanel();
         pReviewTab.setLayout(new FlowLayout(FlowLayout.LEFT));
         pReviewTab.setPreferredSize(new Dimension((windowSize.width/100)*80,(windowSize.height/100)*50));
         
@@ -536,19 +541,25 @@ public class Vue {
             
             lReviewGameHome[i] = new JTextArea("REVIEW");
             
-            lReviewGameHome[i].setPreferredSize(new Dimension((int) ((windowSize.width/100)*18.2),(windowSize.height/100)*15));
-            lReviewGameHome[i].setFont(new Font("Arial", Font.PLAIN, 16));
-            
+            lReviewGameHome[i].setFont(new Font("Arial", Font.PLAIN, 16));          
             lReviewGameHome[i].setEditable(false);
-            lReviewGameHome[i].setLineWrap(true);
-            lReviewGameHome[i].setWrapStyleWord(true);
+            lReviewGameHome[i].setPreferredSize(new Dimension((int) ((windowSize.width/100)*18),(windowSize.height/100)*15));
+ 
+            
+            scrollPaneReview = new JScrollPane(lReviewGameHome[i]);
+            scrollPaneReview.setPreferredSize(new Dimension((int) ((windowSize.width/100)*19),(windowSize.height/100)*15));
+            scrollPaneReview.setHorizontalScrollBarPolicy(JScrollPane.HORIZONTAL_SCROLLBAR_NEVER);
+            scrollPaneReview.setVerticalScrollBarPolicy(JScrollPane.VERTICAL_SCROLLBAR_AS_NEEDED);
+            
+            scrollPaneReview.getVerticalScrollBar().setUnitIncrement(20);
             
             c.SetReviewHomePage(r ,i);
             
             pReview.add(bReviewGameHome);
-            pReview.add(lReviewGameHome[i]);
-            pReviewTab.add(pReview);
+            pReview.add(scrollPaneReview);
+            pReviewTab.add(pReview);       
         }
+        
         
         pBodyHome.add(pGameMainHome);
         pBodyHome.add(pReviewTab);
