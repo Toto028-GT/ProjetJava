@@ -63,6 +63,18 @@ public class Modele {
 		Arrays.sort(this.game);
 	}
 	
+	public Record[] fiveBest() throws StreamReadException, DatabindException, IOException {
+		this.sortByScore();
+		Record[] bestGame = new Record[5];
+
+		for(int i=0; i<bestGame.length; i++) {
+			bestGame[i] = this.game[i];
+		}
+		this.enregistrer();
+	
+		return bestGame;
+	}
+	
 	public String toString() {
 		String txt="[ -";
 		for(int i=0; i<this.game.length; i++) {
@@ -77,11 +89,13 @@ public class Modele {
 		System.out.println(p.toString());
 		p.findGame("Assassin's");
 		System.out.println(p.toString());
-		p.findGame("III");
+		Record[] test = new Record[5];
+		test=p.fiveBest();
+		for(int i=0; i<test.length; i++) {
+			System.out.println(test[i]);
+		}
 		System.out.println(p.toString());
 		
-		/*p.sortByScore();
-		System.out.println(p.toString());*/
 		
 	}
 
