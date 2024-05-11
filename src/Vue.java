@@ -260,7 +260,7 @@ public class Vue {
         // PANEL BODY JEUX
     	pBodyGame.setVisible(false);
     	pBodyGame.setBackground(Color.white);
-        pBodyGame.setPreferredSize(new Dimension(1280,1080));
+        pBodyGame.setPreferredSize(new Dimension(1280,4300));
         
         // PANEL LIST JEUX (BODY HOME)
         for(int i=0; i<r.length;i++) {
@@ -275,7 +275,6 @@ public class Vue {
 	        	pBodyGame.add(jLGame);
 	        	
 			} catch (MalformedURLException e) {
-				// TODO Auto-generated catch block
 				e.printStackTrace();
 			}
         	
@@ -351,7 +350,6 @@ public class Vue {
     	
     	
         lpBodyGamePage.add(imagePanel, BorderLayout.CENTER);
-    	//String imagePath = "/home/egazzoli/Documents/test.jpg";
         
         title.setFont(new Font("Arial", Font.PLAIN, 48));
         title.setForeground(Color.BLACK);
