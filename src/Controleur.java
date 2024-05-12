@@ -51,38 +51,27 @@ public class Controleur {
 	}
 	
 	public void SetGamePage(Record[] r, int gameIndex, Modele m) {	
-		
-		
-		Record[] t = null ;
-		//System.out.println(gameIndex + " a ");
-		
-		if(Vue.pageIndexBackup == 2 || Vue.pageIndexBackup == 0) {
-			t = Vue.m.backupGame;
-		}else {
-			t=r;
-		}
-		
-		Vue.title.setText(t[gameIndex].getGameTitle());
+		Vue.title.setText(r[gameIndex].getGameTitle());
 		Vue.title.setFont(new Font("Arial", Font.PLAIN, 48));
 		while(checkTextIfCutOffWidthJLabel(Vue.title)) {
 			Vue.title.setFont(new Font("Arial", Font.PLAIN, Vue.title.getFont().getSize() - 1));
 		}
-		Vue.date.setText(t[gameIndex].getGameReleaseDate());
-		Vue.author.setText(t[gameIndex].getGameDeveloper());
-		Vue.lDescGame.setText(t[gameIndex].getReviewText());
-		Vue.taGenre.setText(t[gameIndex].getGenre());
-		Vue.lNote.setText(t[gameIndex].getOverallMetascore() + " / 100");
-		Vue.imagePanel.loadImage(t[gameIndex].getGamePoster());
+		Vue.date.setText(r[gameIndex].getGameReleaseDate());
+		Vue.author.setText(r[gameIndex].getGameDeveloper());
+		Vue.lDescGame.setText(r[gameIndex].getReviewText());
+		Vue.taGenre.setText(r[gameIndex].getGenre());
+		Vue.lNote.setText(r[gameIndex].getOverallMetascore() + " / 100");
+		Vue.imagePanel.loadImage(r[gameIndex].getGamePoster());
 		
 		Vue.pGames.removeAll();
 		
-        JButton game =  Vue.cloneJButton(Vue.jbGameTab.get(m.getReco(gameIndex, t[gameIndex])[0]));
+        JButton game =  Vue.cloneJButton(Vue.jbGameTab.get(m.getReco(gameIndex, r[gameIndex])[0]));
         game.setPreferredSize(new Dimension((int) ((Vue.windowSize.width/100)*10.4),(Vue.windowSize.height/100)*28));
         
-        JButton game2 =  Vue.cloneJButton(Vue.jbGameTab.get(m.getReco(gameIndex, t[gameIndex])[1]));
+        JButton game2 =  Vue.cloneJButton(Vue.jbGameTab.get(m.getReco(gameIndex, r[gameIndex])[1]));
         game2.setPreferredSize(new Dimension((int) ((Vue.windowSize.width/100)*10.4),(Vue.windowSize.height/100)*28));
         
-        JButton game3 =   Vue.cloneJButton(Vue.jbGameTab.get(m.getReco(gameIndex, t[gameIndex])[2]));
+        JButton game3 =   Vue.cloneJButton(Vue.jbGameTab.get(m.getReco(gameIndex, r[gameIndex])[2]));
         game3.setPreferredSize(new Dimension((int) ((Vue.windowSize.width/100)*10.4),(Vue.windowSize.height/100)*28));   
 		
 		Vue.pGames.add(game);
