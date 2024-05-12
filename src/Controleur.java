@@ -158,21 +158,16 @@ public class Controleur {
            		Vue.pBodyGame.setPreferredSize(new Dimension((int) ((Vue.windowSize.width/100)*66.7),Vue.pBodyGame.getPreferredSize().height + (int) ((Vue.windowSize.height/100)*28)));
        		}
            	
-           /*	if(trashVar == 0) {
-               	for(int y=0;y<a.fiveBest().length;y++) {
-               		if( ( a.fiveBest()[y].getGameTitle().toString()).equals(Vue.m.game[i].getGameTitle().toString())) {
-               			Vue.bestFivegame[y] = i;
-               			System.out.println(y);
-               		}
-               	}
-           	}*/
+           	if(trashVar == 0) {
+           		Vue.jbGameTabBackup.add(jLGame);
+           	}
 	        	
 			} catch (IOException e) {
 				e.printStackTrace();
 			}  	
        }
        
-   	   trashVar=trashVar+1;
+   	   trashVar=1;
        
    }
    

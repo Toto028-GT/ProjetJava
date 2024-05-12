@@ -118,7 +118,8 @@ public class Vue {
 	}
 	
 	static ArrayList<JButton> jbGameTab = new ArrayList<JButton>();
-	static ArrayList<JButton> bFavGame  = new ArrayList<JButton>();
+	static ArrayList<JButton> jbGameTabBackup = new ArrayList<JButton>();
+	static ArrayList<Integer> bFavGame  = new ArrayList<Integer>();
 	
 	static JPanel pBodyGamePage = new JPanel();
 	static JPanel pFootGamePage = new JPanel();
@@ -205,9 +206,12 @@ public class Vue {
 			
 			pBodyFav.removeAll();
 			
+			System.out.println(jbGameTab.size());
+			c.RefreshGame();
+			
 			if(bFavGame.size() >0) {
 		        for(int i=0; i<bFavGame.size();i++) {
-		        	JButton gameToAdd = cloneJButton(bFavGame.get(i));
+		        	JButton gameToAdd = cloneJButton(jbGameTab.get(bFavGame.get(i)));
 		        	gameToAdd.setPreferredSize(new Dimension((int) ((windowSize.width/100)*10.4),(windowSize.height/100)*28));
 		        	pBodyFav.add(gameToAdd);
 		        }
@@ -652,61 +656,9 @@ public class Vue {
         
         bAddFavorite.addMouseListener(new MouseAdapter() {
             public void mouseClicked(MouseEvent e) {
-            
-            	boolean isNotIn = true;
-            	
-            	if(bFavGame.size() > 0) {
-            		for(int i=0;i<bFavGame.size();i++) {
-            			if(bFavGame.get(i).getIcon().toString().equals(jbGameTab.get(gameIndex).getIcon().toString())) {		
-            				isNotIn=false;
-            			}
-            		}
-            		
-                	if(isNotIn) {
-                		bFavGame.add(jbGameTab.get(gameIndex));
-                    	numberOfElements = pBodyFav.getComponentCount();
-                    	
-                    	Dimension windowSize = container.getSize(); 	
-                    	maxXGame = windowSize.width/200;
-                    	maxYGame = windowSize.height/300;
-                    	
-                    	if(bFavGame.size() >= (maxXGame* maxYGame) && bFavGame.size()%maxXGame == 0) {
-                    		pBodyFav.setPreferredSize(new Dimension((int)((windowSize.width/100)*66.7), (int)(pBodyFav.getPreferredSize().height + ((windowSize.height/100)*27.8))));
-                    	}
-                	}
-            		
-            	}else {
-            		bFavGame.add(jbGameTab.get(gameIndex));
-                	numberOfElements = pBodyFav.getComponentCount();
-                	
-                	Dimension windowSize = container.getSize(); 	
-                	maxXGame = windowSize.width/200;
-                	maxYGame = windowSize.height/300;
-                	
-                	if(bFavGame.size() >= (maxXGame* maxYGame) && bFavGame.size()%maxXGame == 0) {
-                		pBodyFav.setPreferredSize(new Dimension(1280,pBodyFav.getPreferredSize().height + 300));
-                	}
+            	if(!bFavGame.contains(gameIndex)) {
+            		bFavGame.add(gameIndex);
             	}
-            	
-
-	
-            	/*if(!bFavGame.contains(jbGameTab.get(gameIndex)))
-            	{
-            		bFavGame.add(jbGameTab.get(gameIndex));
-                	numberOfElements = pBodyFav.getComponentCount();
-                	
-                	Dimension windowSize = container.getSize(); 	
-                	maxXGame = windowSize.width/200;
-                	maxYGame = windowSize.height/300;
-                	
-                	if(bFavGame.size() >= (maxXGame* maxYGame) && bFavGame.size()%maxXGame == 0) {
-                		pBodyFav.setPreferredSize(new Dimension(1280,pBodyFav.getPreferredSize().height + 300));
-                	}
-
-            	}*/
-            	
-            	
-            	
             }
     	});
 
