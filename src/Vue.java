@@ -130,6 +130,7 @@ public class Vue {
 	static JScrollPane scrollListBodyFav      = new JScrollPane(pBodyFav);
 	static JScrollPane[] spTab                = {scrollListGameBodyHome, scrollListBodyFav};
 	
+	static JPanel pTextGame            = new JPanel();
 	static JPanel container            = new JPanel();
 	static JLabel title                = new JLabel("TITRE");
 	static JLabel date                 = new JLabel("DATE");
@@ -358,7 +359,6 @@ public class Vue {
     	lpBodyGamePage.setLayout(new BorderLayout());
         lpBodyGamePage.add(imagePanel, BorderLayout.CENTER);
         
-        title.setFont(new Font("Arial", Font.PLAIN, 48));
         title.setForeground(Color.BLACK);
         
         date.setFont(new Font("Arial", Font.PLAIN, 24));
@@ -369,7 +369,6 @@ public class Vue {
         
         pBodyGamePage.add(lpBodyGamePage, BorderLayout.WEST);
         
-        JPanel pTextGame = new JPanel();
         pTextGame.setBorder(BorderFactory.createEmptyBorder(0, 0, (int) ((windowSize.height/100)*0.926), (int) ((windowSize.width/100)*0.521))); // 0 0 10 10
         pTextGame.setBackground(Color.white);
         pTextGame.setPreferredSize(new Dimension((int) ((windowSize.width/100)*5.3),(windowSize.height/100)*12));
@@ -419,7 +418,7 @@ public class Vue {
         
         
         JLabel lOtherGame = new JLabel("JEU RECOMMANDE");
-        lOtherGame.setFont(new Font("Arial", Font.PLAIN, 24));
+        lOtherGame.setFont(new Font("Arial", Font.PLAIN, (int) ((windowSize.width/100)*1.25)));
         lOtherGame.setBorder(BorderFactory.createEmptyBorder((int) ((windowSize.height/100)*0.926), 0, 0, (int) ((windowSize.width/100)*8.1))); // 10 0 0 155
         lOtherGame.setBackground(Color.red);
         
@@ -504,7 +503,7 @@ public class Vue {
         pGamesHome.setBackground(Color.red);  
         
         JLabel lTitle = new JLabel("LES 5 JEUX LES MIEUX NOTES");
-        lTitle.setFont(new Font("Arial", Font.PLAIN, 24));
+        lTitle.setFont(new Font("Arial", Font.PLAIN, (int) ((windowSize.width/100)*1.25))); // 24
         lTitle.setPreferredSize(new Dimension((int) ((windowSize.width/100)*0.78125),(int) ((windowSize.height/100)*2.8))); // 30 30
         lTitle.setBorder(BorderFactory.createEmptyBorder(0, 0, 0, (int) ((windowSize.width/100)*10.5))); // 0 0 0 200
         pBodyHome.add(lTitle);

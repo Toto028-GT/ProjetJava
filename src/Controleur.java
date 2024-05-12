@@ -11,6 +11,7 @@ import java.io.IOException;
 import java.net.MalformedURLException;
 import java.net.URL;
 
+import javax.swing.JLabel;
 import javax.swing.JPanel;
 import javax.swing.JTextArea;
 import javax.swing.SwingUtilities;
@@ -33,6 +34,10 @@ public class Controleur {
 	
 	public void SetGamePage(Record[] r, int gameIndex) {	
 		Vue.title.setText(r[gameIndex].getGameTitle());
+		Vue.title.setFont(new Font("Arial", Font.PLAIN, 48));
+		while(checkTextIfCutOffWidthJLabel(Vue.title)) {
+			Vue.title.setFont(new Font("Arial", Font.PLAIN, Vue.title.getFont().getSize() - 1));
+		}
 		Vue.date.setText(r[gameIndex].getGameReleaseDate());
 		Vue.author.setText(r[gameIndex].getGameDeveloper());
 		Vue.lDescGame.setText(r[gameIndex].getReviewText());
@@ -55,7 +60,7 @@ public class Controleur {
 		
 	}
 	
-	private static boolean checkTextIfCutOffWidth(JTextArea textArea) {
+	private static boolean checkTextIfCutOffWidthTextArea(JTextArea textArea) {
 		
         int textAreaWidth = (int) textArea.getPreferredSize().getWidth();
         FontMetrics fontMetrics = textArea.getFontMetrics(textArea.getFont());
@@ -64,11 +69,22 @@ public class Controleur {
         return textWidth > textAreaWidth - 10 ;
    }
 	
+	private static boolean checkTextIfCutOffWidthJLabel(JLabel label) {
+		
+        FontMetrics fontMetrics = label.getFontMetrics(label.getFont());
+        String texte = label.getText();
+        int textWidth = fontMetrics.stringWidth(texte);   
+        
+        int labelWidth = Vue.pTextGame.getWidth();
+
+        return textWidth > labelWidth - 30; // 30
+   }
+	
    private static void CutOffWidth(JTextArea textArea, int gameIndex, Record[] r) {
 		textArea.setText("");
 		int index=0;
 		
-		while(checkTextIfCutOffWidth(textArea) == false) {
+		while(checkTextIfCutOffWidthTextArea(textArea) == false) {
 			textArea.setText(textArea.getText() + r[gameIndex].getReviewText().charAt(index));
 			index = index+1;
 		}
