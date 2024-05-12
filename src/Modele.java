@@ -49,6 +49,14 @@ public class Modele {
         this.getListGenre();
 	}
 	
+	public void recupBackup () throws StreamReadException, DatabindException, IOException {
+		
+        // Deserialize XML into a Java object
+        Record[] tlp = xmlMapper.readValue(fichier, Record[].class);
+
+        this.backupGame=tlp;
+	}
+	
 	public void getListGenre() {
 		for(int i=0; i<this.game.length; i++) {
 			String[] str1 = this.game[i].getGenre().split(":");
@@ -107,18 +115,27 @@ public class Modele {
 		
 	}
 	
-	public Record[] fiveBest() throws StreamReadException, DatabindException, IOException {
-		this.game = this.backupGame;
-		this.sortByScore();
+	public int[] fiveBest() throws StreamReadException, DatabindException, IOException {
+		this.sortByScore(this.backupGame);
 		Record[] bestGame = new Record[5];
 
 		for(int i=0; i<bestGame.length; i++) {
-			bestGame[i] = this.game[i];
+			bestGame[i] = this.backupGame[i];
 		}
 		
-		this.enregistrer();
+		this.recupBackup();
 		
-		return bestGame;
+		int[] tabIndex = new int[5];
+		
+		for(int i=0; i<bestGame.length; i++) {
+			for(int y=0; y<this.backupGame.length; y++) {
+				if(bestGame[i].getGameTitle().equals(this.backupGame[y].getGameTitle())) {
+					tabIndex[i] = y ;
+				}
+			}
+		}
+		
+		return tabIndex;
 	}
 	
 	public ArrayList<String> getGenre() {
@@ -152,8 +169,8 @@ public class Modele {
 		return this.game;
 	}
 	
-	public void sortByScore() {
-		Arrays.sort(this.game);
+	public void sortByScore(Record[] lst) {
+		Arrays.sort(lst);
 	}
 	
 	public void sortByGenre(String genreA) {
@@ -255,8 +272,8 @@ public class Modele {
 		//System.out.println(p.toString());
 		
 		
-		//p.sortByScore();
-		//System.out.println(p.toString());
+		p.sortByScore(p.game);
+		System.out.println(p.toString());
 		
 		//p.sortByDEV("Ubisoft");
 		//System.out.println(p.toString());
@@ -271,8 +288,8 @@ public class Modele {
 	
 		
 		
-		/*
-		Record[] test = new Record[5];
+		
+		/*int[] test = new int[5];
 		test=p.fiveBest();
 		for(int i=0; i<test.length; i++) {
 			System.out.println(test[i]);
