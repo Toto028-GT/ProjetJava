@@ -353,25 +353,24 @@ public class Vue {
     	
     	// LEFT PANEL BODY GAMEPAGE
     	JPanel lpBodyGamePage = new JPanel();
-    	lpBodyGamePage.setBackground(Color.white);
+    	//lpBodyGamePage.setBackground(Color.white);
     	lpBodyGamePage.setPreferredSize(new Dimension((int) ((windowSize.width/100)*26),(windowSize.height/100)*47));
     	lpBodyGamePage.setBorder(BorderFactory.createEmptyBorder((int) ((windowSize.height/100)*1.85), (int) ((windowSize.width/100)*2.6), (int) ((windowSize.height/100)*9.26), 0)); // 20 50 100
     	lpBodyGamePage.setLayout(new BorderLayout());
         lpBodyGamePage.add(imagePanel, BorderLayout.CENTER);
-        
-        title.setForeground(Color.BLACK);
+        //title.setForeground(Color.BLACK);
         
         date.setFont(new Font("Arial", Font.PLAIN, 24));
-        date.setForeground(Color.BLACK);
+        //date.setForeground(Color.BLACK);
         
         author.setFont(new Font("Arial", Font.PLAIN, 24));
-        author.setForeground(Color.BLACK);
+        //author.setForeground(Color.BLACK);
         
         pBodyGamePage.add(lpBodyGamePage, BorderLayout.WEST);
         
         pTextGame.setBorder(BorderFactory.createEmptyBorder(0, 0, (int) ((windowSize.height/100)*0.926), (int) ((windowSize.width/100)*0.521))); // 0 0 10 10
-        pTextGame.setBackground(Color.white);
-        pTextGame.setPreferredSize(new Dimension((int) ((windowSize.width/100)*5.3),(windowSize.height/100)*12));
+        //pTextGame.setBackground(Color.red);
+        pTextGame.setPreferredSize(new Dimension((int) ((windowSize.width/100)*5.3),(windowSize.height/100)*15));
         pTextGame.setLayout(new BoxLayout(pTextGame, BoxLayout.Y_AXIS));
         lpBodyGamePage.add(pTextGame, BorderLayout.SOUTH);
         
