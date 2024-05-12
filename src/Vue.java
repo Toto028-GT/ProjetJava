@@ -162,13 +162,20 @@ public class Vue {
 	
 	static int[] bestFivegame = new int[5];
 	
+	static int pageIndex;
+	static int pageIndexBackup;
+	static int index;
+	
 	
 	
     public static JButton cloneJButton(JButton originalButton) {
         JButton clonedButton = new JButton(originalButton.getIcon());
 
-        
-        final int index = jbGameTab.indexOf(originalButton);
+        if(pageIndexBackup == 2) {
+        	index = jbGameTabBackup.indexOf(originalButton);
+        }else {
+        	index = jbGameTab.indexOf(originalButton);
+        }
         
         c.setButtonClickable(clonedButton, index);
         
@@ -177,6 +184,7 @@ public class Vue {
 
     public static void ShowPage(int pageIndex, JPanel[][] pTab, JScrollPane[] spTab) throws StreamReadException, DatabindException, IOException { 	
     	
+    	pageIndexBackup = pageIndex;
     	
     	if(pageIndex == 0 || pageIndex == 1) {
             m.findGame("");
@@ -206,16 +214,23 @@ public class Vue {
 			
 			pBodyFav.removeAll();
 			
-			System.out.println(jbGameTab.size());
+			System.out.println(jbGameTab.size() + "a");
+			System.out.println(jbGameTabBackup.size() + "a2");
+			//c.RefreshGame();
+			
+			System.out.println(jbGameTab.size() + "b");
+			System.out.println(jbGameTabBackup.size() + "b2");
+			
 			c.RefreshGame();
 			
 			if(bFavGame.size() >0) {
 		        for(int i=0; i<bFavGame.size();i++) {
-		        	JButton gameToAdd = cloneJButton(jbGameTab.get(bFavGame.get(i)));
+		        	JButton gameToAdd = cloneJButton(jbGameTabBackup.get(bFavGame.get(i)));
 		        	gameToAdd.setPreferredSize(new Dimension((int) ((windowSize.width/100)*10.4),(windowSize.height/100)*28));
 		        	pBodyFav.add(gameToAdd);
 		        }
 			}
+			
 			
 		}else {
 			spTab[1].setVisible(false);
@@ -622,6 +637,7 @@ public class Vue {
         
         for(int i=0;i<bHeadTab.length;i++) {
         	int index = i;
+        	pageIndex = i;
         	bHeadTab[i].addMouseListener(new MouseAdapter() {
                 public void mouseEntered(MouseEvent e) {
                 	bHeadTab[index].setForeground(Color.WHITE);
