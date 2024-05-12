@@ -134,9 +134,10 @@ public class Modele {
 	}
 	
 	//################################## METHODE DE TRIE ##############################################################
-	public void findGame(String str) {
+	public Record[] findGame(String str) {
 		List<Record> newGame = new ArrayList<>();
 		
+		this.game = this.backupGame;
 		
 		for(int i=0; i<this.game.length; i++) {
 			int find = this.game[i].getGameTitle().toUpperCase().indexOf(str.toUpperCase());
@@ -148,6 +149,7 @@ public class Modele {
 		
 		this.game = arr;
 		
+		return this.game;
 	}
 	
 	public void sortByScore() {
@@ -239,25 +241,25 @@ public class Modele {
 	public static void main(String[] args) throws StreamReadException, DatabindException, IOException {
 		Modele p = new Modele("./BDDtest2.xml");
 		p.enregistrer();
-		System.out.println(p.toString());
+		/*System.out.println(p.toString());
 		
 		System.out.println(p.getGenre().get(0));
 		
 		System.out.println(p.getDev());
 		
-		System.out.println(p.getPlatform());
+		System.out.println(p.getPlatform());*/
 	
-		//p.findGame("Assassin's");
+		p.findGame("Assassin's");
+		System.out.println(p.toString());
+		//p.sortByPlatform("PlayStation4");
 		//System.out.println(p.toString());
-		p.sortByPlatform("PlayStation4");
-		System.out.println(p.toString());
 		
 		
-		p.sortByScore();
-		System.out.println(p.toString());
+		//p.sortByScore();
+		//System.out.println(p.toString());
 		
-		p.sortByDEV("Ubisoft");
-		System.out.println(p.toString());
+		//p.sortByDEV("Ubisoft");
+		//System.out.println(p.toString());
 		
 		
 		//p.findGame("Assassin's");

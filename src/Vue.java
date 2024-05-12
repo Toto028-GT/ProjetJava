@@ -1,4 +1,3 @@
-import java.awt.BorderLayout;
 import java.awt.Color;
 import java.awt.Component;
 import java.awt.Dimension;
@@ -48,6 +47,7 @@ import javax.swing.SwingUtilities;
 import javax.swing.UIManager;
 import java.util.ArrayList;
 import java.util.Random;
+import java.awt.BorderLayout;
 
 import com.fasterxml.jackson.core.exc.StreamReadException;
 import com.fasterxml.jackson.databind.DatabindException;
@@ -135,6 +135,7 @@ public class Vue {
 	static JScrollPane scrollListGameBodyHome = new JScrollPane(pBodyGame); 
 	static JScrollPane scrollListBodyFav      = new JScrollPane(pBodyFav);
 	static JScrollPane[] spTab                = {scrollListGameBodyHome, scrollListBodyFav};
+	static JPanel[][] pTab                    = { {pBodyHome,pFootHome} , {pBodyGame, pFootGame}, {pBodyFav,pFootFav}, /*{pBodyMyGame,pFootMyGame},*/ {pBodyGamePage,pFootGamePage}};
 	
 	static JPanel pTextGame            = new JPanel();
 	static JPanel container            = new JPanel();
@@ -158,42 +159,25 @@ public class Vue {
 	
 	static JPanel pGames = new JPanel();
 	
+	static int[] bestFivegame = new int[5];
+	
 	
 	
     public static JButton cloneJButton(JButton originalButton) {
         JButton clonedButton = new JButton(originalButton.getIcon());
+
         
         final int index = jbGameTab.indexOf(originalButton);
         
-        clonedButton.addMouseListener(new MouseAdapter() {
-    		
-            public void mouseClicked(MouseEvent e)
-            {
-            	pBodyGamePage.setVisible(true);
-            	pFootGamePage.setVisible(true);
-            	
-            	pBodyGame.setVisible(false);
-            	pFootGame.setVisible(false);
-            	
-            	pBodyHome.setVisible(false);
-            	pFootHome.setVisible(false);
-            	
-            	pBodyFav.setVisible(false);
-            	pFootFav.setVisible(false);
-            	
-            	spTab[0].setVisible(false);
-            	spTab[1].setVisible(false);
-            	
-            	gameIndex = index;
-            	
-            	c.SetGamePage(r, gameIndex, m);
-            }
-        });
+        c.setButtonClickable(clonedButton, index);
         
         return clonedButton;
     }   
 
-    public static void ShowPage(int pageIndex, JPanel[][] pTab, JScrollPane[] spTab) { 	
+    public static void ShowPage(int pageIndex, JPanel[][] pTab, JScrollPane[] spTab) throws StreamReadException, DatabindException, IOException { 	
+    	
+        m.findGame("");
+        c.ApplyButton();
     	
         for(int i=0;i<pTab.length;i++) {
         	for(int y=0;y<pTab[0].length;y++) {
@@ -229,7 +213,6 @@ public class Vue {
 		}else {
 			spTab[1].setVisible(false);
 		}
-        
 	}
 	
     public static void createAndShowGUI() throws StreamReadException, DatabindException, IOException {
@@ -285,29 +268,8 @@ public class Vue {
     	pBodyGame.setBackground(Color.white);
         pBodyGame.setPreferredSize(new Dimension(windowSize.width,(windowSize.height/100)*95));
         
-        m.fiveBest();
-        
-        // PANEL LIST JEUX (BODY HOME)
-        for(int i=0; i<r.length;i++) {
-        	try {
-				URL imageURL = new URL(r[i].getGamePoster());
-				ImageIcon icon = new ImageIcon(imageURL);
-				
-	        	JButton jLGame = new JButton(icon);
-	        	jLGame.setPreferredSize(new Dimension((int) ((windowSize.width/100)*10.42),(windowSize.height/100)*28));
-
-	        	jbGameTab.add(jLGame);
-	        	pBodyGame.add(jLGame);
-            	
-            	if(jbGameTab.size() >= (maxXGame* maxYGame) && jbGameTab.size()%maxXGame == 0) {
-            		pBodyGame.setPreferredSize(new Dimension((int) ((windowSize.width/100)*66.7),pBodyGame.getPreferredSize().height + (int) ((windowSize.height/100)*28)));
-        		}
-	        	
-			} catch (IOException e) {
-				e.printStackTrace();
-			}
-        	
-        }
+       // REFRESH
+        c.RefreshGame();
 
         scrollListGameBodyHome.setVerticalScrollBarPolicy(JScrollPane.VERTICAL_SCROLLBAR_ALWAYS);
         scrollListGameBodyHome.setHorizontalScrollBarPolicy(JScrollPane.HORIZONTAL_SCROLLBAR_NEVER);
@@ -338,16 +300,16 @@ public class Vue {
         
         /* --------------------------------------- */
         
-     // PANEL BODY myGAME
+    /* // PANEL BODY myGAME
         JPanel pBodyMyGame = new JPanel();
         pBodyMyGame.setVisible(false);
         pBodyMyGame.setBackground(Color.white);
-        pBodyMyGame.setPreferredSize(new Dimension(windowSize.width,(windowSize.height/100)*95));
+        pBodyMyGame.setPreferredSize(new Dimension(windowSize.width,(windowSize.height/100)*95)); // !!!
         
         // PANEL FOOT myGAME
     	JPanel pFootMyGame = new JPanel();
     	pFootMyGame.setVisible(false);
-    	pFootMyGame.setPreferredSize(new Dimension(windowSize.width,(windowSize.height/100)*0));
+    	pFootMyGame.setPreferredSize(new Dimension(windowSize.width,(windowSize.height/100)*0));*/
     	
     	/* --------------------------------------- */
     	
@@ -505,7 +467,6 @@ public class Vue {
         
         int homeButtonX = (int) ((windowSize.width/100)*10.4);
         int homeButtonY = (int) ((windowSize.height/100)*30);
-        
 
         JButton BGameHome1 = cloneJButton(jbGameTab.get(0));
         BGameHome1.setPreferredSize(new Dimension(homeButtonX,homeButtonY));
@@ -529,9 +490,9 @@ public class Vue {
         ArrayList<Integer> reviewIndex = new ArrayList<>();
         for(int i=0;i<9;i++) {
         	
-        	int rand = random.nextInt(35);
+        	int rand = random.nextInt(r.length);
         	while(reviewIndex.contains(rand)) {
-        		rand = random.nextInt(35);
+        		rand = random.nextInt(r.length);
         	}
         	reviewIndex.add(rand);
 
@@ -580,11 +541,8 @@ public class Vue {
     	JTextField searchBar = new JTextField("Rechercher");
     	searchBar.setPreferredSize(new Dimension((int) ((windowSize.width/100)*10.42),(windowSize.height/100)*3)); // 200 30
     	
-    	searchBar.addMouseListener(new MouseAdapter() {
-            public void mouseClicked(MouseEvent e) {
-            	searchBar.setText("");
-            }
-    	});
+    	
+   
     	
     	searchBar.addKeyListener(new KeyListener() {
             public void mouseClicked(MouseEvent e) {
@@ -600,7 +558,19 @@ public class Vue {
 			@Override
 			public void keyPressed(KeyEvent e) {
 				if(e.getKeyCode()==10) {
-					System.out.println("RECHERCHE");
+			        m.findGame(searchBar.getText());
+			        try {
+						c.ApplyButton();
+					} catch (StreamReadException e1) {
+						// TODO Auto-generated catch block
+						e1.printStackTrace();
+					} catch (DatabindException e1) {
+						// TODO Auto-generated catch block
+						e1.printStackTrace();
+					} catch (IOException e1) {
+						// TODO Auto-generated catch block
+						e1.printStackTrace();
+					}
 				}
 				
 			}
@@ -638,7 +608,6 @@ public class Vue {
         // ACTION DE L'UTILISATEUR 
         
         JButton[] bHeadTab = {nameB,jvB,favB,/*myGameB ,*/bAddFavorite};
-        JPanel[][] pTab = { {pBodyHome,pFootHome} , {pBodyGame, pFootGame}, {pBodyFav,pFootFav}, /*{pBodyMyGame,pFootMyGame},*/ {pBodyGamePage,pFootGamePage}};
 
         
         for(int i=0;i<bHeadTab.length;i++) {
@@ -651,42 +620,71 @@ public class Vue {
                 	bHeadTab[index].setForeground(UIManager.getColor("Button.foreground"));
                 }
                 public void mouseClicked(MouseEvent e) {
-                	ShowPage(index,pTab,spTab);
+                	try {
+						ShowPage(index,pTab,spTab);
+					} catch (StreamReadException e1) {
+						// TODO Auto-generated catch block
+						e1.printStackTrace();
+					} catch (DatabindException e1) {
+						// TODO Auto-generated catch block
+						e1.printStackTrace();
+					} catch (IOException e1) {
+						// TODO Auto-generated catch block
+						e1.printStackTrace();
+					}
                 }
         	});
         }
         
         for(int i=0;i<jbGameTab.size();i++) {
         	final int index = i;
-        	jbGameTab.get(i).addMouseListener(new MouseAdapter() {
-        		
-                public void mouseClicked(MouseEvent e) {
-                	pBodyGamePage.setVisible(true);
-                	pFootGamePage.setVisible(true);
-                	
-                	pBodyGame.setVisible(false);
-                	pFootGame.setVisible(false);
-                	
-                	pBodyHome.setVisible(false);
-                	pFootHome.setVisible(false);
-                	
-                	spTab[0].setVisible(false);
-                	spTab[1].setVisible(false);
-                	
-                	gameIndex = index;
-
-                	c.SetGamePage(r, gameIndex, m);
-                	
-                }
-        	});
+  
+        	c.setButtonClickable(jbGameTab.get(i), index);
         	
         }
 
         
         bAddFavorite.addMouseListener(new MouseAdapter() {
             public void mouseClicked(MouseEvent e) {
+            
+            	boolean isNotIn = true;
             	
-            	if(!bFavGame.contains(jbGameTab.get(gameIndex)))
+            	if(bFavGame.size() > 0) {
+            		for(int i=0;i<bFavGame.size();i++) {
+            			if(bFavGame.get(i).getIcon().toString().equals(jbGameTab.get(gameIndex).getIcon().toString())) {		
+            				isNotIn=false;
+            			}
+            		}
+            		
+                	if(isNotIn) {
+                		bFavGame.add(jbGameTab.get(gameIndex));
+                    	numberOfElements = pBodyFav.getComponentCount();
+                    	
+                    	Dimension windowSize = container.getSize(); 	
+                    	maxXGame = windowSize.width/200;
+                    	maxYGame = windowSize.height/300;
+                    	
+                    	if(bFavGame.size() >= (maxXGame* maxYGame) && bFavGame.size()%maxXGame == 0) {
+                    		pBodyFav.setPreferredSize(new Dimension((int)((windowSize.width/100)*66.7), (int)(pBodyFav.getPreferredSize().height + ((windowSize.height/100)*27.8))));
+                    	}
+                	}
+            		
+            	}else {
+            		bFavGame.add(jbGameTab.get(gameIndex));
+                	numberOfElements = pBodyFav.getComponentCount();
+                	
+                	Dimension windowSize = container.getSize(); 	
+                	maxXGame = windowSize.width/200;
+                	maxYGame = windowSize.height/300;
+                	
+                	if(bFavGame.size() >= (maxXGame* maxYGame) && bFavGame.size()%maxXGame == 0) {
+                		pBodyFav.setPreferredSize(new Dimension(1280,pBodyFav.getPreferredSize().height + 300));
+                	}
+            	}
+            	
+
+	
+            	/*if(!bFavGame.contains(jbGameTab.get(gameIndex)))
             	{
             		bFavGame.add(jbGameTab.get(gameIndex));
                 	numberOfElements = pBodyFav.getComponentCount();
@@ -699,7 +697,9 @@ public class Vue {
                 		pBodyFav.setPreferredSize(new Dimension(1280,pBodyFav.getPreferredSize().height + 300));
                 	}
 
-            	}
+            	}*/
+            	
+            	
             	
             }
     	});
@@ -734,6 +734,7 @@ public class Vue {
         frame.setLocationRelativeTo(null);
         frame.setVisible(true);
         frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE); 
+        
     }
     
     // Méthode pour charger une image depuis une URL et la convertir en ImageIcon
