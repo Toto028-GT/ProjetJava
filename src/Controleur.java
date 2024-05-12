@@ -11,6 +11,7 @@ import java.io.IOException;
 import java.net.MalformedURLException;
 import java.net.URL;
 
+import javax.swing.JButton;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
 import javax.swing.JTextArea;
@@ -28,11 +29,24 @@ public class Controleur {
 		Modele p = new Modele("./BDDtest2.xml");
 		p.enregistrer();
 		Controleur c = new Controleur();
-		Vue v = new Vue(p.game, c);
-		SwingUtilities.invokeLater(Vue::createAndShowGUI);
+		Vue v = new Vue(p.game, c, p);
+		SwingUtilities.invokeLater(() -> {
+			try {
+				Vue.createAndShowGUI();
+			} catch (StreamReadException e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+			} catch (DatabindException e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+			} catch (IOException e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+			}
+		});
 	}
 	
-	public void SetGamePage(Record[] r, int gameIndex) {	
+	public void SetGamePage(Record[] r, int gameIndex, Modele m) {	
 		Vue.title.setText(r[gameIndex].getGameTitle());
 		Vue.title.setFont(new Font("Arial", Font.PLAIN, 48));
 		while(checkTextIfCutOffWidthJLabel(Vue.title)) {
@@ -44,12 +58,28 @@ public class Controleur {
 		Vue.taGenre.setText(r[gameIndex].getGenre());
 		Vue.lNote.setText(r[gameIndex].getOverallMetascore() + " / 100");
 		Vue.imagePanel.loadImage(r[gameIndex].getGamePoster());
+		
+		Vue.pGames.removeAll();
+		
+        JButton game =  Vue.cloneJButton(Vue.jbGameTab.get(m.getReco(gameIndex, r[gameIndex])[0]));
+        game.setPreferredSize(new Dimension((int) ((Vue.windowSize.width/100)*10.4),(Vue.windowSize.height/100)*28));
+        
+        JButton game2 =  Vue.cloneJButton(Vue.jbGameTab.get(m.getReco(gameIndex, r[gameIndex])[1]));
+        game2.setPreferredSize(new Dimension((int) ((Vue.windowSize.width/100)*10.4),(Vue.windowSize.height/100)*28));
+        
+        JButton game3 =   Vue.cloneJButton(Vue.jbGameTab.get(m.getReco(gameIndex, r[gameIndex])[2]));
+        game3.setPreferredSize(new Dimension((int) ((Vue.windowSize.width/100)*10.4),(Vue.windowSize.height/100)*28));   
+		
+		Vue.pGames.add(game);
+        Vue.pGames.add(game2);
+        Vue.pGames.add(game3);
 	
 	}
 	
-	public void SetReviewHomePage(Record[] r, int gameIndex) {
+	public void SetReviewHomePage(Record[] r, int gameIndex, int gameIndex2) {
 		
-		CutOffWidth(Vue.lReviewGameHome[gameIndex], gameIndex, r);
+
+		CutOffWidth(Vue.lReviewGameHome[gameIndex], gameIndex2, r);
 		
 		FontMetrics fontMetrics = Vue.lReviewGameHome[gameIndex].getFontMetrics(Vue.lReviewGameHome[gameIndex].getFont());
 		int textHeight = fontMetrics.getHeight()*Vue.lReviewGameHome[gameIndex].getLineCount();
@@ -66,7 +96,7 @@ public class Controleur {
         FontMetrics fontMetrics = textArea.getFontMetrics(textArea.getFont());
         String texte = textArea.getText();
         int textWidth = fontMetrics.stringWidth(texte);        
-        return textWidth > textAreaWidth - 10 ;
+        return textWidth > textAreaWidth - 15 ;
    }
 	
 	private static boolean checkTextIfCutOffWidthJLabel(JLabel label) {

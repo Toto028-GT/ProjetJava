@@ -47,7 +47,10 @@ import javax.swing.SwingConstants;
 import javax.swing.SwingUtilities;
 import javax.swing.UIManager;
 import java.util.ArrayList;
+import java.util.Random;
 
+import com.fasterxml.jackson.core.exc.StreamReadException;
+import com.fasterxml.jackson.databind.DatabindException;
 import com.formdev.flatlaf.FlatDarkLaf;
 
 class ImagePanel extends JPanel {
@@ -104,11 +107,14 @@ public class Vue {
 	
 	public static Record[] r;
 	public static Controleur c;
+	public static Modele m;
 	public static int gameIndex;
 	 
-	public Vue(Record[] r, Controleur c) {
+	public Vue(Record[] r, Controleur c, Modele m) {
 		this.r = r;
 		this.c = c;
+		this.m = m;
+		
 	}
 	
 	static ArrayList<JButton> jbGameTab = new ArrayList<JButton>();
@@ -150,6 +156,8 @@ public class Vue {
 	static JPanel pReviewTab = new JPanel();
 	static JScrollPane scrollPaneReview;
 	
+	static JPanel pGames = new JPanel();
+	
 	
 	
     public static JButton cloneJButton(JButton originalButton) {
@@ -178,7 +186,7 @@ public class Vue {
             	
             	gameIndex = index;
             	
-            	c.SetGamePage(r, gameIndex);
+            	c.SetGamePage(r, gameIndex, m);
             }
         });
         
@@ -224,7 +232,7 @@ public class Vue {
         
 	}
 	
-    public static void createAndShowGUI() {
+    public static void createAndShowGUI() throws StreamReadException, DatabindException, IOException {
     	
     	FlatDarkLaf.setup();  
     	try {
@@ -277,6 +285,8 @@ public class Vue {
     	pBodyGame.setBackground(Color.white);
         pBodyGame.setPreferredSize(new Dimension(windowSize.width,(windowSize.height/100)*95));
         
+        m.fiveBest();
+        
         // PANEL LIST JEUX (BODY HOME)
         for(int i=0; i<r.length;i++) {
         	try {
@@ -293,7 +303,7 @@ public class Vue {
             		pBodyGame.setPreferredSize(new Dimension((int) ((windowSize.width/100)*66.7),pBodyGame.getPreferredSize().height + (int) ((windowSize.height/100)*28)));
         		}
 	        	
-			} catch (MalformedURLException e) {
+			} catch (IOException e) {
 				e.printStackTrace();
 			}
         	
@@ -353,23 +363,23 @@ public class Vue {
     	
     	// LEFT PANEL BODY GAMEPAGE
     	JPanel lpBodyGamePage = new JPanel();
-    	//lpBodyGamePage.setBackground(Color.white);
+    	lpBodyGamePage.setBackground(Color.white);
     	lpBodyGamePage.setPreferredSize(new Dimension((int) ((windowSize.width/100)*26),(windowSize.height/100)*47));
     	lpBodyGamePage.setBorder(BorderFactory.createEmptyBorder((int) ((windowSize.height/100)*1.85), (int) ((windowSize.width/100)*2.6), (int) ((windowSize.height/100)*9.26), 0)); // 20 50 100
     	lpBodyGamePage.setLayout(new BorderLayout());
         lpBodyGamePage.add(imagePanel, BorderLayout.CENTER);
-        //title.setForeground(Color.BLACK);
+        title.setForeground(Color.WHITE);
         
         date.setFont(new Font("Arial", Font.PLAIN, 24));
-        //date.setForeground(Color.BLACK);
+        date.setForeground(Color.WHITE);
         
         author.setFont(new Font("Arial", Font.PLAIN, 24));
-        //author.setForeground(Color.BLACK);
+        author.setForeground(Color.WHITE);
         
         pBodyGamePage.add(lpBodyGamePage, BorderLayout.WEST);
         
         pTextGame.setBorder(BorderFactory.createEmptyBorder(0, 0, (int) ((windowSize.height/100)*0.926), (int) ((windowSize.width/100)*0.521))); // 0 0 10 10
-        //pTextGame.setBackground(Color.red);
+        pTextGame.setBackground(Color.decode("#3c3f41"));
         pTextGame.setPreferredSize(new Dimension((int) ((windowSize.width/100)*5.3),(windowSize.height/100)*15));
         pTextGame.setLayout(new BoxLayout(pTextGame, BoxLayout.Y_AXIS));
         lpBodyGamePage.add(pTextGame, BorderLayout.SOUTH);
@@ -411,7 +421,6 @@ public class Vue {
         pYAxisPanel.setPreferredSize(new Dimension((int) ((windowSize.width/100)*46.8),(windowSize.height/100)*93)); // 890 1000
         pYAxisPanel.setLayout(new BoxLayout(pYAxisPanel, BoxLayout.Y_AXIS));
       
-        JPanel pGames = new JPanel();
         pGames.setLayout(new FlowLayout(FlowLayout.LEFT));
         pGames.setBorder(BorderFactory.createEmptyBorder( (int) ((windowSize.height/100)*3.7), (int) ((windowSize.width/100)*7.8125), 0, 0)); // 40 150 0 0
         
@@ -419,25 +428,10 @@ public class Vue {
         JLabel lOtherGame = new JLabel("JEU RECOMMANDE");
         lOtherGame.setFont(new Font("Arial", Font.PLAIN, (int) ((windowSize.width/100)*1.25)));
         lOtherGame.setBorder(BorderFactory.createEmptyBorder((int) ((windowSize.height/100)*0.926), 0, 0, (int) ((windowSize.width/100)*8.1))); // 10 0 0 155
-        lOtherGame.setBackground(Color.red);
-        
-
-        JButton game =  cloneJButton(jbGameTab.get(3));
-        game.setPreferredSize(new Dimension((int) ((windowSize.width/100)*10.4),(windowSize.height/100)*28));
-        
-        JButton game2 =  cloneJButton(jbGameTab.get(1));
-        game2.setPreferredSize(new Dimension((int) ((windowSize.width/100)*10.4),(windowSize.height/100)*28));
-        
-        JButton game3 =  cloneJButton(jbGameTab.get(2));
-        game3.setPreferredSize(new Dimension((int) ((windowSize.width/100)*10.4),(windowSize.height/100)*28));      
         
         pRecommendedGame.add(pYAxisPanel);
         pYAxisPanel.add(lOtherGame);
         pYAxisPanel.add(pGames);   
-        
-        pGames.add(game);
-        pGames.add(game2);
-        pGames.add(game3);
         
         pDescGame.add(lDescGame);
         
@@ -499,7 +493,6 @@ public class Vue {
         pGamesHome.setLayout(new FlowLayout(FlowLayout.LEFT));
         pGamesHome.setPreferredSize(new Dimension((windowSize.width/100)*55,(windowSize.height/100)*32));
         pGamesHome.setBorder(BorderFactory.createEmptyBorder((int) ((windowSize.height/100)*0.93), (int) ((windowSize.width/100)*0.78125), 0, 0)); // 10 15 0 0
-        pGamesHome.setBackground(Color.red);  
         
         JLabel lTitle = new JLabel("LES 5 JEUX LES MIEUX NOTES");
         lTitle.setFont(new Font("Arial", Font.PLAIN, (int) ((windowSize.width/100)*1.25))); // 24
@@ -512,6 +505,7 @@ public class Vue {
         
         int homeButtonX = (int) ((windowSize.width/100)*10.4);
         int homeButtonY = (int) ((windowSize.height/100)*30);
+        
 
         JButton BGameHome1 = cloneJButton(jbGameTab.get(0));
         BGameHome1.setPreferredSize(new Dimension(homeButtonX,homeButtonY));
@@ -530,13 +524,22 @@ public class Vue {
         
         pReviewTab.setLayout(new FlowLayout(FlowLayout.LEFT));
         pReviewTab.setPreferredSize(new Dimension((windowSize.width/100)*80,(windowSize.height/100)*50));
+        Random random = new Random();
         
+        ArrayList<Integer> reviewIndex = new ArrayList<>();
         for(int i=0;i<9;i++) {
+        	
+        	int rand = random.nextInt(35);
+        	while(reviewIndex.contains(rand)) {
+        		rand = random.nextInt(35);
+        	}
+        	reviewIndex.add(rand);
+
             JPanel pReview = new JPanel();
             pReview.setLayout(new FlowLayout(FlowLayout.LEFT));
             pReview.setPreferredSize(new Dimension((windowSize.width/100)*26,(windowSize.height/100)*16));
 
-            JButton bReviewGameHome =  cloneJButton(jbGameTab.get(i));
+            JButton bReviewGameHome =  cloneJButton(jbGameTab.get(reviewIndex.get(i)));
 
             bReviewGameHome.setPreferredSize(new Dimension((int) ((windowSize.width/100)*5.2),(windowSize.height/100)*15));
             
@@ -554,7 +557,7 @@ public class Vue {
             
             scrollPaneReview.getVerticalScrollBar().setUnitIncrement(20);
             
-            c.SetReviewHomePage(r ,i);
+            c.SetReviewHomePage(r , i, rand);
             
             pReview.add(bReviewGameHome);
             pReview.add(scrollPaneReview);
@@ -672,7 +675,7 @@ public class Vue {
                 	
                 	gameIndex = index;
 
-                	c.SetGamePage(r, gameIndex);
+                	c.SetGamePage(r, gameIndex, m);
                 	
                 }
         	});
