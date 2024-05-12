@@ -135,6 +135,8 @@ public class Modele {
 			}
 		}
 		
+		this.recupBackup();
+	
 		return tabIndex;
 	}
 	

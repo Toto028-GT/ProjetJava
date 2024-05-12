@@ -176,8 +176,11 @@ public class Vue {
 
     public static void ShowPage(int pageIndex, JPanel[][] pTab, JScrollPane[] spTab) throws StreamReadException, DatabindException, IOException { 	
     	
-        m.findGame("");
-        c.ApplyButton();
+    	
+    	if(pageIndex == 0 || pageIndex == 1) {
+            m.findGame("");
+            c.ApplyButton();
+    	}
     	
         for(int i=0;i<pTab.length;i++) {
         	for(int y=0;y<pTab[0].length;y++) {
@@ -467,20 +470,22 @@ public class Vue {
         
         int homeButtonX = (int) ((windowSize.width/100)*10.4);
         int homeButtonY = (int) ((windowSize.height/100)*30);
+        
+        
 
-        JButton BGameHome1 = cloneJButton(jbGameTab.get(0));
+        JButton BGameHome1 = cloneJButton(jbGameTab.get(93));
         BGameHome1.setPreferredSize(new Dimension(homeButtonX,homeButtonY));
         
-        JButton BGameHome2 = cloneJButton(jbGameTab.get(1));
+        JButton BGameHome2 = cloneJButton(jbGameTab.get(97));
         BGameHome2.setPreferredSize(new Dimension(homeButtonX,homeButtonY));
         
-        JButton BGameHome3 = cloneJButton(jbGameTab.get(2));
+        JButton BGameHome3 = cloneJButton(jbGameTab.get(22));
         BGameHome3.setPreferredSize(new Dimension(homeButtonX,homeButtonY));      
         
-        JButton BGameHome4 = cloneJButton(jbGameTab.get(3));
+        JButton BGameHome4 = cloneJButton(jbGameTab.get(74));
         BGameHome4.setPreferredSize(new Dimension(homeButtonX,homeButtonY));  
         
-        JButton BGameHome5 = cloneJButton(jbGameTab.get(4));
+        JButton BGameHome5 = cloneJButton(jbGameTab.get(31));
         BGameHome5.setPreferredSize(new Dimension(homeButtonX,homeButtonY));  
         
         pReviewTab.setLayout(new FlowLayout(FlowLayout.LEFT));
@@ -524,6 +529,7 @@ public class Vue {
             pReview.add(scrollPaneReview);
             pReviewTab.add(pReview);       
         }
+        
         
         
         pBodyHome.add(pGameMainHome);
