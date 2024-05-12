@@ -283,13 +283,13 @@ public class Vue {
 				ImageIcon icon = new ImageIcon(imageURL);
 				
 	        	JButton jLGame = new JButton(icon);
-	        	jLGame.setPreferredSize(new Dimension(200,300));
+	        	jLGame.setPreferredSize(new Dimension((int) ((windowSize.width/100)*10.42),(windowSize.height/100)*28));
 
 	        	jbGameTab.add(jLGame);
 	        	pBodyGame.add(jLGame);
             	
             	if(jbGameTab.size() >= (maxXGame* maxYGame) && jbGameTab.size()%maxXGame == 0) {
-            		pBodyGame.setPreferredSize(new Dimension(1280,pBodyGame.getPreferredSize().height + 300));
+            		pBodyGame.setPreferredSize(new Dimension((int) ((windowSize.width/100)*66.7),pBodyGame.getPreferredSize().height + (int) ((windowSize.height/100)*28)));
         		}
 	        	
 			} catch (MalformedURLException e) {
@@ -451,7 +451,7 @@ public class Vue {
         // RIGHT PANEL BODY GAMEPAGE
         
         JPanel rpBodyGamePage = new JPanel();
-        rpBodyGamePage.setPreferredSize(new Dimension(450,500));
+        rpBodyGamePage.setPreferredSize(new Dimension((int) ((windowSize.width/100)*23.4375),(windowSize.height/100)*47)); // 450 / 500
         rpBodyGamePage.setBackground(Color.white);
         
         // LISTE DES TAGS
@@ -575,7 +575,7 @@ public class Vue {
     	
     	// SEARCH BAR FOOT
     	JTextField searchBar = new JTextField("Rechercher");
-    	searchBar.setPreferredSize(new Dimension(200, 30));
+    	searchBar.setPreferredSize(new Dimension((int) ((windowSize.width/100)*10.42),(windowSize.height/100)*3)); // 200 30
     	
     	searchBar.addMouseListener(new MouseAdapter() {
             public void mouseClicked(MouseEvent e) {
@@ -689,8 +689,8 @@ public class Vue {
                 	numberOfElements = pBodyFav.getComponentCount();
                 	
                 	Dimension windowSize = container.getSize(); 	
-                	int maxXGame = windowSize.width/200;
-                	int maxYGame = windowSize.height/300;
+                	maxXGame = windowSize.width/200;
+                	maxYGame = windowSize.height/300;
                 	
                 	if(bFavGame.size() >= (maxXGame* maxYGame) && bFavGame.size()%maxXGame == 0) {
                 		pBodyFav.setPreferredSize(new Dimension(1280,pBodyFav.getPreferredSize().height + 300));
