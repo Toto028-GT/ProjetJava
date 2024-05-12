@@ -212,7 +212,7 @@ public class Vue {
 			if(bFavGame.size() >0) {
 		        for(int i=0; i<bFavGame.size();i++) {
 		        	JButton gameToAdd = cloneJButton(bFavGame.get(i));
-		        	gameToAdd.setPreferredSize(new Dimension(200,300));
+		        	gameToAdd.setPreferredSize(new Dimension((int) ((windowSize.width/100)*10.4),(windowSize.height/100)*28));
 		        	pBodyFav.add(gameToAdd);
 		        }
 			}
@@ -353,7 +353,7 @@ public class Vue {
     	// LEFT PANEL BODY GAMEPAGE
     	JPanel lpBodyGamePage = new JPanel();
     	lpBodyGamePage.setBackground(Color.white);
-    	lpBodyGamePage.setPreferredSize(new Dimension(500,500));
+    	lpBodyGamePage.setPreferredSize(new Dimension((int) ((windowSize.width/100)*26),(windowSize.height/100)*47));
     	lpBodyGamePage.setBorder(BorderFactory.createEmptyBorder(20, 50, 100, 0));
     	lpBodyGamePage.setLayout(new BorderLayout());
         lpBodyGamePage.add(imagePanel, BorderLayout.CENTER);
@@ -372,7 +372,7 @@ public class Vue {
         JPanel pTextGame = new JPanel();
         pTextGame.setBorder(BorderFactory.createEmptyBorder(0, 0, 10, 10));
         pTextGame.setBackground(Color.white);
-        pTextGame.setPreferredSize(new Dimension(100,120));
+        pTextGame.setPreferredSize(new Dimension((int) ((windowSize.width/100)*5.3),(windowSize.height/100)*12));
         pTextGame.setLayout(new BoxLayout(pTextGame, BoxLayout.Y_AXIS));
         lpBodyGamePage.add(pTextGame, BorderLayout.SOUTH);
         
@@ -391,11 +391,11 @@ public class Vue {
         JPanel pDescGame = new JPanel();
         pDescGame.setLayout(new FlowLayout(FlowLayout.LEFT));
         pDescGame.setBorder(BorderFactory.createEmptyBorder(10, 0, 0, 0));
-        pDescGame.setPreferredSize(new Dimension(400,500));
+        pDescGame.setPreferredSize(new Dimension((int) ((windowSize.width/100)*20.8),(windowSize.height/100)*47));
         pDescGame.setBackground(Color.white);
         
         lDescGame.setFont(new Font("Arial", Font.PLAIN, 24));
-        lDescGame.setPreferredSize(new Dimension(900,600));
+        lDescGame.setPreferredSize(new Dimension((int) ((windowSize.width/100)*46.8),(windowSize.height/100)*56));
         lDescGame.setBackground(Color.decode("#3c3f41"));
         lDescGame.setForeground(Color.white);
         lDescGame.setBorder(BorderFactory.createEmptyBorder(5, 5, 0, 0));
@@ -407,30 +407,31 @@ public class Vue {
         JPanel pRecommendedGame = new JPanel();
         pRecommendedGame.setBackground(Color.white);
         pRecommendedGame.setLayout(new FlowLayout(FlowLayout.LEFT));
-        pRecommendedGame.setPreferredSize(new Dimension(900,500));
+        pRecommendedGame.setPreferredSize(new Dimension((int) ((windowSize.width/100)*47),(windowSize.height/100)*38)); 
         
         JPanel pYAxisPanel = new JPanel();
-        pYAxisPanel.setPreferredSize(new Dimension(900,1000));
+        pYAxisPanel.setPreferredSize(new Dimension((int) ((windowSize.width/100)*46.8),(windowSize.height/100)*93)); // 890 1000
         pYAxisPanel.setLayout(new BoxLayout(pYAxisPanel, BoxLayout.Y_AXIS));
-        
+      
         JPanel pGames = new JPanel();
         pGames.setLayout(new FlowLayout(FlowLayout.LEFT));
-        pGames.setBorder(BorderFactory.createEmptyBorder(50, 150, 0, 0));
+        pGames.setBorder(BorderFactory.createEmptyBorder(40, 150, 0, 0));
+        
         
         JLabel lOtherGame = new JLabel("JEU RECOMMANDE");
         lOtherGame.setFont(new Font("Arial", Font.PLAIN, 24));
-        lOtherGame.setBorder(BorderFactory.createEmptyBorder(10, 0, 0, 75));
+        lOtherGame.setBorder(BorderFactory.createEmptyBorder(10, 0, 0, 0));
+        lOtherGame.setBackground(Color.red);
         
 
         JButton game =  cloneJButton(jbGameTab.get(3));
-        game.setPreferredSize(new Dimension(200,300));
+        game.setPreferredSize(new Dimension((int) ((windowSize.width/100)*10.4),(windowSize.height/100)*28));
         
         JButton game2 =  cloneJButton(jbGameTab.get(1));
-        game2.setPreferredSize(new Dimension(200,300));
+        game2.setPreferredSize(new Dimension((int) ((windowSize.width/100)*10.4),(windowSize.height/100)*28));
         
         JButton game3 =  cloneJButton(jbGameTab.get(2));
-
-        game3.setPreferredSize(new Dimension(200,300));      
+        game3.setPreferredSize(new Dimension((int) ((windowSize.width/100)*10.4),(windowSize.height/100)*28));      
         
         pRecommendedGame.add(pYAxisPanel);
         pYAxisPanel.add(lOtherGame);
@@ -456,12 +457,12 @@ public class Vue {
         // LISTE DES TAGS
         JPanel pGenreTag = new JPanel();
         pGenreTag.setLayout(new FlowLayout(FlowLayout.LEFT));
-        pGenreTag.setPreferredSize(new Dimension(400,200));
+        pGenreTag.setPreferredSize(new Dimension((int) ((windowSize.width/100)*20.8),(windowSize.height/100)*19)); // 400 200
         pGenreTag.setBorder(BorderFactory.createEmptyBorder(5, 0, 0, 0));
         pGenreTag.setBackground(Color.white);
         
         taGenre.setFont(new Font("Arial", Font.PLAIN, 24));
-        taGenre.setPreferredSize(new Dimension(400,200));
+        taGenre.setPreferredSize(new Dimension((int) ((windowSize.width/100)*20.8),(windowSize.height/100)*19)); // 400 200
 		taGenre.setBackground(Color.decode("#3c3f41"));
 		taGenre.setForeground(Color.white);
 		taGenre.setBorder(BorderFactory.createEmptyBorder(5, 5, 0, 0));
@@ -471,7 +472,7 @@ public class Vue {
         
         // NOTE DU JEU
         JPanel pNote = new JPanel();
-        pNote.setPreferredSize(new Dimension(390,50));
+        pNote.setPreferredSize((new Dimension((int) ((windowSize.width/100)*20.3125),(windowSize.height/100)*5))); // 390 50
         
         lNote.setFont(new Font("Arial", Font.PLAIN, 24));
         lNote.setForeground(Color.white);
@@ -482,7 +483,7 @@ public class Vue {
         // BOUTTON AJOUTER FAVORIS
         JButton bAddFavorite = new JButton("AJOUTER AUX FAVORIS");
         bAddFavorite.setFont(new Font("Arial", Font.PLAIN, 24));
-        bAddFavorite.setPreferredSize(new Dimension(390,50));
+        bAddFavorite.setPreferredSize((new Dimension((int) ((windowSize.width/100)*20.3125),(windowSize.height/100)*5))); // 390 50
         
         rpBodyGamePage.add(pGenreTag);
         rpBodyGamePage.add(pNote);
