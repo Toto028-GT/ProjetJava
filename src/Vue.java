@@ -465,7 +465,7 @@ public class Vue {
         taGenre.setPreferredSize(new Dimension((int) ((windowSize.width/100)*20.8),(windowSize.height/100)*19)); // 400 200
 		taGenre.setBackground(Color.decode("#3c3f41"));
 		taGenre.setForeground(Color.white);
-		taGenre.setBorder(BorderFactory.createEmptyBorder(5, 5, 0, 0));
+		taGenre.setBorder(BorderFactory.createEmptyBorder((int) ((windowSize.height/100)*0.463), (int) ((windowSize.width/100)*0.26), 0, 0)); // 5 5 0 0
         taGenre.setEditable(false);
         taGenre.setLineWrap(true);
         taGenre.setWrapStyleWord(true);
@@ -476,7 +476,6 @@ public class Vue {
         
         lNote.setFont(new Font("Arial", Font.PLAIN, 24));
         lNote.setForeground(Color.white);
-        lNote.setBorder(BorderFactory.createEmptyBorder(5, 0, 0, 0));
      
         pNote.add(lNote);
         
@@ -500,11 +499,12 @@ public class Vue {
         JPanel pGamesHome = new JPanel();
         pGamesHome.setLayout(new FlowLayout(FlowLayout.LEFT));
         pGamesHome.setPreferredSize(new Dimension((windowSize.width/100)*55,(windowSize.height/100)*32));
-        pGamesHome.setBorder(BorderFactory.createEmptyBorder(10, 10, 0, 0));
-          
+        pGamesHome.setBorder(BorderFactory.createEmptyBorder((int) ((windowSize.height/100)*0.93), 40, 0, 0)); // 10 0 0 0
+        pGamesHome.setBackground(Color.red);  
+        
         JLabel lTitle = new JLabel("LES 5 JEUX LES MIEUX NOTES");
         lTitle.setFont(new Font("Arial", Font.PLAIN, 24));
-        lTitle.setBorder(BorderFactory.createEmptyBorder(0, 0, 0, 60));
+        lTitle.setBorder(BorderFactory.createEmptyBorder(0, 0, 0, (int) ((windowSize.width/100)*5))); // 0 0 0 70
         pBodyHome.add(lTitle);
         
         pGameMainHome.add(lTitle);
