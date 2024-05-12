@@ -354,7 +354,7 @@ public class Vue {
     	JPanel lpBodyGamePage = new JPanel();
     	lpBodyGamePage.setBackground(Color.white);
     	lpBodyGamePage.setPreferredSize(new Dimension((int) ((windowSize.width/100)*26),(windowSize.height/100)*47));
-    	lpBodyGamePage.setBorder(BorderFactory.createEmptyBorder(20, 50, 100, 0));
+    	lpBodyGamePage.setBorder(BorderFactory.createEmptyBorder((int) ((windowSize.height/100)*1.85), (int) ((windowSize.width/100)*2.6), (int) ((windowSize.height/100)*9.26), 0)); // 20 50 100
     	lpBodyGamePage.setLayout(new BorderLayout());
         lpBodyGamePage.add(imagePanel, BorderLayout.CENTER);
         
@@ -370,7 +370,7 @@ public class Vue {
         pBodyGamePage.add(lpBodyGamePage, BorderLayout.WEST);
         
         JPanel pTextGame = new JPanel();
-        pTextGame.setBorder(BorderFactory.createEmptyBorder(0, 0, 10, 10));
+        pTextGame.setBorder(BorderFactory.createEmptyBorder(0, 0, (int) ((windowSize.height/100)*0.926), (int) ((windowSize.width/100)*0.521))); // 0 0 10 10
         pTextGame.setBackground(Color.white);
         pTextGame.setPreferredSize(new Dimension((int) ((windowSize.width/100)*5.3),(windowSize.height/100)*12));
         pTextGame.setLayout(new BoxLayout(pTextGame, BoxLayout.Y_AXIS));
@@ -386,11 +386,11 @@ public class Vue {
         JPanel pcBodyGamePage = new JPanel();
         pcBodyGamePage.setBackground(Color.white);
         pcBodyGamePage.setLayout(new BoxLayout(pcBodyGamePage, BoxLayout.Y_AXIS));
-        pcBodyGamePage.setBorder(BorderFactory.createEmptyBorder(0, 50, 0, 0));
+        pcBodyGamePage.setBorder(BorderFactory.createEmptyBorder(0, (int) ((windowSize.width/100)*2.6), 0, 0)); // 0 50 0 0
         
         JPanel pDescGame = new JPanel();
         pDescGame.setLayout(new FlowLayout(FlowLayout.LEFT));
-        pDescGame.setBorder(BorderFactory.createEmptyBorder(10, 0, 0, 0));
+        pDescGame.setBorder(BorderFactory.createEmptyBorder((int) ((windowSize.height/100)*0.926), 0, 0, 0)); // 10 0 0 0
         pDescGame.setPreferredSize(new Dimension((int) ((windowSize.width/100)*20.8),(windowSize.height/100)*47));
         pDescGame.setBackground(Color.white);
         
@@ -398,7 +398,7 @@ public class Vue {
         lDescGame.setPreferredSize(new Dimension((int) ((windowSize.width/100)*46.8),(windowSize.height/100)*56));
         lDescGame.setBackground(Color.decode("#3c3f41"));
         lDescGame.setForeground(Color.white);
-        lDescGame.setBorder(BorderFactory.createEmptyBorder(5, 5, 0, 0));
+        lDescGame.setBorder(BorderFactory.createEmptyBorder((int) ((windowSize.height/100)*0.463), (int) ((windowSize.width/100)*0.26), 0, 0)); // 5 5 0 0
         lDescGame.setEditable(false);
         lDescGame.setLineWrap(true);
         lDescGame.setWrapStyleWord(true);
@@ -420,7 +420,7 @@ public class Vue {
         
         JLabel lOtherGame = new JLabel("JEU RECOMMANDE");
         lOtherGame.setFont(new Font("Arial", Font.PLAIN, 24));
-        lOtherGame.setBorder(BorderFactory.createEmptyBorder(10, 0, 0, 0));
+        lOtherGame.setBorder(BorderFactory.createEmptyBorder((int) ((windowSize.height/100)*0.926), 0, 0, (int) ((windowSize.width/100)*8.1))); // 10 0 0 155
         lOtherGame.setBackground(Color.red);
         
 
@@ -458,7 +458,7 @@ public class Vue {
         JPanel pGenreTag = new JPanel();
         pGenreTag.setLayout(new FlowLayout(FlowLayout.LEFT));
         pGenreTag.setPreferredSize(new Dimension((int) ((windowSize.width/100)*20.8),(windowSize.height/100)*19)); // 400 200
-        pGenreTag.setBorder(BorderFactory.createEmptyBorder(5, 0, 0, 0));
+        pGenreTag.setBorder(BorderFactory.createEmptyBorder((int) ((windowSize.height/100)*0.463), 0, 0, 0));
         pGenreTag.setBackground(Color.white);
         
         taGenre.setFont(new Font("Arial", Font.PLAIN, 24));
@@ -473,6 +473,7 @@ public class Vue {
         // NOTE DU JEU
         JPanel pNote = new JPanel();
         pNote.setPreferredSize((new Dimension((int) ((windowSize.width/100)*20.3125),(windowSize.height/100)*5))); // 390 50
+        pNote.setBorder(BorderFactory.createEmptyBorder((int) ((windowSize.height/100)*0.463), (int) ((windowSize.width/100)*0.78125), 0, 0)); // 5 15 0 0
         
         lNote.setFont(new Font("Arial", Font.PLAIN, 24));
         lNote.setForeground(Color.white);
@@ -499,12 +500,13 @@ public class Vue {
         JPanel pGamesHome = new JPanel();
         pGamesHome.setLayout(new FlowLayout(FlowLayout.LEFT));
         pGamesHome.setPreferredSize(new Dimension((windowSize.width/100)*55,(windowSize.height/100)*32));
-        pGamesHome.setBorder(BorderFactory.createEmptyBorder((int) ((windowSize.height/100)*0.93), 40, 0, 0)); // 10 0 0 0
+        pGamesHome.setBorder(BorderFactory.createEmptyBorder((int) ((windowSize.height/100)*0.93), (int) ((windowSize.width/100)*0.78125), 0, 0)); // 10 15 0 0
         pGamesHome.setBackground(Color.red);  
         
         JLabel lTitle = new JLabel("LES 5 JEUX LES MIEUX NOTES");
         lTitle.setFont(new Font("Arial", Font.PLAIN, 24));
-        lTitle.setBorder(BorderFactory.createEmptyBorder(0, 0, 0, (int) ((windowSize.width/100)*5))); // 0 0 0 70
+        lTitle.setPreferredSize(new Dimension((int) ((windowSize.width/100)*0.78125),(int) ((windowSize.height/100)*2.8))); // 30 30
+        lTitle.setBorder(BorderFactory.createEmptyBorder(0, 0, 0, (int) ((windowSize.width/100)*10.5))); // 0 0 0 200
         pBodyHome.add(lTitle);
         
         pGameMainHome.add(lTitle);
