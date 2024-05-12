@@ -165,6 +165,7 @@ public class Vue {
 	static int pageIndex;
 	static int pageIndexBackup;
 	static int index;
+	static int  indexGameBDD;
 	
 	
 	
@@ -176,7 +177,7 @@ public class Vue {
         }else {
         	index = jbGameTab.indexOf(originalButton);
         }
-        
+        //System.out.println(index);
         c.setButtonClickable(clonedButton, index);
         
         return clonedButton;
@@ -204,23 +205,18 @@ public class Vue {
         }
         
 		if(pageIndex==1) {
+			System.out.println(m.toString());
 			spTab[0].setVisible(true);
 		}else {
 			spTab[0].setVisible(false);
 		}
 		
 		if(pageIndex==2) {
+			System.out.println(m.toString());
 			spTab[1].setVisible(true);
 			
 			pBodyFav.removeAll();
-			
-			System.out.println(jbGameTab.size() + "a");
-			System.out.println(jbGameTabBackup.size() + "a2");
-			//c.RefreshGame();
-			
-			System.out.println(jbGameTab.size() + "b");
-			System.out.println(jbGameTabBackup.size() + "b2");
-			
+
 			c.RefreshGame();
 			
 			if(bFavGame.size() >0) {
@@ -230,8 +226,7 @@ public class Vue {
 		        	pBodyFav.add(gameToAdd);
 		        }
 			}
-			
-			
+	
 		}else {
 			spTab[1].setVisible(false);
 		}
@@ -583,6 +578,7 @@ public class Vue {
 			@Override
 			public void keyPressed(KeyEvent e) {
 				if(e.getKeyCode()==10) {
+					
 			        m.findGame(searchBar.getText());
 			        try {
 						c.ApplyButton();
@@ -662,18 +658,27 @@ public class Vue {
         	});
         }
         
+        
+        
         for(int i=0;i<jbGameTab.size();i++) {
         	final int index = i;
-  
+        		
         	c.setButtonClickable(jbGameTab.get(i), index);
         	
         }
-
         
         bAddFavorite.addMouseListener(new MouseAdapter() {
             public void mouseClicked(MouseEvent e) {
-            	if(!bFavGame.contains(gameIndex)) {
-            		bFavGame.add(gameIndex);
+            	
+            	for(int i=0;i<m.backupGame.length;i++) {
+            		if(m.game[gameIndex].getGameTitle().equals(m.backupGame[i].getGameTitle())) {
+            			indexGameBDD = i;
+            			System.out.println(i);
+            		}
+            	}
+            	
+            	if(!bFavGame.contains(indexGameBDD)) {
+            		bFavGame.add(indexGameBDD);
             	}
             }
     	});

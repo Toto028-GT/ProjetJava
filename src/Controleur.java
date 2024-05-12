@@ -54,7 +54,7 @@ public class Controleur {
 		
 		
 		Record[] t = null ;
-		System.out.println(Vue.pageIndexBackup);
+		//System.out.println(gameIndex + " a ");
 		
 		if(Vue.pageIndexBackup == 2 || Vue.pageIndexBackup == 0) {
 			t = Vue.m.backupGame;
@@ -204,8 +204,9 @@ public class Controleur {
            	Vue.spTab[0].setVisible(false);
            	Vue.spTab[1].setVisible(false);
            	
+
            	Vue.gameIndex = index;
-           	
+
            	Vue.c.SetGamePage(Vue.r, Vue.gameIndex, Vue.m);
            }
        });
@@ -215,13 +216,14 @@ public class Controleur {
        	Vue.r = Vue.m.game;
 		Vue.c.RefreshGame();
 		
-       for(int i=0;i<Vue.jbGameTab.size();i++) {
-       	final int index = i;
+		for(int i=0;i<Vue.jbGameTab.size();i++) {
+			final int index = i;
+			System.out.println(i);
  
-       	Vue.c.setButtonClickable(Vue.jbGameTab.get(i), index);
+			Vue.c.setButtonClickable(Vue.jbGameTab.get(i), index);
        	
        }
-		
+	
        Vue.pBodyGamePage.setVisible(false);
        Vue.pFootGamePage.setVisible(false);
        Vue.pBodyGame.setVisible(false);
