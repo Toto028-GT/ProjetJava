@@ -415,7 +415,7 @@ public class Vue {
       
         JPanel pGames = new JPanel();
         pGames.setLayout(new FlowLayout(FlowLayout.LEFT));
-        pGames.setBorder(BorderFactory.createEmptyBorder(40, 150, 0, 0));
+        pGames.setBorder(BorderFactory.createEmptyBorder( (int) ((windowSize.height/100)*3.7), (int) ((windowSize.width/100)*7.8125), 0, 0)); // 40 150 0 0
         
         
         JLabel lOtherGame = new JLabel("JEU RECOMMANDE");
@@ -701,6 +701,7 @@ public class Vue {
             }
     	});
 
+        
         /* --------------------------------------- */
         
         // CONTAINER DE TOUTS LES PANELS
