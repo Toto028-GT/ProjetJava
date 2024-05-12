@@ -482,7 +482,7 @@ public class Vue {
         
         // BOUTTON AJOUTER FAVORIS
         JButton bAddFavorite = new JButton("AJOUTER AUX FAVORIS");
-        bAddFavorite.setFont(new Font("Arial", Font.PLAIN, 24));
+        bAddFavorite.setFont(new Font("Arial", Font.PLAIN, (int) ((windowSize.width/100)*1.25))); // 24
         bAddFavorite.setPreferredSize((new Dimension((int) ((windowSize.width/100)*20.3125),(windowSize.height/100)*5))); // 390 50
         
         rpBodyGamePage.add(pGenreTag);
