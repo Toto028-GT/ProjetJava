@@ -191,7 +191,6 @@ public class Vue {
         }else {
         	index = jbGameTab.indexOf(originalButton);
         }
-        //System.out.println(index);
         c.setButtonClickable(clonedButton, index);
         
         return clonedButton;
@@ -202,6 +201,7 @@ public class Vue {
     	pageIndexBackup = pageIndex;
     	
     	if(pageIndex == 0 || pageIndex == 1) {
+    		//System.out.println("b");
             m.findGame("");
             c.ApplyButton();
     	}
@@ -227,6 +227,7 @@ public class Vue {
 		
 		if(pageIndex==2) {
 			//System.out.println(m.toString());
+
 			spTab[1].setVisible(true);
 			
 			pBodyFav.removeAll();
@@ -709,7 +710,7 @@ public class Vue {
             	for(int i=0;i<m.backupGame.length;i++) {
             		if(m.game[gameIndex].getGameTitle().equals(m.backupGame[i].getGameTitle())) {
             			indexGameBDD = i;
-            			System.out.println(i);
+            			//System.out.println(i);
             		}
             	}
             	if(!bFavGame.contains(indexGameBDD)) {

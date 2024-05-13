@@ -86,17 +86,19 @@ public class Modele {
 	//################################## METHODE DE SPECIAL ##############################################################
 	
 	public int[] getReco(int indexA,Record gameA) {
-		int[] comun = new int[this.game.length];
+		int[] comun = new int[this.backupGame.length];
+		
+		//System.out.println(this.backupGame.length);
 		
 		String[] str1 = gameA.getGenre().split(":");
         String[] genreGameA = str1[1].split(",");
 		
-		for(int i=0; i<this.game.length; i++) {
+		for(int i=0; i<this.backupGame.length; i++) {
 			if(i == indexA) {
 				comun[i] = -1;
 			}
 			else {
-				String[] str2 = this.game[i].getGenre().split(":");
+				String[] str2 = this.backupGame[i].getGenre().split(":");
 		        String[] genreJeux = str2[1].split(",");
 		        
 		        int x = this.comparerTableaux(genreGameA, genreJeux);

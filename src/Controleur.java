@@ -50,7 +50,8 @@ public class Controleur {
 		});
 	}
 	
-	public void SetGamePage(Record[] r, int gameIndex, Modele m) {	
+	public void SetGamePage(Record[] r, int gameIndex, Modele m) throws StreamReadException, DatabindException, IOException {	
+		System.out.println(gameIndex);
 		Vue.title.setText(r[gameIndex].getGameTitle());
 		Vue.title.setFont(new Font("Arial", Font.PLAIN, 48));
 		while(checkTextIfCutOffWidthJLabel(Vue.title)) {
@@ -65,14 +66,41 @@ public class Controleur {
 		
 		Vue.pGames.removeAll();
 		
-        JButton game =  Vue.cloneJButton(Vue.jbGameTab.get(m.getReco(gameIndex, r[gameIndex])[0]));
-        game.setPreferredSize(new Dimension((int) ((Vue.windowSize.width/100)*10.4),(Vue.windowSize.height/100)*28));
+		System.out.println(m.getReco(gameIndex, r[gameIndex]).length + " a");
+		
+		System.out.println(Vue.m.backupGame.length + " b");
+		
+		for(int i=0;i <m.getReco(gameIndex, r[gameIndex]).length;i++){
+			System.out.println(m.getReco(gameIndex, Vue.m.backupGame[gameIndex])[i] +  " c");
+			System.out.println(Vue.m.backupGame[m.getReco(gameIndex, Vue.m.backupGame[gameIndex])[i]] + " d");
+		}
+		
+		System.out.println(Vue.jbGameTab.size() + " e");
+		
+		JButton game = new JButton();
+		JButton game2 = new JButton();
+		JButton game3 = new JButton();
+		
+		/*if(Vue.pageIndexBackup == 1) {
+			game  =  Vue.cloneJButton(Vue.jbGameTab.get(m.getReco(gameIndex, r[gameIndex])[0]));    
+	        game2 =  Vue.cloneJButton(Vue.jbGameTab.get(m.getReco(gameIndex, r[gameIndex])[1]));        
+	        game3 =   Vue.cloneJButton(Vue.jbGameTab.get(m.getReco(gameIndex, r[gameIndex])[2]));
+		}else {
+	        game  =  Vue.cloneJButton(Vue.jbGameTabBackup.get(m.getReco(gameIndex, Vue.m.backupGame[gameIndex])[0]));    
+	        game2 =  Vue.cloneJButton(Vue.jbGameTabBackup.get(m.getReco(gameIndex, Vue.m.backupGame[gameIndex])[1]));        
+	        game3 =   Vue.cloneJButton(Vue.jbGameTabBackup.get(m.getReco(gameIndex, Vue.m.backupGame[gameIndex])[2]));
+		}*/
+		
+
+        game  =  Vue.cloneJButton(Vue.jbGameTabBackup.get(m.getReco(gameIndex, Vue.m.backupGame[gameIndex])[0]));    
+        game2 =  Vue.cloneJButton(Vue.jbGameTabBackup.get(m.getReco(gameIndex, Vue.m.backupGame[gameIndex])[1]));        
+        game3 =   Vue.cloneJButton(Vue.jbGameTabBackup.get(m.getReco(gameIndex, Vue.m.backupGame[gameIndex])[2]));
         
-        JButton game2 =  Vue.cloneJButton(Vue.jbGameTab.get(m.getReco(gameIndex, r[gameIndex])[1]));
-        game2.setPreferredSize(new Dimension((int) ((Vue.windowSize.width/100)*10.4),(Vue.windowSize.height/100)*28));
-        
-        JButton game3 =   Vue.cloneJButton(Vue.jbGameTab.get(m.getReco(gameIndex, r[gameIndex])[2]));
-        game3.setPreferredSize(new Dimension((int) ((Vue.windowSize.width/100)*10.4),(Vue.windowSize.height/100)*28));   
+		game.setPreferredSize(new Dimension((int) ((Vue.windowSize.width/100)*10.4),(Vue.windowSize.height/100)*28));
+		game2.setPreferredSize(new Dimension((int) ((Vue.windowSize.width/100)*10.4),(Vue.windowSize.height/100)*28));
+		game3.setPreferredSize(new Dimension((int) ((Vue.windowSize.width/100)*10.4),(Vue.windowSize.height/100)*28));  
+		
+		
 		
 		Vue.pGames.add(game);
         Vue.pGames.add(game2);
@@ -134,7 +162,7 @@ public class Controleur {
 		}
    }
    
-   public void RefreshGame() throws StreamReadException, DatabindException, IOException {
+   public void RefreshGame() {
 	   Vue.jbGameTab.clear();
 	   Vue.pBodyGame.removeAll();
 	   Vue.pBodyGame.setPreferredSize(new Dimension(Vue.windowSize.width,(Vue.windowSize.height/100)*95));
@@ -174,7 +202,8 @@ public class Controleur {
    		
            public void mouseClicked(MouseEvent e)
            {
-        	System.out.println(index);
+        	   
+        	//System.out.println(index);
         	   
            	Vue.pBodyGamePage.setVisible(true);
            	Vue.pFootGamePage.setVisible(true);
@@ -193,7 +222,11 @@ public class Controleur {
 
            	Vue.gameIndex = index;
 
-           	Vue.c.SetGamePage(Vue.r, Vue.gameIndex, Vue.m);
+           	try {
+				Vue.c.SetGamePage(Vue.r, Vue.gameIndex, Vue.m);
+			} catch (IOException e1) {
+				e1.printStackTrace();
+			}
            }
        });
    }
@@ -201,6 +234,8 @@ public class Controleur {
    public void ApplyButton() throws StreamReadException, DatabindException, IOException {
        	Vue.r = Vue.m.game;
 		Vue.c.RefreshGame();
+		
+		//System.out.println("a");
 		
 		for(int i=0;i<Vue.jbGameTab.size();i++) {
 			final int index = i;
@@ -247,11 +282,6 @@ public class Controleur {
 				} catch (IOException e1) {
 					e1.printStackTrace();
 				}   
-
-            	   for(int i=0;i<Vue.m.backupGame.length;i++) {
-            		   System.out.println(Vue.m.backupGame[i]);
-            	   }
-            	   
             	   
         	   }
         	   Vue.m.sortByGenre(selectedOption1);
