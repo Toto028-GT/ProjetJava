@@ -5,6 +5,8 @@ import java.awt.Font;
 import java.awt.FontMetrics;
 import java.awt.Rectangle;
 import java.awt.Toolkit;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
 import java.awt.event.ComponentAdapter;
 import java.awt.event.ComponentEvent;
 import java.awt.event.ItemEvent;
@@ -31,6 +33,7 @@ import com.fasterxml.jackson.databind.DatabindException;
 public class Controleur {
 	
 	int trashVar = 0;
+	boolean isSortByNote = false;
 	public static void main(String[] args) throws StreamReadException, DatabindException, IOException {
 		 
 		
@@ -218,10 +221,7 @@ public class Controleur {
 		
 		for(int i=0;i<Vue.jbGameTab.size();i++) {
 			final int index = i;
-			//System.out.println(i);
- 
 			Vue.c.setButtonClickable(Vue.jbGameTab.get(i), index);
-       	
        }
 	
        Vue.pBodyGamePage.setVisible(false);
@@ -241,26 +241,14 @@ public class Controleur {
        Vue.cbCheckBox.addItemListener((ItemListener) new ItemListener() {
            public void itemStateChanged(ItemEvent e) {
                if (e.getStateChange() == ItemEvent.SELECTED) {
-               	
-            	   	Vue.m.sortByScore(Vue.m.game);   
-            	   	Vue.m.sortByScore(Vue.m.backupGame); 
-            	   	presetActionListener();
-
-               } else {
-                   try {
-					Vue.m.enregistrer();
-					RefreshGame();
-					ApplyButton();
-					Vue.pBodyGame.setVisible(false);
-               		Vue.pBodyGame.setVisible(true);
-				} catch (IOException e1) {
-					e1.printStackTrace();
-				}
+            	   isSortByNote = true;
+               }else {
+            	   isSortByNote = false;
                }
            }
        });
        
-	   Vue.jbBoxGenre.addItemListener((ItemListener) new ItemListener() {
+	 /*  Vue.jbBoxGenre.addItemListener((ItemListener) new ItemListener() {
     	   public void itemStateChanged(ItemEvent e) {
                if (e.getStateChange() == ItemEvent.SELECTED) {
                    String selectedOption = (String) Vue.jbBoxGenre.getSelectedItem();
@@ -288,7 +276,48 @@ public class Controleur {
                    presetActionListener();
                }
            }
+       });*/
+	   
+       Vue.bValider.addActionListener(new ActionListener() {
+           public void actionPerformed(ActionEvent e) {
+        	   try {
+				Vue.m.enregistrer();
+			} catch (IOException e1) {
+				e1.printStackTrace();
+			}
+        	   String selectedOption1 = (String) Vue.jbBoxGenre.getSelectedItem();
+        	   String selectedOption2 = (String) Vue.jbBoxPlatform.getSelectedItem();
+        	   String selectedOption3 = (String) Vue.jbBoxDev.getSelectedItem();
+        	   if(isSortByNote) {
+            	   Vue.m.sortByScore(Vue.m.game);   
+           	   	   Vue.m.sortByScore(Vue.m.backupGame); 
+        	   }
+        	   Vue.m.sortByGenre(selectedOption1);
+        	   Vue.m.sortByPlatform(selectedOption2);
+        	   Vue.m.sortByDEV(selectedOption3);
+        	   presetActionListener();
+           }
        });
+       
+	   
+       Vue.bReset.addActionListener(new ActionListener() {
+           public void actionPerformed(ActionEvent e) {
+        	   try {
+				Vue.m.enregistrer();
+			} catch (IOException e1) {
+				e1.printStackTrace();
+			}
+        	   Vue.jbBoxGenre.setSelectedIndex(0);
+        	   Vue.jbBoxPlatform.setSelectedIndex(0);
+        	   Vue.jbBoxDev.setSelectedIndex(0);
+        	   Vue.cbCheckBox.setSelected(false);
+        	   presetActionListener();
+        	
+           }
+       });
+	   
+       
+       
       
    }
    

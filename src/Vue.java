@@ -172,12 +172,14 @@ public class Vue {
 	static int  indexGameBDD;
 	
 	static JCheckBox cbCheckBox = new JCheckBox("Trier par note"); 
-    static String[] optionsGenre = { "Action", "Strategy", "Shooter" };
+    static String[] optionsGenre = { "Aucun", "Action", "Strategy", "Shooter" };
 	static JComboBox<String> jbBoxGenre = new JComboBox<>(optionsGenre);
-    static String[] optionsPlatform = { "PC", "PlayStation4", "PlayStation3" };
+    static String[] optionsPlatform = { "Aucun", "PC", "PlayStation4", "PlayStation3" };
     static JComboBox<String> jbBoxPlatform = new JComboBox<>(optionsPlatform);
-    static String[] optionsDev = { "Sports Interactive", "Ubisoft", "Rockstar North" };
+    static String[] optionsDev = { "Aucun", "Sports Interactive", "Ubisoft", "Rockstar North" };
     static JComboBox<String> jbBoxDev = new JComboBox<>(optionsDev);
+    static JButton bValider = new JButton("valider");
+    static JButton bReset = new JButton("reset");
 	
 	
 	
@@ -341,8 +343,6 @@ public class Vue {
         JPanel pReset = new JPanel();
         pReset.setBackground(colorHead);
         pValider.setBackground(colorHead);
-        JButton bValider = new JButton("valider");
-        JButton bReset = new JButton("reset");
         pValider.add(bValider);
         pReset.add(bReset);
         pValiderAndReset.add(pValider);

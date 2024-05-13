@@ -156,7 +156,7 @@ public class Modele {
 	public Record[] findGame(String str) {
 		List<Record> newGame = new ArrayList<>();
 
-		this.game = this.backupGame;
+		//this.game = this.backupGame;
 		
 		for(int i=0; i<this.game.length; i++) {
 			int find = this.game[i].getGameTitle().toUpperCase().indexOf(str.toUpperCase());
@@ -178,49 +178,50 @@ public class Modele {
 	public void sortByGenre(String genreA) {
 		List<Record> newGame = new ArrayList<>();
 		
-		this.game = this.backupGame;
-		
-		for(int i=0; i<this.game.length; i++) {
-			int find = this.game[i].getGenre().toUpperCase().indexOf(genreA.toUpperCase());
-			if (find != -1 ) {
-				newGame.add(this.game[i]);
+		if(genreA != "Aucun") {
+			for(int i=0; i<this.game.length; i++) {
+				int find = this.game[i].getGenre().toUpperCase().indexOf(genreA.toUpperCase());
+				if (find != -1 ) {
+					newGame.add(this.game[i]);
+				}
 			}
+			Record[] arr = newGame.toArray(new Record[newGame.size()]);
+			
+			this.game = arr;
 		}
-		Record[] arr = newGame.toArray(new Record[newGame.size()]);
-		
-		this.game = arr;
 	}
 	
 	public void sortByPlatform(String PlatformA) {
 		List<Record> newGame = new ArrayList<>();
 		
-		this.game = this.backupGame;
-		
-		for(int i=0; i<this.game.length; i++) {
-			int find = this.game[i].getPlatforms().toUpperCase().indexOf(PlatformA.toUpperCase());
-			if (find != -1 ) {
-				newGame.add(this.game[i]);
+		if(PlatformA != "Aucun")
+		{
+			for(int i=0; i<this.game.length; i++) {
+				int find = this.game[i].getPlatforms().toUpperCase().indexOf(PlatformA.toUpperCase());
+				if (find != -1 ) {
+					newGame.add(this.game[i]);
+				}
 			}
+			Record[] arr = newGame.toArray(new Record[newGame.size()]);
+			this.game = arr;
 		}
-		Record[] arr = newGame.toArray(new Record[newGame.size()]);
-		
-		this.game = arr;
 	}
 	
 	public void sortByDEV(String devA) {
 		List<Record> newGame = new ArrayList<>();
 		
-		this.game = this.backupGame;
-		
-		for(int i=0; i<this.game.length; i++) {
-			int find = this.game[i].getGameDeveloper().toUpperCase().indexOf(devA.toUpperCase());
-			if (find != -1 ) {
-				newGame.add(this.game[i]);
+		if(devA != "Aucun") {
+			for(int i=0; i<this.game.length; i++) {
+				int find = this.game[i].getGameDeveloper().toUpperCase().indexOf(devA.toUpperCase());
+				if (find != -1 ) {
+					newGame.add(this.game[i]);
+				}
 			}
+			Record[] arr = newGame.toArray(new Record[newGame.size()]);
+			
+			this.game = arr;
 		}
-		Record[] arr = newGame.toArray(new Record[newGame.size()]);
-		
-		this.game = arr;
+	
 	}
 	
 	//################################## METHODE AUXILIAIRE ##############################################################
