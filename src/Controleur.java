@@ -82,7 +82,6 @@ public class Controleur {
 	
 	public void SetReviewHomePage(Record[] r, int gameIndex, int gameIndex2) {
 		
-
 		CutOffWidth(Vue.lReviewGameHome[gameIndex], gameIndex, gameIndex2, r);
 		
 		FontMetrics fontMetrics = Vue.lReviewGameHome[gameIndex].getFontMetrics(Vue.lReviewGameHome[gameIndex].getFont());
@@ -182,7 +181,7 @@ public class Controleur {
            	Vue.pFootGamePage.setVisible(true);
            	
            	Vue.pBodyGame.setVisible(false);
-           	Vue.pFootGame.setVisible(false);
+           	Vue.pHeadGame.setVisible(false);
            	
            	Vue.pBodyHome.setVisible(false);
            	Vue.pFootHome.setVisible(false);
@@ -216,13 +215,13 @@ public class Controleur {
        Vue.pBodyGamePage.setVisible(false);
        Vue.pFootGamePage.setVisible(false);
        Vue.pBodyGame.setVisible(false);
-       Vue.pFootGame.setVisible(false);
+       Vue.pHeadGame.setVisible(false);
        Vue.pBodyHome.setVisible(false);
        Vue.pFootHome.setVisible(false);
    	   Vue.spTab[0].setVisible(false);
    	   Vue.spTab[1].setVisible(false);
    	   Vue.pBodyGame.setVisible(true);
-   	   Vue.pFootGame.setVisible(true);
+   	   Vue.pHeadGame.setVisible(true);
    	   Vue.spTab[0].setVisible(true);
    }
  

@@ -14,6 +14,8 @@ import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.awt.event.ComponentAdapter;
 import java.awt.event.ComponentEvent;
+import java.awt.event.ItemEvent;
+import java.awt.event.ItemListener;
 import java.awt.event.KeyEvent;
 import java.awt.event.KeyListener;
 import java.awt.event.MouseAdapter;
@@ -35,6 +37,8 @@ import javax.swing.BoxLayout;
 import javax.swing.Icon;
 import javax.swing.ImageIcon;
 import javax.swing.JButton;
+import javax.swing.JCheckBox;
+import javax.swing.JComboBox;
 import javax.swing.JFrame;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
@@ -125,7 +129,7 @@ public class Vue {
 	static JPanel pFootGamePage = new JPanel();
 	
 	static JPanel pBodyGame = new JPanel();
-	static JPanel pFootGame = new JPanel();
+	static JPanel pHeadGame = new JPanel();
 	
 	static JPanel pBodyHome = new JPanel();
 	static JPanel pFootHome = new JPanel();
@@ -136,7 +140,7 @@ public class Vue {
 	static JScrollPane scrollListGameBodyHome = new JScrollPane(pBodyGame); 
 	static JScrollPane scrollListBodyFav      = new JScrollPane(pBodyFav);
 	static JScrollPane[] spTab                = {scrollListGameBodyHome, scrollListBodyFav};
-	static JPanel[][] pTab                    = { {pBodyHome,pFootHome} , {pBodyGame, pFootGame}, {pBodyFav,pFootFav}, /*{pBodyMyGame,pFootMyGame},*/ {pBodyGamePage,pFootGamePage}};
+	static JPanel[][] pTab                    = { {pBodyHome,pFootHome} , {pBodyGame, pHeadGame}, {pBodyFav,pFootFav}, /*{pBodyMyGame,pFootMyGame},*/ {pBodyGamePage,pFootGamePage}};
 	
 	static JPanel pTextGame            = new JPanel();
 	static JPanel container            = new JPanel();
@@ -283,7 +287,7 @@ public class Vue {
         // PANEL BODY JEUX
     	pBodyGame.setVisible(false);
     	pBodyGame.setBackground(Color.white);
-        pBodyGame.setPreferredSize(new Dimension(windowSize.width,(windowSize.height/100)*95));
+        pBodyGame.setPreferredSize(new Dimension(windowSize.width,(windowSize.height/100)*75));
         
        // REFRESH
         c.RefreshGame();
@@ -294,9 +298,86 @@ public class Vue {
         scrollListGameBodyHome.getVerticalScrollBar().setUnitIncrement(20);
         scrollListGameBodyHome.setVisible(false);
         
-        // PANEL FOOT JEUX
-    	pFootGame.setVisible(false);
-        pFootGame.setPreferredSize(new Dimension(windowSize.width,(windowSize.height/100)*0));
+        // PANEL HEAD JEUX
+        
+        Color colorHead = Color.decode("#6085");
+        
+    	pHeadGame.setVisible(false);
+        pHeadGame.setPreferredSize(new Dimension(windowSize.width,(windowSize.height/100)*20));
+        pHeadGame.setBackground(colorHead);
+        pHeadGame.setLayout(new GridLayout(0,5));
+        
+        JPanel pSortByScore = new JPanel();
+        pSortByScore.setBackground(colorHead);
+        JCheckBox cbCheckBox = new JCheckBox("Trier par note");   
+        pSortByScore.add(cbCheckBox);
+        
+        cbCheckBox.addItemListener((ItemListener) new ItemListener() {
+            public void itemStateChanged(ItemEvent e) {
+                if (e.getStateChange() == ItemEvent.SELECTED) {
+                	
+                   m.sortByScore(m.game);   
+                   try {
+					c.RefreshGame();
+					c.ApplyButton();
+				} catch (StreamReadException e1) {
+					// TODO Auto-generated catch block
+					e1.printStackTrace();
+				} catch (DatabindException e1) {
+					// TODO Auto-generated catch block
+					e1.printStackTrace();
+				} catch (IOException e1) {
+					// TODO Auto-generated catch block
+					e1.printStackTrace();
+				}
+                   pBodyGame.setVisible(false);
+                   pBodyGame.setVisible(true);
+                   
+                   System.out.println(m.game.toString());
+                } else {
+                    // La case à cocher a été décochée
+                    System.out.println("Case à cocher décochée");
+                }
+            }
+        });
+
+        JPanel pSortByGenre = new JPanel();
+        pSortByGenre.setBackground(colorHead);
+        String[] optionsGenre = { "genre1", "Option 2", "Option 3" };
+        JComboBox<String> jbBoxGenre = new JComboBox<>(optionsGenre);
+        pSortByGenre.add(jbBoxGenre);
+        
+        JPanel pSortByPlatform = new JPanel();
+        pSortByPlatform.setBackground(colorHead);
+        String[] optionsPlatform = { "Platform1", "Option 2", "Option 3" };
+        JComboBox<String> jbBoxPlatform = new JComboBox<>(optionsPlatform);
+        pSortByPlatform.add(jbBoxPlatform);
+        
+        JPanel pSortByDev = new JPanel();
+        pSortByDev.setBackground(colorHead);
+        String[] optionsDev = { "DEV 1", "Option 2", "Option 3" };
+        JComboBox<String> jbBoxDev = new JComboBox<>(optionsDev);
+        pSortByDev.add(jbBoxDev);
+        
+        JPanel pValiderAndReset = new JPanel();
+        pValiderAndReset.setBackground(colorHead);
+        pValiderAndReset.setLayout(new FlowLayout(FlowLayout.LEFT));
+        JPanel pValider = new JPanel();
+        JPanel pReset = new JPanel();
+        pReset.setBackground(colorHead);
+        pValider.setBackground(colorHead);
+        JButton bValider = new JButton("valider");
+        JButton bReset = new JButton("reset");
+        pValider.add(bValider);
+        pReset.add(bReset);
+        pValiderAndReset.add(pValider);
+        pValiderAndReset.add(pReset);
+        
+        pHeadGame.add(pSortByScore);
+        pHeadGame.add(pSortByGenre);
+        pHeadGame.add(pSortByPlatform);
+        pHeadGame.add(pSortByDev);
+        pHeadGame.add(pValiderAndReset);
         
         /* --------------------------------------- */
         
@@ -673,7 +754,6 @@ public class Vue {
             	for(int i=0;i<m.backupGame.length;i++) {
             		if(m.game[gameIndex].getGameTitle().equals(m.backupGame[i].getGameTitle())) {
             			indexGameBDD = i;
-            			System.out.println(i);
             		}
             	}
             	
@@ -694,8 +774,8 @@ public class Vue {
         container.add(pBodyHome);
         container.add(pFootHome);
         
+        container.add(pHeadGame);
         container.add(scrollListGameBodyHome);
-        container.add(pFootGame);
         
         container.add(scrollListBodyFav);
         container.add(pFootFav);
