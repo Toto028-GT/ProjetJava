@@ -57,7 +57,7 @@ public class Controleur {
 		Record[] t;
 		
 		
-		if(Vue.isGamePageLastPage) {
+		if(Vue.isGamePageLastPage || Vue.pageIndexBackup == 2) {
 			t = Vue.m.backupGame;
 		}else {
 			t = r;
@@ -227,6 +227,9 @@ public class Controleur {
            public void mouseClicked(MouseEvent e)
            {
         	
+        	Vue.wayButton.add(0);
+        	System.out.println(Vue.wayButton.size());
+
         	   
            	Vue.pBodyGamePage.setVisible(true);
            	Vue.pFootGamePage.setVisible(true);

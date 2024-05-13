@@ -124,6 +124,7 @@ public class Vue {
 	static ArrayList<JButton> jbGameTab = new ArrayList<JButton>();
 	static ArrayList<JButton> jbGameTabBackup = new ArrayList<JButton>();
 	static ArrayList<Integer> bFavGame  = new ArrayList<Integer>();
+	static ArrayList<Integer> wayButton = new ArrayList<Integer>();
 	
 	static JPanel pBodyGamePage = new JPanel();
 	static JPanel pFootGamePage = new JPanel();
@@ -204,6 +205,7 @@ public class Vue {
     	pageIndexBackup = pageIndex;
     	isGamePageLastPage = false;
     	isAddFavoriteLastPage = false;
+    	wayButton.clear();
     	
     	if(pageIndex == 0 || pageIndex == 1) {
     		//System.out.println("b");
@@ -643,6 +645,7 @@ public class Vue {
 			        m.findGame(searchBar.getText());
 			        isGamePageLastPage = false;
 			        isAddFavoriteLastPage = false;
+			        wayButton.clear();
 			        System.out.println(isGamePageLastPage + "neuille2");
 			        m.sortByGenre((String) jbBoxGenre.getSelectedItem());
 			        m.sortByPlatform((String) jbBoxPlatform.getSelectedItem());
@@ -717,24 +720,25 @@ public class Vue {
         bAddFavorite.addMouseListener(new MouseAdapter() {
             public void mouseClicked(MouseEvent e) {
             	
-            	System.out.println(m.toString());
+            	/*System.out.println(m.toString());
             	for(int i=0; i<m.backupGame.length;i++) {
             		System.out.print(m.backupGame[i] + " / ");
             	}
             	System.out.println("");
             	
             	System.out.println(gameIndex +"gameIndex");
-            	System.out.println(isAddFavoriteLastPage);
+            	System.out.println(isAddFavoriteLastPage);*/
             	
-            	if(isAddFavoriteLastPage) {
+            	//System.out.println(wayButton.size());
+            	if(wayButton.size() > 0) {
+            		System.out.println("aaaaaaaaaaaaaaaaaaaaa");
             		for(int i=0;i<m.backupGame.length;i++) {
                 		if(m.backupGame[gameIndex].getGameTitle().equals(m.backupGame[i].getGameTitle())) {
                 			indexGameBDD = i;
-                			System.out.println(i);
                 		}
                 	}
             		
-            		System.out.println("aaaaaaaaaaaaaaaaaaaaaa");
+            		//System.out.println("aaaaaaaaaaaaaaaaaaaaaa");
             	}else {
                 	for(int i=0;i<m.backupGame.length;i++) {
                 		if(m.game[gameIndex].getGameTitle().equals(m.backupGame[i].getGameTitle())) {
@@ -748,16 +752,16 @@ public class Vue {
             		bFavGame.add(indexGameBDD);
             	}
             	
-            	System.out.println("-----------------------------");
+            	/*System.out.println("-----------------------------");
             	
             	System.out.println(m.toString());
             	for(int i=0; i<m.backupGame.length;i++) {
             		System.out.print(m.backupGame[i] + " / ");
             	}
             	System.out.println("");
-            	
+            	*/
             	isAddFavoriteLastPage = true;
-
+            	
             }
             
 
