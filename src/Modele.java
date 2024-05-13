@@ -155,7 +155,7 @@ public class Modele {
 	//################################## METHODE DE TRIE ##############################################################
 	public Record[] findGame(String str) {
 		List<Record> newGame = new ArrayList<>();
-		
+
 		this.game = this.backupGame;
 		
 		for(int i=0; i<this.game.length; i++) {
@@ -178,6 +178,8 @@ public class Modele {
 	public void sortByGenre(String genreA) {
 		List<Record> newGame = new ArrayList<>();
 		
+		this.game = this.backupGame;
+		
 		for(int i=0; i<this.game.length; i++) {
 			int find = this.game[i].getGenre().toUpperCase().indexOf(genreA.toUpperCase());
 			if (find != -1 ) {
@@ -192,6 +194,8 @@ public class Modele {
 	public void sortByPlatform(String PlatformA) {
 		List<Record> newGame = new ArrayList<>();
 		
+		this.game = this.backupGame;
+		
 		for(int i=0; i<this.game.length; i++) {
 			int find = this.game[i].getPlatforms().toUpperCase().indexOf(PlatformA.toUpperCase());
 			if (find != -1 ) {
@@ -205,6 +209,8 @@ public class Modele {
 	
 	public void sortByDEV(String devA) {
 		List<Record> newGame = new ArrayList<>();
+		
+		this.game = this.backupGame;
 		
 		for(int i=0; i<this.game.length; i++) {
 			int find = this.game[i].getGameDeveloper().toUpperCase().indexOf(devA.toUpperCase());
@@ -268,14 +274,13 @@ public class Modele {
 		
 		System.out.println(p.getPlatform());*/
 	
-		p.findGame("Assassin's");
-		System.out.println(p.toString());
+		//p.findGame("Assassin's");
+		//System.out.println(p.toString());
 		//p.sortByPlatform("PlayStation4");
 		//System.out.println(p.toString());
 		
 		
 		p.sortByScore(p.game);
-		System.out.println(p.toString());
 		
 		//p.sortByDEV("Ubisoft");
 		//System.out.println(p.toString());

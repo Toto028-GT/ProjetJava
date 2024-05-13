@@ -171,6 +171,14 @@ public class Vue {
 	static int index;
 	static int  indexGameBDD;
 	
+	static JCheckBox cbCheckBox = new JCheckBox("Trier par note"); 
+    static String[] optionsGenre = { "Action", "Strategy", "Shooter" };
+	static JComboBox<String> jbBoxGenre = new JComboBox<>(optionsGenre);
+    static String[] optionsPlatform = { "PC", "PlayStation4", "PlayStation3" };
+    static JComboBox<String> jbBoxPlatform = new JComboBox<>(optionsPlatform);
+    static String[] optionsDev = { "Sports Interactive", "Ubisoft", "Rockstar North" };
+    static JComboBox<String> jbBoxDev = new JComboBox<>(optionsDev);
+	
 	
 	
     public static JButton cloneJButton(JButton originalButton) {
@@ -209,14 +217,14 @@ public class Vue {
         }
         
 		if(pageIndex==1) {
-			System.out.println(m.toString());
+			//System.out.println(m.toString());
 			spTab[0].setVisible(true);
 		}else {
 			spTab[0].setVisible(false);
 		}
 		
 		if(pageIndex==2) {
-			System.out.println(m.toString());
+			//System.out.println(m.toString());
 			spTab[1].setVisible(true);
 			
 			pBodyFav.removeAll();
@@ -309,54 +317,21 @@ public class Vue {
         
         JPanel pSortByScore = new JPanel();
         pSortByScore.setBackground(colorHead);
-        JCheckBox cbCheckBox = new JCheckBox("Trier par note");   
         pSortByScore.add(cbCheckBox);
+        //cbCheckBox.
+        c.addFiltreListener();
         
-        cbCheckBox.addItemListener((ItemListener) new ItemListener() {
-            public void itemStateChanged(ItemEvent e) {
-                if (e.getStateChange() == ItemEvent.SELECTED) {
-                	
-                   m.sortByScore(m.game);   
-                   try {
-					c.RefreshGame();
-					c.ApplyButton();
-				} catch (StreamReadException e1) {
-					// TODO Auto-generated catch block
-					e1.printStackTrace();
-				} catch (DatabindException e1) {
-					// TODO Auto-generated catch block
-					e1.printStackTrace();
-				} catch (IOException e1) {
-					// TODO Auto-generated catch block
-					e1.printStackTrace();
-				}
-                   pBodyGame.setVisible(false);
-                   pBodyGame.setVisible(true);
-                   
-                   System.out.println(m.game.toString());
-                } else {
-                    // La case à cocher a été décochée
-                    System.out.println("Case à cocher décochée");
-                }
-            }
-        });
 
         JPanel pSortByGenre = new JPanel();
         pSortByGenre.setBackground(colorHead);
-        String[] optionsGenre = { "genre1", "Option 2", "Option 3" };
-        JComboBox<String> jbBoxGenre = new JComboBox<>(optionsGenre);
         pSortByGenre.add(jbBoxGenre);
         
         JPanel pSortByPlatform = new JPanel();
         pSortByPlatform.setBackground(colorHead);
-        String[] optionsPlatform = { "Platform1", "Option 2", "Option 3" };
-        JComboBox<String> jbBoxPlatform = new JComboBox<>(optionsPlatform);
         pSortByPlatform.add(jbBoxPlatform);
         
         JPanel pSortByDev = new JPanel();
         pSortByDev.setBackground(colorHead);
-        String[] optionsDev = { "DEV 1", "Option 2", "Option 3" };
-        JComboBox<String> jbBoxDev = new JComboBox<>(optionsDev);
         pSortByDev.add(jbBoxDev);
         
         JPanel pValiderAndReset = new JPanel();

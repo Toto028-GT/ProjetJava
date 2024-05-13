@@ -7,6 +7,8 @@ import java.awt.Rectangle;
 import java.awt.Toolkit;
 import java.awt.event.ComponentAdapter;
 import java.awt.event.ComponentEvent;
+import java.awt.event.ItemEvent;
+import java.awt.event.ItemListener;
 import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
 import java.io.IOException;
@@ -15,11 +17,13 @@ import java.net.URL;
 
 import javax.swing.ImageIcon;
 import javax.swing.JButton;
+import javax.swing.JComboBox;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
 import javax.swing.JTextArea;
 import javax.swing.SwingUtilities;
 import javax.swing.text.BadLocationException;
+import javax.tools.FileObject;
 
 import com.fasterxml.jackson.core.exc.StreamReadException;
 import com.fasterxml.jackson.databind.DatabindException;
@@ -140,7 +144,7 @@ public class Controleur {
 	   Vue.jbGameTab.clear();
 	   Vue.pBodyGame.removeAll();
 	   Vue.pBodyGame.setPreferredSize(new Dimension(Vue.windowSize.width,(Vue.windowSize.height/100)*95));
-	   
+   
        for(int i=0; i<Vue.r.length;i++) {
        	try {
 				URL imageURL = new URL(Vue.r[i].getGamePoster());
@@ -159,12 +163,14 @@ public class Controleur {
            	
            	if(trashVar == 0) {
            		Vue.jbGameTabBackup.add(jLGame);
+           		//System.out.println("a");
            	}
 	        	
 			} catch (IOException e) {
 				e.printStackTrace();
 			}  	
        }
+      
        
    	   trashVar=1;
        
@@ -176,6 +182,12 @@ public class Controleur {
    		
            public void mouseClicked(MouseEvent e)
            {
+        	   
+       		System.out.println(Vue.m.toString());
+    		for(int i=0;i<Vue.m.backupGame.length;i++) {
+    			System.out.println(Vue.m.backupGame[i] + " a ");
+    		}
+        	   
         	   
            	Vue.pBodyGamePage.setVisible(true);
            	Vue.pFootGamePage.setVisible(true);
@@ -206,7 +218,7 @@ public class Controleur {
 		
 		for(int i=0;i<Vue.jbGameTab.size();i++) {
 			final int index = i;
-			System.out.println(i);
+			//System.out.println(i);
  
 			Vue.c.setButtonClickable(Vue.jbGameTab.get(i), index);
        	
@@ -225,6 +237,74 @@ public class Controleur {
    	   Vue.spTab[0].setVisible(true);
    }
  
+   public void addFiltreListener() {
+       Vue.cbCheckBox.addItemListener((ItemListener) new ItemListener() {
+           public void itemStateChanged(ItemEvent e) {
+               if (e.getStateChange() == ItemEvent.SELECTED) {
+               	
+            	   	Vue.m.sortByScore(Vue.m.game);   
+            	   	Vue.m.sortByScore(Vue.m.backupGame); 
+            	   	presetActionListener();
+
+               } else {
+                   try {
+					Vue.m.enregistrer();
+					RefreshGame();
+					ApplyButton();
+					Vue.pBodyGame.setVisible(false);
+               		Vue.pBodyGame.setVisible(true);
+				} catch (IOException e1) {
+					e1.printStackTrace();
+				}
+               }
+           }
+       });
+       
+	   Vue.jbBoxGenre.addItemListener((ItemListener) new ItemListener() {
+    	   public void itemStateChanged(ItemEvent e) {
+               if (e.getStateChange() == ItemEvent.SELECTED) {
+                   String selectedOption = (String) Vue.jbBoxGenre.getSelectedItem();
+                   Vue.m.sortByGenre(selectedOption);
+                   presetActionListener();
+               }
+           }
+       });
+	   
+	   Vue.jbBoxPlatform.addItemListener((ItemListener) new ItemListener() {
+    	   public void itemStateChanged(ItemEvent e) {
+               if (e.getStateChange() == ItemEvent.SELECTED) {
+                   String selectedOption = (String) Vue.jbBoxPlatform.getSelectedItem();
+                   Vue.m.sortByPlatform(selectedOption);
+                   presetActionListener();
+               }
+           }
+       });
+	   
+	   Vue.jbBoxDev.addItemListener((ItemListener) new ItemListener() {
+    	   public void itemStateChanged(ItemEvent e) {
+               if (e.getStateChange() == ItemEvent.SELECTED) {
+                   String selectedOption = (String) Vue.jbBoxDev.getSelectedItem();
+                   Vue.m.sortByDEV(selectedOption);
+                   presetActionListener();
+               }
+           }
+       });
+      
+   }
+   
+   public void presetActionListener() {
+       trashVar = 0;
+       try {
+		RefreshGame();
+		ApplyButton();
+	} catch (IOException e1) {
+		// TODO Auto-generated catch block
+		e1.printStackTrace();
+	}
+       Vue.pBodyGame.setVisible(false);
+  	   Vue.pBodyGame.setVisible(true);
+   }
+   
 	
 }
 	
