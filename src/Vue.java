@@ -180,17 +180,19 @@ public class Vue {
     static JComboBox<String> jbBoxDev = new JComboBox<>(optionsDev);
     static JButton bValider = new JButton("valider");
     static JButton bReset = new JButton("reset");
-	
+    
+    static boolean isGamePageLastPage = false;
+    static boolean isAddFavoriteLastPage = false;
 	
 	
     public static JButton cloneJButton(JButton originalButton) {
         JButton clonedButton = new JButton(originalButton.getIcon());
 
-        System.out.println(pageIndexBackup);
+        //System.out.println(pageIndexBackup);
         
         index = jbGameTabBackup.indexOf(originalButton);
         
-        System.out.println(index  + "e");
+        //System.out.println(index  + "e");
         
         c.setButtonClickable(clonedButton, index);
         
@@ -200,6 +202,8 @@ public class Vue {
     public static void ShowPage(int pageIndex, JPanel[][] pTab, JScrollPane[] spTab) throws StreamReadException, DatabindException, IOException { 	
     	
     	pageIndexBackup = pageIndex;
+    	isGamePageLastPage = false;
+    	isAddFavoriteLastPage = false;
     	
     	if(pageIndex == 0 || pageIndex == 1) {
     		//System.out.println("b");
@@ -635,7 +639,11 @@ public class Vue {
 			public void keyPressed(KeyEvent e) {
 				if(e.getKeyCode()==10) {
 					
+					
 			        m.findGame(searchBar.getText());
+			        isGamePageLastPage = false;
+			        isAddFavoriteLastPage = false;
+			        System.out.println(isGamePageLastPage + "neuille2");
 			        m.sortByGenre((String) jbBoxGenre.getSelectedItem());
 			        m.sortByPlatform((String) jbBoxPlatform.getSelectedItem());
 			        m.sortByDEV((String) jbBoxDev.getSelectedItem());
@@ -677,7 +685,7 @@ public class Vue {
         
         // ACTION DE L'UTILISATEUR 
         
-        JButton[] bHeadTab = {nameB,jvB,favB,/*myGameB ,*/bAddFavorite};
+        JButton[] bHeadTab = {nameB,jvB,favB,/*myGameB ,bAddFavorite*/};
 
         
         for(int i=0;i<bHeadTab.length;i++) {
@@ -693,6 +701,7 @@ public class Vue {
                 public void mouseClicked(MouseEvent e) {
 					try {
 						ShowPage(index,pTab,spTab);
+						System.out.println("clicked");
 					} catch (IOException e1) {
 						e1.printStackTrace();
 					}
@@ -708,16 +717,51 @@ public class Vue {
         bAddFavorite.addMouseListener(new MouseAdapter() {
             public void mouseClicked(MouseEvent e) {
             	
-            	for(int i=0;i<m.backupGame.length;i++) {
-            		if(m.game[gameIndex].getGameTitle().equals(m.backupGame[i].getGameTitle())) {
-            			indexGameBDD = i;
-            			//System.out.println(i);
-            		}
+            	System.out.println(m.toString());
+            	for(int i=0; i<m.backupGame.length;i++) {
+            		System.out.print(m.backupGame[i] + " / ");
             	}
+            	System.out.println("");
+            	
+            	System.out.println(gameIndex +"gameIndex");
+            	System.out.println(isAddFavoriteLastPage);
+            	
+            	if(isAddFavoriteLastPage) {
+            		for(int i=0;i<m.backupGame.length;i++) {
+                		if(m.backupGame[gameIndex].getGameTitle().equals(m.backupGame[i].getGameTitle())) {
+                			indexGameBDD = i;
+                			System.out.println(i);
+                		}
+                	}
+            		
+            		System.out.println("aaaaaaaaaaaaaaaaaaaaaa");
+            	}else {
+                	for(int i=0;i<m.backupGame.length;i++) {
+                		if(m.game[gameIndex].getGameTitle().equals(m.backupGame[i].getGameTitle())) {
+                			indexGameBDD = i;
+                			System.out.println(i);
+                		}
+                	}
+            	}
+            	
             	if(!bFavGame.contains(indexGameBDD)) {
             		bFavGame.add(indexGameBDD);
             	}
+            	
+            	System.out.println("-----------------------------");
+            	
+            	System.out.println(m.toString());
+            	for(int i=0; i<m.backupGame.length;i++) {
+            		System.out.print(m.backupGame[i] + " / ");
+            	}
+            	System.out.println("");
+            	
+            	isAddFavoriteLastPage = true;
+
             }
+            
+
+            
     	});
 
         

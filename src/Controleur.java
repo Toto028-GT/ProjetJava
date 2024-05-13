@@ -53,43 +53,67 @@ public class Controleur {
 	public void SetGamePage(Record[] r, int gameIndex, Modele m) throws StreamReadException, DatabindException, IOException {	
 		System.out.println(gameIndex + " g");
 		System.out.println(r.length + "h");
-		Vue.title.setText(r[gameIndex].getGameTitle());
+		System.out.println(Vue.isGamePageLastPage);
+		Record[] t;
+		
+		
+		if(Vue.isGamePageLastPage) {
+			t = Vue.m.backupGame;
+		}else {
+			t = r;
+		}
+		
+		/*Record[] newTab = new Record[4];
+		if(r.length == 1) {
+			
+			System.out.println(gameIndex);
+			
+			newTab[0] = r[0];
+			newTab[1] = m.backupGame[m.getReco(gameIndex, Vue.m.backupGame[gameIndex])[0]];
+			newTab[1] = m.backupGame[m.getReco(gameIndex, Vue.m.backupGame[gameIndex])[1]];
+			newTab[1] = m.backupGame[m.getReco(gameIndex, Vue.m.backupGame[gameIndex])[2]];
+			
+			//t = newTab;
+			System.out.println("aaaaaaaaaaaaaaaaaaaaaa");
+			
+			System.out.println(gameIndex);
+		
+			for(int i=0;i <m.getReco(gameIndex, newTab[gameIndex]).length;i++){
+				System.out.println(m.getReco(gameIndex, newTab[gameIndex])[i] +  " h");
+				System.out.println(Vue.m.backupGame[m.getReco(gameIndex, newTab[gameIndex])[i]] + " i");
+			}
+		}*/
+		
+
+	
+		//System.out.println(Vue.isGamePageLastPage);
+		
+		Vue.title.setText(t[gameIndex].getGameTitle());
 		Vue.title.setFont(new Font("Arial", Font.PLAIN, 48));
 		while(checkTextIfCutOffWidthJLabel(Vue.title)) {
 			Vue.title.setFont(new Font("Arial", Font.PLAIN, Vue.title.getFont().getSize() - 1));
 		}
-		Vue.date.setText(r[gameIndex].getGameReleaseDate());
-		Vue.author.setText(r[gameIndex].getGameDeveloper());
-		Vue.lDescGame.setText(r[gameIndex].getReviewText());
-		Vue.taGenre.setText(r[gameIndex].getGenre());
-		Vue.lNote.setText(r[gameIndex].getOverallMetascore() + " / 100");
-		Vue.imagePanel.loadImage(r[gameIndex].getGamePoster());
+		Vue.date.setText(t[gameIndex].getGameReleaseDate());
+		Vue.author.setText(t[gameIndex].getGameDeveloper());
+		Vue.lDescGame.setText(t[gameIndex].getReviewText());
+		Vue.taGenre.setText(t[gameIndex].getGenre());
+		Vue.lNote.setText(t[gameIndex].getOverallMetascore() + " / 100");
+		Vue.imagePanel.loadImage(t[gameIndex].getGamePoster());
 		
 		Vue.pGames.removeAll();
 		
-		System.out.println(m.getReco(gameIndex, r[gameIndex]).length + " a");
+		//System.out.println(m.getReco(gameIndex, r[gameIndex]).length + " a");
 		
-		System.out.println(Vue.m.backupGame.length + " b");
+		//System.out.println(Vue.m.backupGame.length + " b");
 		
-		for(int i=0;i <m.getReco(gameIndex, r[gameIndex]).length;i++){
+		/*for(int i=0;i <m.getReco(gameIndex, r[gameIndex]).length;i++){
 			System.out.println(m.getReco(gameIndex, Vue.m.backupGame[gameIndex])[i] +  " c");
 			System.out.println(Vue.m.backupGame[m.getReco(gameIndex, Vue.m.backupGame[gameIndex])[i]] + " d");
-		}
+		}*/
 		
 		JButton game = new JButton();
 		JButton game2 = new JButton();
 		JButton game3 = new JButton();
-		
-		/*if(Vue.pageIndexBackup == 1) {
-			game  =  Vue.cloneJButton(Vue.jbGameTab.get(m.getReco(gameIndex, r[gameIndex])[0]));    
-	        game2 =  Vue.cloneJButton(Vue.jbGameTab.get(m.getReco(gameIndex, r[gameIndex])[1]));        
-	        game3 =   Vue.cloneJButton(Vue.jbGameTab.get(m.getReco(gameIndex, r[gameIndex])[2]));
-		}else {
-	        game  =  Vue.cloneJButton(Vue.jbGameTabBackup.get(m.getReco(gameIndex, Vue.m.backupGame[gameIndex])[0]));    
-	        game2 =  Vue.cloneJButton(Vue.jbGameTabBackup.get(m.getReco(gameIndex, Vue.m.backupGame[gameIndex])[1]));        
-	        game3 =   Vue.cloneJButton(Vue.jbGameTabBackup.get(m.getReco(gameIndex, Vue.m.backupGame[gameIndex])[2]));
-		}*/
-		
 
         game  =  Vue.cloneJButton(Vue.jbGameTabBackup.get(m.getReco(gameIndex, Vue.m.backupGame[gameIndex])[0]));    
         game2 =  Vue.cloneJButton(Vue.jbGameTabBackup.get(m.getReco(gameIndex, Vue.m.backupGame[gameIndex])[1]));        
@@ -104,7 +128,8 @@ public class Controleur {
 		Vue.pGames.add(game);
         Vue.pGames.add(game2);
         Vue.pGames.add(game3);
-	
+        
+        Vue.isGamePageLastPage = true;
 	}
 	
 	public void SetReviewHomePage(Record[] r, int gameIndex, int gameIndex2) {
@@ -201,7 +226,7 @@ public class Controleur {
    		
            public void mouseClicked(MouseEvent e)
            {
-        	   
+        	
         	   
            	Vue.pBodyGamePage.setVisible(true);
            	Vue.pFootGamePage.setVisible(true);
@@ -231,11 +256,13 @@ public class Controleur {
    
    public void ApplyButton() throws StreamReadException, DatabindException, IOException {
        	Vue.r = Vue.m.game;
+       	
+       	
 		Vue.c.RefreshGame();
 		
 		//System.out.println("a");
 		
-		System.out.println(Vue.jbGameTab.size() + " f");
+		//System.out.println(Vue.jbGameTab.size() + " f");
 		
 		for(int i=0;i<Vue.jbGameTab.size();i++) {
 			final int index = i;
