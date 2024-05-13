@@ -182,6 +182,7 @@ public class Modele {
 		List<Record> newGame = new ArrayList<>();
 		
 		if(genreA != "Aucun") {
+			System.out.println(this.backupGame);
 			for(int i=0; i<this.game.length; i++) {
 				int find = this.game[i].getGenre().toUpperCase().indexOf(genreA.toUpperCase());
 				if (find != -1 ) {
