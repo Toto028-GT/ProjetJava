@@ -51,7 +51,8 @@ public class Controleur {
 	}
 	
 	public void SetGamePage(Record[] r, int gameIndex, Modele m) throws StreamReadException, DatabindException, IOException {	
-		System.out.println(gameIndex);
+		System.out.println(gameIndex + " g");
+		System.out.println(r.length + "h");
 		Vue.title.setText(r[gameIndex].getGameTitle());
 		Vue.title.setFont(new Font("Arial", Font.PLAIN, 48));
 		while(checkTextIfCutOffWidthJLabel(Vue.title)) {
@@ -74,8 +75,6 @@ public class Controleur {
 			System.out.println(m.getReco(gameIndex, Vue.m.backupGame[gameIndex])[i] +  " c");
 			System.out.println(Vue.m.backupGame[m.getReco(gameIndex, Vue.m.backupGame[gameIndex])[i]] + " d");
 		}
-		
-		System.out.println(Vue.jbGameTab.size() + " e");
 		
 		JButton game = new JButton();
 		JButton game2 = new JButton();
@@ -203,7 +202,6 @@ public class Controleur {
            public void mouseClicked(MouseEvent e)
            {
         	   
-        	//System.out.println(index);
         	   
            	Vue.pBodyGamePage.setVisible(true);
            	Vue.pFootGamePage.setVisible(true);
@@ -236,6 +234,8 @@ public class Controleur {
 		Vue.c.RefreshGame();
 		
 		//System.out.println("a");
+		
+		System.out.println(Vue.jbGameTab.size() + " f");
 		
 		for(int i=0;i<Vue.jbGameTab.size();i++) {
 			final int index = i;

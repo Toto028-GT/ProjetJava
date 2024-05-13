@@ -186,11 +186,12 @@ public class Vue {
     public static JButton cloneJButton(JButton originalButton) {
         JButton clonedButton = new JButton(originalButton.getIcon());
 
-        if(pageIndexBackup == 2) {
-        	index = jbGameTabBackup.indexOf(originalButton);
-        }else {
-        	index = jbGameTab.indexOf(originalButton);
-        }
+        System.out.println(pageIndexBackup);
+        
+        index = jbGameTabBackup.indexOf(originalButton);
+        
+        System.out.println(index  + "e");
+        
         c.setButtonClickable(clonedButton, index);
         
         return clonedButton;
