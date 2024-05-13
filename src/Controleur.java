@@ -44,14 +44,7 @@ public class Controleur {
 		SwingUtilities.invokeLater(() -> {
 			try {
 				Vue.createAndShowGUI();
-			} catch (StreamReadException e) {
-				// TODO Auto-generated catch block
-				e.printStackTrace();
-			} catch (DatabindException e) {
-				// TODO Auto-generated catch block
-				e.printStackTrace();
 			} catch (IOException e) {
-				// TODO Auto-generated catch block
 				e.printStackTrace();
 			}
 		});
@@ -142,8 +135,6 @@ public class Controleur {
    }
    
    public void RefreshGame() throws StreamReadException, DatabindException, IOException {
-       // PANEL LIST JEUX (BODY HOME)
-	   
 	   Vue.jbGameTab.clear();
 	   Vue.pBodyGame.removeAll();
 	   Vue.pBodyGame.setPreferredSize(new Dimension(Vue.windowSize.width,(Vue.windowSize.height/100)*95));
@@ -166,14 +157,12 @@ public class Controleur {
            	
            	if(trashVar == 0) {
            		Vue.jbGameTabBackup.add(jLGame);
-           		//System.out.println("a");
            	}
 	        	
 			} catch (IOException e) {
 				e.printStackTrace();
 			}  	
-       }
-      
+       }  
        
    	   trashVar=1;
        
@@ -185,12 +174,7 @@ public class Controleur {
    		
            public void mouseClicked(MouseEvent e)
            {
-        	   
-       		System.out.println(Vue.m.toString());
-    		for(int i=0;i<Vue.m.backupGame.length;i++) {
-    			System.out.println(Vue.m.backupGame[i] + " a ");
-    		}
-        	   
+        	System.out.println(index);
         	   
            	Vue.pBodyGamePage.setVisible(true);
            	Vue.pFootGamePage.setVisible(true);
@@ -205,8 +189,7 @@ public class Controleur {
            	Vue.pFootFav.setVisible(false);
            	
            	Vue.spTab[0].setVisible(false);
-           	Vue.spTab[1].setVisible(false);
-           	
+           	Vue.spTab[1].setVisible(false); 	
 
            	Vue.gameIndex = index;
 
@@ -248,36 +231,6 @@ public class Controleur {
            }
        });
        
-	 /*  Vue.jbBoxGenre.addItemListener((ItemListener) new ItemListener() {
-    	   public void itemStateChanged(ItemEvent e) {
-               if (e.getStateChange() == ItemEvent.SELECTED) {
-                   String selectedOption = (String) Vue.jbBoxGenre.getSelectedItem();
-                   Vue.m.sortByGenre(selectedOption);
-                   presetActionListener();
-               }
-           }
-       });
-	   
-	   Vue.jbBoxPlatform.addItemListener((ItemListener) new ItemListener() {
-    	   public void itemStateChanged(ItemEvent e) {
-               if (e.getStateChange() == ItemEvent.SELECTED) {
-                   String selectedOption = (String) Vue.jbBoxPlatform.getSelectedItem();
-                   Vue.m.sortByPlatform(selectedOption);
-                   presetActionListener();
-               }
-           }
-       });
-	   
-	   Vue.jbBoxDev.addItemListener((ItemListener) new ItemListener() {
-    	   public void itemStateChanged(ItemEvent e) {
-               if (e.getStateChange() == ItemEvent.SELECTED) {
-                   String selectedOption = (String) Vue.jbBoxDev.getSelectedItem();
-                   Vue.m.sortByDEV(selectedOption);
-                   presetActionListener();
-               }
-           }
-       });*/
-	   
        Vue.bValider.addActionListener(new ActionListener() {
            public void actionPerformed(ActionEvent e) {
         	   try {
@@ -289,8 +242,17 @@ public class Controleur {
         	   String selectedOption2 = (String) Vue.jbBoxPlatform.getSelectedItem();
         	   String selectedOption3 = (String) Vue.jbBoxDev.getSelectedItem();
         	   if(isSortByNote) {
-            	   Vue.m.sortByScore(Vue.m.game);   
-           	   	   Vue.m.sortByScore(Vue.m.backupGame); 
+            	   try {
+					Vue.m.sortByScore(Vue.m.game);
+				} catch (IOException e1) {
+					e1.printStackTrace();
+				}   
+
+            	   for(int i=0;i<Vue.m.backupGame.length;i++) {
+            		   System.out.println(Vue.m.backupGame[i]);
+            	   }
+            	   
+            	   
         	   }
         	   Vue.m.sortByGenre(selectedOption1);
         	   Vue.m.sortByPlatform(selectedOption2);
@@ -315,10 +277,6 @@ public class Controleur {
         	
            }
        });
-	   
-       
-       
-      
    }
    
    public void presetActionListener() {
@@ -327,7 +285,7 @@ public class Controleur {
 		RefreshGame();
 		ApplyButton();
 	} catch (IOException e1) {
-		// TODO Auto-generated catch block
+
 		e1.printStackTrace();
 	}
        Vue.pBodyGame.setVisible(false);

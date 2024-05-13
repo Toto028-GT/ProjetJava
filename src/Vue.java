@@ -626,9 +626,7 @@ public class Vue {
             }
 
 			@Override
-			public void keyTyped(KeyEvent e) {
-				// TODO Auto-generated method stub
-				
+			public void keyTyped(KeyEvent e) {			
 			}
 
 			@Override
@@ -639,26 +637,16 @@ public class Vue {
 			        m.sortByGenre((String) jbBoxGenre.getSelectedItem());
 			        m.sortByPlatform((String) jbBoxPlatform.getSelectedItem());
 			        m.sortByDEV((String) jbBoxDev.getSelectedItem());
-			        try {
+					try {
 						c.ApplyButton();
-					} catch (StreamReadException e1) {
-						// TODO Auto-generated catch block
-						e1.printStackTrace();
-					} catch (DatabindException e1) {
-						// TODO Auto-generated catch block
-						e1.printStackTrace();
 					} catch (IOException e1) {
-						// TODO Auto-generated catch block
 						e1.printStackTrace();
 					}
 				}
-				
 			}
 
 			@Override
 			public void keyReleased(KeyEvent e) {
-				// TODO Auto-generated method stub
-				
 			}
     	});
         
@@ -701,29 +689,18 @@ public class Vue {
                 	bHeadTab[index].setForeground(UIManager.getColor("Button.foreground"));
                 }
                 public void mouseClicked(MouseEvent e) {
-                	try {
+					try {
 						ShowPage(index,pTab,spTab);
-					} catch (StreamReadException e1) {
-						// TODO Auto-generated catch block
-						e1.printStackTrace();
-					} catch (DatabindException e1) {
-						// TODO Auto-generated catch block
-						e1.printStackTrace();
 					} catch (IOException e1) {
-						// TODO Auto-generated catch block
 						e1.printStackTrace();
 					}
                 }
         	});
         }
         
-        
-        
         for(int i=0;i<jbGameTab.size();i++) {
         	final int index = i;
-        		
         	c.setButtonClickable(jbGameTab.get(i), index);
-        	
         }
         
         bAddFavorite.addMouseListener(new MouseAdapter() {
@@ -732,9 +709,9 @@ public class Vue {
             	for(int i=0;i<m.backupGame.length;i++) {
             		if(m.game[gameIndex].getGameTitle().equals(m.backupGame[i].getGameTitle())) {
             			indexGameBDD = i;
+            			System.out.println(i);
             		}
             	}
-            	
             	if(!bFavGame.contains(indexGameBDD)) {
             		bFavGame.add(indexGameBDD);
             	}

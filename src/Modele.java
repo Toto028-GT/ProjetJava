@@ -171,8 +171,9 @@ public class Modele {
 		return this.game;
 	}
 	
-	public void sortByScore(Record[] lst) {
+	public void sortByScore(Record[] lst) throws StreamReadException, DatabindException, IOException {
 		Arrays.sort(lst);
+		this.recupBackup();
 	}
 	
 	public void sortByGenre(String genreA) {
