@@ -636,6 +636,9 @@ public class Vue {
 				if(e.getKeyCode()==10) {
 					
 			        m.findGame(searchBar.getText());
+			        m.sortByGenre((String) jbBoxGenre.getSelectedItem());
+			        m.sortByPlatform((String) jbBoxPlatform.getSelectedItem());
+			        m.sortByDEV((String) jbBoxDev.getSelectedItem());
 			        try {
 						c.ApplyButton();
 					} catch (StreamReadException e1) {

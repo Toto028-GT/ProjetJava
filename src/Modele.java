@@ -156,7 +156,7 @@ public class Modele {
 	public Record[] findGame(String str) {
 		List<Record> newGame = new ArrayList<>();
 
-		//this.game = this.backupGame;
+		this.game = this.backupGame;
 		
 		for(int i=0; i<this.game.length; i++) {
 			int find = this.game[i].getGameTitle().toUpperCase().indexOf(str.toUpperCase());
