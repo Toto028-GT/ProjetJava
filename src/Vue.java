@@ -124,7 +124,7 @@ public class Vue {
 	static ArrayList<JButton> jbGameTab = new ArrayList<JButton>();
 	static ArrayList<JButton> jbGameTabBackup = new ArrayList<JButton>();
 	static ArrayList<Integer> bFavGame  = new ArrayList<Integer>();
-	static ArrayList<Integer> wayButton = new ArrayList<Integer>();
+	static int wayButton = -1;
 	
 	static JPanel pBodyGamePage = new JPanel();
 	static JPanel pFootGamePage = new JPanel();
@@ -184,6 +184,10 @@ public class Vue {
     
     static boolean isGamePageLastPage = false;
     static boolean isAddFavoriteLastPage = false;
+    
+    static JTextField searchBar = new JTextField("Rechercher");
+    static JPanel pHead = new JPanel();
+    static JPanel pFillerSearchBar = new JPanel();
 	
 	
     public static JButton cloneJButton(JButton originalButton) {
@@ -205,7 +209,7 @@ public class Vue {
     	pageIndexBackup = pageIndex;
     	isGamePageLastPage = false;
     	isAddFavoriteLastPage = false;
-    	wayButton.clear();
+    	wayButton = -1;
     	
     	if(pageIndex == 0 || pageIndex == 1) {
     		//System.out.println("b");
@@ -233,7 +237,9 @@ public class Vue {
 		}
 		
 		if(pageIndex==2) {
-			//System.out.println(m.toString());
+			pHead.remove(searchBar);
+			pHead.add(pFillerSearchBar, BorderLayout.EAST);
+			System.out.println("a");
 
 			spTab[1].setVisible(true);
 			
@@ -250,6 +256,8 @@ public class Vue {
 			}
 	
 		}else {
+			pHead.add(searchBar, BorderLayout.EAST);
+			pHead.remove(pFillerSearchBar);
 			spTab[1].setVisible(false);
 		}
 	}
@@ -622,8 +630,9 @@ public class Vue {
     	/* --------------------------------------- */
     	
     	// SEARCH BAR FOOT
-    	JTextField searchBar = new JTextField("Rechercher");
-    	searchBar.setPreferredSize(new Dimension((int) ((windowSize.width/100)*10.42),(windowSize.height/100)*3)); // 200 30
+    	searchBar.setPreferredSize(new Dimension((int) ((windowSize.width/100)*10.42),(windowSize.height/100)*3));
+    	pFillerSearchBar.setPreferredSize(new Dimension((int) ((windowSize.width/100)*10.42),(windowSize.height/100)*3));
+    	pFillerSearchBar.setBackground(Color.decode("#3c3f41")); // 200 30
     	
     	
    
@@ -645,7 +654,7 @@ public class Vue {
 			        m.findGame(searchBar.getText());
 			        isGamePageLastPage = false;
 			        isAddFavoriteLastPage = false;
-			        wayButton.clear();
+			        wayButton = -1;
 			        System.out.println(isGamePageLastPage + "neuille2");
 			        m.sortByGenre((String) jbBoxGenre.getSelectedItem());
 			        m.sortByPlatform((String) jbBoxPlatform.getSelectedItem());
@@ -677,12 +686,13 @@ public class Vue {
         pName.add(nameB, BorderLayout.WEST);
 
         // PANEL HEAD
-        JPanel pHead = new JPanel();
         pHead.setLayout(new BorderLayout());
         pHead.setPreferredSize(new Dimension(windowSize.width,(windowSize.height/100)*5));
         pHead.add(pName, BorderLayout.WEST);
         pHead.add(pButton, BorderLayout.CENTER);
         pHead.add(searchBar, BorderLayout.EAST);
+        
+        
         
         /* --------------------------------------- */
         
@@ -729,9 +739,8 @@ public class Vue {
             	System.out.println(gameIndex +"gameIndex");
             	System.out.println(isAddFavoriteLastPage);*/
             	
-            	//System.out.println(wayButton.size());
-            	if(wayButton.size() > 0) {
-            		System.out.println("aaaaaaaaaaaaaaaaaaaaa");
+            	//System.out.println(wayButton.size() + "size");
+            	if(wayButton > 0) {
             		for(int i=0;i<m.backupGame.length;i++) {
                 		if(m.backupGame[gameIndex].getGameTitle().equals(m.backupGame[i].getGameTitle())) {
                 			indexGameBDD = i;
@@ -743,10 +752,12 @@ public class Vue {
                 	for(int i=0;i<m.backupGame.length;i++) {
                 		if(m.game[gameIndex].getGameTitle().equals(m.backupGame[i].getGameTitle())) {
                 			indexGameBDD = i;
-                			System.out.println(i);
+                			System.out.println("ha");
                 		}
                 	}
             	}
+            	
+            	System.out.println(indexGameBDD +" bdd");
             	
             	if(!bFavGame.contains(indexGameBDD)) {
             		bFavGame.add(indexGameBDD);
@@ -761,7 +772,6 @@ public class Vue {
             	System.out.println("");
             	*/
             	isAddFavoriteLastPage = true;
-            	
             }
             
 

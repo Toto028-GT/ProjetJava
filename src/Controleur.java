@@ -226,9 +226,7 @@ public class Controleur {
    		
            public void mouseClicked(MouseEvent e)
            {
-        	
-        	Vue.wayButton.add(0);
-        	System.out.println(Vue.wayButton.size());
+        	   Vue.wayButton=Vue.wayButton+1;
 
         	   
            	Vue.pBodyGamePage.setVisible(true);
