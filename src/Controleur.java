@@ -37,7 +37,7 @@ public class Controleur {
 	public static void main(String[] args) throws StreamReadException, DatabindException, IOException {
 		 
 		
-		Modele p = new Modele("./BDDtest2.xml");
+		Modele p = new Modele("./The_BDD.xml");
 		p.enregistrer();
 		Controleur c = new Controleur();
 		Vue v = new Vue(p.game, c, p);
