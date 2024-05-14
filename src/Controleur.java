@@ -63,30 +63,6 @@ public class Controleur {
 			t = r;
 		}
 		
-		/*Record[] newTab = new Record[4];
-		if(r.length == 1) {
-			
-			System.out.println(gameIndex);
-			
-			newTab[0] = r[0];
-			newTab[1] = m.backupGame[m.getReco(gameIndex, Vue.m.backupGame[gameIndex])[0]];
-			newTab[1] = m.backupGame[m.getReco(gameIndex, Vue.m.backupGame[gameIndex])[1]];
-			newTab[1] = m.backupGame[m.getReco(gameIndex, Vue.m.backupGame[gameIndex])[2]];
-			
-			//t = newTab;
-			System.out.println("aaaaaaaaaaaaaaaaaaaaaa");
-			
-			System.out.println(gameIndex);
-		
-			for(int i=0;i <m.getReco(gameIndex, newTab[gameIndex]).length;i++){
-				System.out.println(m.getReco(gameIndex, newTab[gameIndex])[i] +  " h");
-				System.out.println(Vue.m.backupGame[m.getReco(gameIndex, newTab[gameIndex])[i]] + " i");
-			}
-		}*/
-		
-
-	
-		//System.out.println(Vue.isGamePageLastPage);
 		
 		Vue.title.setText(t[gameIndex].getGameTitle());
 		Vue.title.setFont(new Font("Arial", Font.PLAIN, 48));
@@ -101,15 +77,7 @@ public class Controleur {
 		Vue.imagePanel.loadImage(t[gameIndex].getGamePoster());
 		
 		Vue.pGames.removeAll();
-		
-		//System.out.println(m.getReco(gameIndex, r[gameIndex]).length + " a");
-		
-		//System.out.println(Vue.m.backupGame.length + " b");
-		
-		/*for(int i=0;i <m.getReco(gameIndex, r[gameIndex]).length;i++){
-			System.out.println(m.getReco(gameIndex, Vue.m.backupGame[gameIndex])[i] +  " c");
-			System.out.println(Vue.m.backupGame[m.getReco(gameIndex, Vue.m.backupGame[gameIndex])[i]] + " d");
-		}*/
+	
 		
 		JButton game = new JButton();
 		JButton game2 = new JButton();
@@ -300,11 +268,9 @@ public class Controleur {
         	   try {
 				Vue.m.enregistrer();
 			} catch (IOException e1) {
-				// TODO Auto-generated catch block
 				e1.printStackTrace();
 			}
         	   if(!Vue.searchBar.getText().equals("Rechercher")) {
-        		   System.out.println("aqsd");
         		   Vue.m.findGame(Vue.searchBar.getText());
         	   }
         	   
@@ -334,6 +300,7 @@ public class Controleur {
 			} catch (IOException e1) {
 				e1.printStackTrace();
 			}
+        	   Vue.searchBar.setText("Rechercher");
         	   Vue.jbBoxGenre.setSelectedIndex(0);
         	   Vue.jbBoxPlatform.setSelectedIndex(0);
         	   Vue.jbBoxDev.setSelectedIndex(0);
