@@ -263,30 +263,26 @@ public class Vue {
 	}
 	
     public static void createAndShowGUI() throws StreamReadException, DatabindException, IOException {
+	
+    	ArrayList<ArrayList<String>> test = new ArrayList<>();
+    	test.add(m.getGenre());
+    	test.add(m.getPlatform());
+    	test.add(m.getDev());
     	
-    	ArrayList<String> test = m.getGenre();
-    	String[] optionsGenre = new String[m.getGenre().size()+1];
-    	optionsGenre[0] = "Aucun";
-    	for(int i=0;i<m.getGenre().size();i++) {
-    		optionsGenre[i+1] = test.get(i);
+    	for(int i=0; i< test.size(); i++) {
+    		String[] optionsFiltre = new String[test.get(i).size()+1];
+    		optionsFiltre[0] = "Aucun";
+    		for(int y=0;y<test.get(i).size();y++) {
+    			optionsFiltre[y+1] = test.get(i).get(y);
+        	}
+    		if(i==1) {
+    			jbBoxGenre = new JComboBox<>(optionsFiltre);
+    		}else if(i==2) {
+    			jbBoxPlatform = new JComboBox<>(optionsFiltre);
+    		}else {
+    			jbBoxDev = new JComboBox<>(optionsFiltre);
+    		}
     	}
-    	jbBoxGenre = new JComboBox<>(optionsGenre);
-    	
-    	ArrayList<String> test2 = m.getPlatform();
-    	String[] optionsPlatform = new String[m.getPlatform().size()+1];
-    	optionsPlatform[0] = "Aucun";
-    	for(int i=0;i<m.getPlatform().size();i++) {
-    		optionsPlatform[i+1] = test2.get(i);
-    	}
-    	jbBoxPlatform = new JComboBox<>(optionsPlatform);
-    	
-    	ArrayList<String> test3 = m.getDev();
-    	String[] optionsDev = new String[m.getDev().size()+1];
-    	optionsDev[0] = "Aucun";
-    	for(int i=0;i<m.getDev().size();i++) {
-    		optionsDev[i+1] = test3.get(i);
-    	}
-    	jbBoxDev = new JComboBox<>(optionsDev);
     	
     	FlatDarkLaf.setup();  
     	try {
