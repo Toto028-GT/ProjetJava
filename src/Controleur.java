@@ -297,6 +297,17 @@ public class Controleur {
        Vue.bValider.addActionListener(new ActionListener() {
            public void actionPerformed(ActionEvent e) {
         	   
+        	   try {
+				Vue.m.enregistrer();
+			} catch (IOException e1) {
+				// TODO Auto-generated catch block
+				e1.printStackTrace();
+			}
+        	   if(!Vue.searchBar.getText().equals("Rechercher")) {
+        		   System.out.println("aqsd");
+        		   Vue.m.findGame(Vue.searchBar.getText());
+        	   }
+        	   
         	   String selectedOption1 = (String) Vue.jbBoxGenre.getSelectedItem();
         	   String selectedOption2 = (String) Vue.jbBoxPlatform.getSelectedItem();
         	   String selectedOption3 = (String) Vue.jbBoxDev.getSelectedItem();
