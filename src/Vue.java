@@ -275,9 +275,9 @@ public class Vue {
     		for(int y=0;y<test.get(i).size();y++) {
     			optionsFiltre[y+1] = test.get(i).get(y);
         	}
-    		if(i==1) {
+    		if(i==0) {
     			jbBoxGenre = new JComboBox<>(optionsFiltre);
-    		}else if(i==2) {
+    		}else if(i==1) {
     			jbBoxPlatform = new JComboBox<>(optionsFiltre);
     		}else {
     			jbBoxDev = new JComboBox<>(optionsFiltre);
@@ -290,7 +290,6 @@ public class Vue {
     	} catch( Exception ex ) {
     	    System.err.println( "Failed to initialize LaF" );
     	}
-
     	
     	/* ----------------------------------------- */
     	
