@@ -296,6 +296,7 @@ public class Controleur {
        
        Vue.bValider.addActionListener(new ActionListener() {
            public void actionPerformed(ActionEvent e) {
+        	   
         	   String selectedOption1 = (String) Vue.jbBoxGenre.getSelectedItem();
         	   String selectedOption2 = (String) Vue.jbBoxPlatform.getSelectedItem();
         	   String selectedOption3 = (String) Vue.jbBoxDev.getSelectedItem();

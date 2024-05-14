@@ -173,9 +173,9 @@ public class Vue {
 	static int  indexGameBDD;
 	
 	static JCheckBox cbCheckBox = new JCheckBox("Trier par note"); 
-    static String[] optionsGenre = { "Aucun", "Action", "Strategy", "Shooter" };
+    static String[] optionsGenre = new String[5];
 	static JComboBox<String> jbBoxGenre = new JComboBox<>(optionsGenre);
-    static String[] optionsPlatform = { "Aucun", "PC", "PlayStation4", "PlayStation3" };
+    static String[] optionsPlatform = new String[5];
     static JComboBox<String> jbBoxPlatform = new JComboBox<>(optionsPlatform);
     static String[] optionsDev = { "Aucun", "Sports Interactive", "Ubisoft", "Rockstar North" };
     static JComboBox<String> jbBoxDev = new JComboBox<>(optionsDev);
@@ -263,6 +263,30 @@ public class Vue {
 	}
 	
     public static void createAndShowGUI() throws StreamReadException, DatabindException, IOException {
+    	
+    	ArrayList<String> test = m.getGenre();
+    	String[] optionsGenre = new String[m.getGenre().size()+1];
+    	optionsGenre[0] = "Aucun";
+    	for(int i=0;i<m.getGenre().size();i++) {
+    		optionsGenre[i+1] = test.get(i);
+    	}
+    	jbBoxGenre = new JComboBox<>(optionsGenre);
+    	
+    	ArrayList<String> test2 = m.getPlatform();
+    	String[] optionsPlatform = new String[m.getPlatform().size()+1];
+    	optionsPlatform[0] = "Aucun";
+    	for(int i=0;i<m.getPlatform().size();i++) {
+    		optionsPlatform[i+1] = test2.get(i);
+    	}
+    	jbBoxPlatform = new JComboBox<>(optionsPlatform);
+    	
+    	ArrayList<String> test3 = m.getDev();
+    	String[] optionsDev = new String[m.getDev().size()+1];
+    	optionsDev[0] = "Aucun";
+    	for(int i=0;i<m.getDev().size();i++) {
+    		optionsDev[i+1] = test3.get(i);
+    	}
+    	jbBoxDev = new JComboBox<>(optionsDev);
     	
     	FlatDarkLaf.setup();  
     	try {
