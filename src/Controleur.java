@@ -83,9 +83,9 @@ public class Controleur {
 		JButton game2 = new JButton();
 		JButton game3 = new JButton();
 
-        game  =  Vue.cloneJButton(Vue.jbGameTabBackup.get(m.getReco(gameIndex, Vue.m.backupGame[gameIndex])[0]));    
-        game2 =  Vue.cloneJButton(Vue.jbGameTabBackup.get(m.getReco(gameIndex, Vue.m.backupGame[gameIndex])[1]));        
-        game3 =   Vue.cloneJButton(Vue.jbGameTabBackup.get(m.getReco(gameIndex, Vue.m.backupGame[gameIndex])[2]));
+        game  =  Vue.cloneJButton(Vue.jbGameTabBackup.get(m.getReco(gameIndex, t[gameIndex])[0]));    
+        game2 =  Vue.cloneJButton(Vue.jbGameTabBackup.get(m.getReco(gameIndex, t[gameIndex])[1]));        
+        game3 =   Vue.cloneJButton(Vue.jbGameTabBackup.get(m.getReco(gameIndex, t[gameIndex])[2]));
         
 		game.setPreferredSize(new Dimension((int) ((Vue.windowSize.width/100)*10.4),(Vue.windowSize.height/100)*28));
 		game2.setPreferredSize(new Dimension((int) ((Vue.windowSize.width/100)*10.4),(Vue.windowSize.height/100)*28));
