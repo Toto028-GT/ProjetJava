@@ -3,7 +3,6 @@ import java.awt.Component;
 import java.awt.Dimension;
 import java.awt.Font;
 import java.awt.FontMetrics;
-import java.awt.Image;
 import java.awt.Rectangle;
 import java.awt.Toolkit;
 import java.awt.event.ActionEvent;
@@ -17,7 +16,6 @@ import java.awt.event.MouseEvent;
 import java.io.IOException;
 import java.net.MalformedURLException;
 import java.net.URL;
-import java.util.ArrayList;
 
 import javax.swing.ImageIcon;
 import javax.swing.JButton;
@@ -35,11 +33,7 @@ import com.fasterxml.jackson.databind.DatabindException;
 public class Controleur {
 	
 	int trashVar = 0;
-	int trashVar2 = 0;
 	boolean isSortByNote = false;
-	ImageIcon resizedIcon;
-	static ArrayList<ImageIcon> iconList = new ArrayList<>();
-	
 	public static void main(String[] args) throws StreamReadException, DatabindException, IOException {
 		 
 		
@@ -57,8 +51,12 @@ public class Controleur {
 	}
 	
 	public void SetGamePage(Record[] r, int gameIndex, Modele m) throws StreamReadException, DatabindException, IOException {	
-
+		System.out.println(gameIndex + " g");
+		System.out.println(r.length + "h");
+		System.out.println(Vue.isGamePageLastPage);
 		Record[] t;
+		
+		
 		if(Vue.isGamePageLastPage || Vue.pageIndexBackup == 2) {
 			t = Vue.m.backupGame;
 		}else {
@@ -85,9 +83,9 @@ public class Controleur {
 		JButton game2 = new JButton();
 		JButton game3 = new JButton();
 
-        game  =  Vue.cloneJButton(Vue.jbGameTabBackup.get(m.getReco(gameIndex, t[gameIndex])[0]), false);    
-        game2 =  Vue.cloneJButton(Vue.jbGameTabBackup.get(m.getReco(gameIndex, t[gameIndex])[1]), false);        
-        game3 =   Vue.cloneJButton(Vue.jbGameTabBackup.get(m.getReco(gameIndex, t[gameIndex])[2]), false);
+        game  =  Vue.cloneJButton(Vue.jbGameTabBackup.get(m.getReco(gameIndex, Vue.m.backupGame[gameIndex])[0]));    
+        game2 =  Vue.cloneJButton(Vue.jbGameTabBackup.get(m.getReco(gameIndex, Vue.m.backupGame[gameIndex])[1]));        
+        game3 =   Vue.cloneJButton(Vue.jbGameTabBackup.get(m.getReco(gameIndex, Vue.m.backupGame[gameIndex])[2]));
         
 		game.setPreferredSize(new Dimension((int) ((Vue.windowSize.width/100)*10.4),(Vue.windowSize.height/100)*28));
 		game2.setPreferredSize(new Dimension((int) ((Vue.windowSize.width/100)*10.4),(Vue.windowSize.height/100)*28));
@@ -163,18 +161,10 @@ public class Controleur {
    
        for(int i=0; i<Vue.r.length;i++) {
        	try {
-				if(trashVar2 == 0) {
-					URL imageURL = new URL(Vue.r[i].getGamePoster());
-					ImageIcon icon = new ImageIcon(imageURL);
-			        Image image = icon.getImage();
-			        int buttonWidth = (int) ((Vue.windowSize.width / 100) * 10.42);
-			        int buttonHeight = (Vue.windowSize.height / 100) * 28;
-			        Image resizedImage = image.getScaledInstance(buttonWidth, buttonHeight, Image.SCALE_SMOOTH);
-			        resizedIcon = new ImageIcon(resizedImage);
-			        iconList.add(resizedIcon);
-				}
+				URL imageURL = new URL(Vue.r[i].getGamePoster());
+				ImageIcon icon = new ImageIcon(imageURL);
 				
-	        	JButton jLGame = new JButton(iconList.get(i));
+	        	JButton jLGame = new JButton(icon);
 	        	jLGame.setPreferredSize(new Dimension((int) ((Vue.windowSize.width/100)*10.42),(Vue.windowSize.height/100)*28));
 
 	        	Vue.jbGameTab.add(jLGame);
@@ -195,7 +185,6 @@ public class Controleur {
        }  
        
    	   trashVar=1;
-   	   trashVar2=1;
        
    }
    
@@ -335,10 +324,7 @@ public class Controleur {
   	   Vue.pBodyGame.setVisible(true);
    }
    
-   
-   
 	
 }
 	
 	
-

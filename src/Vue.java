@@ -8,7 +8,6 @@ import java.awt.Graphics;
 import java.awt.GraphicsDevice;
 import java.awt.GraphicsEnvironment;
 import java.awt.GridLayout;
-import java.awt.Image;
 import java.awt.Toolkit;
 import java.awt.Window;
 import java.awt.event.ActionEvent;
@@ -93,7 +92,6 @@ class ImagePanel extends JPanel {
             int panelWidth = getWidth();
             int panelHeight = getHeight();
 
-
             // Calculer le facteur d'échelle pour ajuster l'image à la taille du panneau
             double scaleX = (double) panelWidth / imgWidth;
             double scaleY = (double) panelHeight / imgHeight;
@@ -174,7 +172,7 @@ public class Vue {
 	static int pageIndex;
 	static int pageIndexBackup;
 	static int index;
-	static int indexGameBDD;
+	static int  indexGameBDD;
 	
 	static JCheckBox cbCheckBox = new JCheckBox("Trier par note"); 
     static String[] optionsGenre = new String[5];
@@ -194,26 +192,15 @@ public class Vue {
     static JPanel pFillerSearchBar = new JPanel();
 	static Color colorHead = Color.decode("#bbbbbb");
 	
-    public static JButton cloneJButton(JButton originalButton, boolean isRandReviewButton) throws MalformedURLException {
-    	
-    	int buttonWidth;
-    	int buttonHeight;
-    	
-        index = jbGameTabBackup.indexOf(originalButton);
+    public static JButton cloneJButton(JButton originalButton) {
+        JButton clonedButton = new JButton(originalButton.getIcon());
 
-        URL imageURL = new URL(Vue.r[index].getGamePoster());
-        ImageIcon icon = new ImageIcon(imageURL);
-        Image image = icon.getImage();
-        if(isRandReviewButton) {
-            buttonWidth = (int) ((windowSize.width/100)*5.2); // 5.2
-            buttonHeight = ((windowSize.height/100)*15); // 15
-        }else {
-            buttonWidth = (int) ((windowSize.width/100)*10.4);
-            buttonHeight = ((windowSize.height/100)*30);
-        }
-        Image resizedImage = image.getScaledInstance(buttonWidth, buttonHeight, Image.SCALE_SMOOTH);
-        ImageIcon resizedIcon = new ImageIcon(resizedImage);
-        JButton clonedButton = new JButton(resizedIcon);
+        //System.out.println(pageIndexBackup);
+        
+        index = jbGameTabBackup.indexOf(originalButton);
+        
+        //System.out.println(index  + "e");
+        
         c.setButtonClickable(clonedButton, index);
         
         return clonedButton;
@@ -227,6 +214,7 @@ public class Vue {
     	wayButton = -1;
     	
     	if(pageIndex == 0 || pageIndex == 1) {
+    		//System.out.println("b");
             m.findGame("");
             c.ApplyButton();
     	}
@@ -234,6 +222,7 @@ public class Vue {
         for(int i=0;i<pTab.length;i++) {
         	for(int y=0;y<pTab[0].length;y++) {
         		if (i == pageIndex) {
+        			
         			pTab[i][y].setVisible(true);
         		}
         		else {
@@ -243,6 +232,7 @@ public class Vue {
         }
         
 		if(pageIndex==1) {
+			//System.out.println(m.toString());
 			spTab[0].setVisible(true);
 		}else {
 			spTab[0].setVisible(false);
@@ -251,13 +241,17 @@ public class Vue {
 		if(pageIndex==2) {
 			pHead.remove(searchBar);
 			pHead.add(pFillerSearchBar, BorderLayout.EAST);
+			System.out.println("a");
+
 			spTab[1].setVisible(true);
+			
 			pBodyFav.removeAll();
+
 			c.RefreshGame();
-		
+			
 			if(bFavGame.size() >0) {
 		        for(int i=0; i<bFavGame.size();i++) {
-		        	JButton gameToAdd = cloneJButton(jbGameTabBackup.get(bFavGame.get(i)), false);
+		        	JButton gameToAdd = cloneJButton(jbGameTabBackup.get(bFavGame.get(i)));
 		        	gameToAdd.setPreferredSize(new Dimension((int) ((windowSize.width/100)*10.4),(windowSize.height/100)*28));
 		        	pBodyFav.add(gameToAdd);
 		        }
@@ -272,16 +266,16 @@ public class Vue {
 	
     public static void createAndShowGUI() throws StreamReadException, DatabindException, IOException {
 	
-    	ArrayList<ArrayList<String>> filterFunctionList = new ArrayList<>();
-    	filterFunctionList.add(m.getGenre());
-    	filterFunctionList.add(m.getPlatform());
-    	filterFunctionList.add(m.getDev());
+    	ArrayList<ArrayList<String>> test = new ArrayList<>();
+    	test.add(m.getGenre());
+    	test.add(m.getPlatform());
+    	test.add(m.getDev());
     	
-    	for(int i=0; i< filterFunctionList.size(); i++) {
-    		String[] optionsFiltre = new String[filterFunctionList.get(i).size()+1];
+    	for(int i=0; i< test.size(); i++) {
+    		String[] optionsFiltre = new String[test.get(i).size()+1];
     		optionsFiltre[0] = "Aucun";
-    		for(int y=0;y<filterFunctionList.get(i).size();y++) {
-    			optionsFiltre[y+1] = filterFunctionList.get(i).get(y);
+    		for(int y=0;y<test.get(i).size();y++) {
+    			optionsFiltre[y+1] = test.get(i).get(y);
         	}
     		if(i==0) {
     			jbBoxGenre = new JComboBox<>(optionsFiltre);
@@ -604,19 +598,19 @@ public class Vue {
         int homeButtonX = (int) ((windowSize.width/100)*10.4);
         int homeButtonY = (int) ((windowSize.height/100)*30);
         
-        JButton BGameHome1 = cloneJButton(jbGameTab.get(93), false);
+        JButton BGameHome1 = cloneJButton(jbGameTab.get(93));
         BGameHome1.setPreferredSize(new Dimension(homeButtonX,homeButtonY));
         
-        JButton BGameHome2 = cloneJButton(jbGameTab.get(97), false);
+        JButton BGameHome2 = cloneJButton(jbGameTab.get(97));
         BGameHome2.setPreferredSize(new Dimension(homeButtonX,homeButtonY));
         
-        JButton BGameHome3 = cloneJButton(jbGameTab.get(22), false);
+        JButton BGameHome3 = cloneJButton(jbGameTab.get(22));
         BGameHome3.setPreferredSize(new Dimension(homeButtonX,homeButtonY));      
         
-        JButton BGameHome4 = cloneJButton(jbGameTab.get(74), false);
+        JButton BGameHome4 = cloneJButton(jbGameTab.get(74));
         BGameHome4.setPreferredSize(new Dimension(homeButtonX,homeButtonY));  
         
-        JButton BGameHome5 = cloneJButton(jbGameTab.get(31), false);
+        JButton BGameHome5 = cloneJButton(jbGameTab.get(31));
         BGameHome5.setPreferredSize(new Dimension(homeButtonX,homeButtonY));  
         
         pReviewTab.setLayout(new FlowLayout(FlowLayout.LEFT));
@@ -637,7 +631,7 @@ public class Vue {
             pReview.setLayout(new FlowLayout(FlowLayout.LEFT));
             pReview.setPreferredSize(new Dimension((windowSize.width/100)*26,(windowSize.height/100)*16));
 
-            JButton bReviewGameHome =  cloneJButton(jbGameTab.get(reviewIndex.get(i)), true);
+            JButton bReviewGameHome =  cloneJButton(jbGameTab.get(reviewIndex.get(i)));
 
             bReviewGameHome.setPreferredSize(new Dimension((int) ((windowSize.width/100)*5.2),(windowSize.height/100)*15));
             
