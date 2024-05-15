@@ -401,7 +401,7 @@ public class Vue {
         
         /* --------------------------------------- */
         
-      // PANEL BODY FAVORIS
+     // PANEL BODY FAVORIS
     	pBodyFav.setVisible(false);
     	pBodyFav.setBackground(colorHead);
         pBodyFav.setPreferredSize(new Dimension(windowSize.width,(windowSize.height/100)*95));
@@ -413,7 +413,7 @@ public class Vue {
         scrollListBodyFav.getVerticalScrollBar().setUnitIncrement(20);
         scrollListBodyFav.setVisible(false);
         
-      // PANEL FOOT FAVORIS
+     // PANEL FOOT FAVORIS
     	pFootFav.setVisible(false);
         pFootFav.setPreferredSize(new Dimension(windowSize.width,(windowSize.height/100)*0));
     	
@@ -457,7 +457,7 @@ public class Vue {
         pTextGame.add(date);
         pTextGame.add(author);
         
-        // PANEL CENTRAL BODY GAMEPAGE   
+      // PANEL CENTRAL BODY GAMEPAGE   
         
         // PARTIE DESCRITPTION
         JPanel pcBodyGamePage = new JPanel();
@@ -513,7 +513,7 @@ public class Vue {
         
         pBodyGamePage.add(pcBodyGamePage, BorderLayout.CENTER);
 
-        // RIGHT PANEL BODY GAMEPAGE
+      // RIGHT PANEL BODY GAMEPAGE
         
         JPanel rpBodyGamePage = new JPanel();
         rpBodyGamePage.setPreferredSize(new Dimension((int) ((windowSize.width/100)*23.4375),(windowSize.height/100)*47)); // 450 / 500
@@ -578,20 +578,14 @@ public class Vue {
         int homeButtonX = (int) ((windowSize.width/100)*10.4);
         int homeButtonY = (int) ((windowSize.height/100)*30);
         
-        JButton BGameHome1 = cloneJButton(jbGameTab.get(93));
-        BGameHome1.setPreferredSize(new Dimension(homeButtonX,homeButtonY));
+        JButton[] bGameHomeList = {new JButton(),new JButton(),new JButton(),new JButton(),new JButton()};
+        int[] topGameList = {93,97,22,74,31};
         
-        JButton BGameHome2 = cloneJButton(jbGameTab.get(97));
-        BGameHome2.setPreferredSize(new Dimension(homeButtonX,homeButtonY));
-        
-        JButton BGameHome3 = cloneJButton(jbGameTab.get(22));
-        BGameHome3.setPreferredSize(new Dimension(homeButtonX,homeButtonY));      
-        
-        JButton BGameHome4 = cloneJButton(jbGameTab.get(74));
-        BGameHome4.setPreferredSize(new Dimension(homeButtonX,homeButtonY));  
-        
-        JButton BGameHome5 = cloneJButton(jbGameTab.get(31));
-        BGameHome5.setPreferredSize(new Dimension(homeButtonX,homeButtonY));  
+        for(int i=0;i<bGameHomeList.length;i++) {
+        	bGameHomeList[i] = cloneJButton(jbGameTab.get(topGameList[i]));
+        	bGameHomeList[i].setPreferredSize(new Dimension(homeButtonX,homeButtonY));
+        	pGamesHome.add(bGameHomeList[i]);
+        }
         
         pReviewTab.setLayout(new FlowLayout(FlowLayout.LEFT));
         pReviewTab.setBackground(colorHead);
@@ -636,16 +630,8 @@ public class Vue {
             pReviewTab.add(pReview);       
         }
         
-        
-        
         pBodyHome.add(pGameMainHome);
         pBodyHome.add(pReviewTab);
-        
-        pGamesHome.add(BGameHome1);
-        pGamesHome.add(BGameHome2);
-        pGamesHome.add(BGameHome3);
-        pGamesHome.add(BGameHome4);
-        pGamesHome.add(BGameHome5);
         
     	/* --------------------------------------- */
     	
@@ -715,14 +701,11 @@ public class Vue {
         pHead.add(pButton, BorderLayout.CENTER);
         pHead.add(searchBar, BorderLayout.EAST);
         
-        
-        
         /* --------------------------------------- */
         
         // ACTION DE L'UTILISATEUR 
         
         JButton[] bHeadTab = {nameB,jvB,favB,/*myGameB ,bAddFavorite*/};
-
         
         for(int i=0;i<bHeadTab.length;i++) {
         	int index = i;
@@ -812,6 +795,5 @@ public class Vue {
             System.err.println("Impossible de charger l'image : " + path);
             return null;
         }
-    }
-    
+    }    
 }
