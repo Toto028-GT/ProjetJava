@@ -51,9 +51,6 @@ public class Controleur {
 	}
 	
 	public void SetGamePage(Record[] r, int gameIndex, Modele m) throws StreamReadException, DatabindException, IOException {	
-		System.out.println(gameIndex + " g");
-		System.out.println(r.length + "h");
-		System.out.println(Vue.isGamePageLastPage);
 		Record[] t;
 		
 		
@@ -61,8 +58,7 @@ public class Controleur {
 			t = Vue.m.backupGame;
 		}else {
 			t = r;
-		}
-		
+		}	
 		
 		Vue.title.setText(t[gameIndex].getGameTitle());
 		Vue.title.setFont(new Font("Arial", Font.PLAIN, 48));
@@ -78,25 +74,14 @@ public class Controleur {
 		
 		Vue.pGames.removeAll();
 	
+		JButton[] test = {new JButton(), new JButton(), new JButton()};
 		
-		JButton game = new JButton();
-		JButton game2 = new JButton();
-		JButton game3 = new JButton();
-
-        game  =  Vue.cloneJButton(Vue.jbGameTabBackup.get(m.getReco(gameIndex, t[gameIndex])[0]));    
-        game2 =  Vue.cloneJButton(Vue.jbGameTabBackup.get(m.getReco(gameIndex, t[gameIndex])[1]));        
-        game3 =   Vue.cloneJButton(Vue.jbGameTabBackup.get(m.getReco(gameIndex, t[gameIndex])[2]));
-        
-		game.setPreferredSize(new Dimension((int) ((Vue.windowSize.width/100)*10.4),(Vue.windowSize.height/100)*28));
-		game2.setPreferredSize(new Dimension((int) ((Vue.windowSize.width/100)*10.4),(Vue.windowSize.height/100)*28));
-		game3.setPreferredSize(new Dimension((int) ((Vue.windowSize.width/100)*10.4),(Vue.windowSize.height/100)*28));  
+		for(int i=0;i<test.length;i++) {
+			test[i] = Vue.cloneJButton(Vue.jbGameTabBackup.get(m.getReco(gameIndex, t[gameIndex])[i]));   
+			test[i].setPreferredSize(new Dimension((int) ((Vue.windowSize.width/100)*10.4),(Vue.windowSize.height/100)*28));
+			Vue.pGames.add(test[i]);
+		}
 		
-		
-		
-		Vue.pGames.add(game);
-        Vue.pGames.add(game2);
-        Vue.pGames.add(game3);
-        
         Vue.isGamePageLastPage = true;
 	}
 	
@@ -224,31 +209,17 @@ public class Controleur {
    }
    
    public void ApplyButton() throws StreamReadException, DatabindException, IOException {
-       	Vue.r = Vue.m.game;
-       	
-       	
+       	Vue.r = Vue.m.game;  	
 		Vue.c.RefreshGame();
-		
-		//System.out.println("a");
-		
-		//System.out.println(Vue.jbGameTab.size() + " f");
 		
 		for(int i=0;i<Vue.jbGameTab.size();i++) {
 			final int index = i;
 			Vue.c.setButtonClickable(Vue.jbGameTab.get(i), index);
        }
-	
-       Vue.pBodyGamePage.setVisible(false);
-       Vue.pFootGamePage.setVisible(false);
-       Vue.pBodyGame.setVisible(false);
-       Vue.pHeadGame.setVisible(false);
-       Vue.pBodyHome.setVisible(false);
-       Vue.pFootHome.setVisible(false);
-   	   Vue.spTab[0].setVisible(false);
-   	   Vue.spTab[1].setVisible(false);
-   	   Vue.pBodyGame.setVisible(true);
-   	   Vue.pHeadGame.setVisible(true);
-   	   Vue.spTab[0].setVisible(true);
+	  Vue.pBodyGame.revalidate();
+	  Vue.pBodyGame.repaint();
+	  Vue.scrollListGameBodyHome.revalidate();
+	  Vue.scrollListGameBodyHome.repaint();
    }
  
    public void addFiltreListener() {
@@ -320,11 +291,7 @@ public class Controleur {
 
 		e1.printStackTrace();
 	}
-       Vue.pBodyGame.setVisible(false);
-  	   Vue.pBodyGame.setVisible(true);
    }
-   
-	
 }
 	
 	
