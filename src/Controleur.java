@@ -66,7 +66,13 @@ public class Controleur {
 			Vue.title.setFont(new Font("Arial", Font.PLAIN, Vue.title.getFont().getSize() - 1));
 		}
 		Vue.date.setText(t[gameIndex].getGameReleaseDate());
+		while(checkTextIfCutOffWidthJLabel(Vue.date)) {
+			Vue.date.setFont(new Font("Arial", Font.PLAIN, Vue.date.getFont().getSize() - 1));
+		}
 		Vue.author.setText(t[gameIndex].getGameDeveloper());
+		while(checkTextIfCutOffWidthJLabel(Vue.author)) {
+			Vue.author.setFont(new Font("Arial", Font.PLAIN, Vue.author.getFont().getSize() - 1));
+		}
 		Vue.lDescGame.setText(t[gameIndex].getReviewText());
 		Vue.taGenre.setText(t[gameIndex].getGenre());
 		Vue.lNote.setText(t[gameIndex].getOverallMetascore() + " / 100");
@@ -113,7 +119,6 @@ public class Controleur {
         FontMetrics fontMetrics = label.getFontMetrics(label.getFont());
         String texte = label.getText();
         int textWidth = fontMetrics.stringWidth(texte); 
-        
         int labelWidth = Vue.pTextGame.getWidth();
 
         return textWidth > labelWidth - 30 ; // 30

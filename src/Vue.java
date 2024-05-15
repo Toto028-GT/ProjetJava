@@ -703,7 +703,7 @@ public class Vue {
         
         /* --------------------------------------- */
         
-        // ACTION DE L'UTILISATEUR 
+      // ACTION DE L'UTILISATEUR 
         
         JButton[] bHeadTab = {nameB,jvB,favB,/*myGameB ,bAddFavorite*/};
         

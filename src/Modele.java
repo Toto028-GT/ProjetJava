@@ -88,7 +88,6 @@ public class Modele {
 	public int[] getReco(int indexA,Record gameA) {
 		int[] comun = new int[this.backupGame.length];
 		
-		//System.out.println(this.backupGame.length);
 		
 		String[] str1 = gameA.getGenre().split(":");
         String[] genreGameA = str1[1].split(",");
@@ -182,7 +181,6 @@ public class Modele {
 		List<Record> newGame = new ArrayList<>();
 		
 		if(genreA != "Aucun") {
-			System.out.println(this.backupGame);
 			for(int i=0; i<this.game.length; i++) {
 				int find = this.game[i].getGenre().toUpperCase().indexOf(genreA.toUpperCase());
 				if (find != -1 ) {
