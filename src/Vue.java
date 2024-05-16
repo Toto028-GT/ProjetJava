@@ -8,6 +8,7 @@ import java.awt.Graphics;
 import java.awt.GraphicsDevice;
 import java.awt.GraphicsEnvironment;
 import java.awt.GridLayout;
+import java.awt.Image;
 import java.awt.Toolkit;
 import java.awt.Window;
 import java.awt.event.ActionEvent;
@@ -783,7 +784,9 @@ public class Vue {
         container.add(pFootGamePage);
         
     	// FRAME
+        Image image = ImageIO.read(new File("./LOGO.png"));
         JFrame frame = new JFrame("GAMEFLIX");
+        frame.setIconImage(image);
         frame.add(container);
         frame.pack();
         frame.setLocationRelativeTo(null);
