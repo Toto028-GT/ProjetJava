@@ -80,12 +80,12 @@ public class Controleur {
 		
 		Vue.pGames.removeAll();
 	
-		JButton[] test = {new JButton(), new JButton(), new JButton()};
+		JButton[] games = {new JButton(), new JButton(), new JButton()};
 		
-		for(int i=0;i<test.length;i++) {
-			test[i] = Vue.cloneJButton(Vue.jbGameTabBackup.get(m.getReco(gameIndex, t[gameIndex])[i]));   
-			test[i].setPreferredSize(new Dimension((int) ((Vue.windowSize.width/100)*10.4),(Vue.windowSize.height/100)*28));
-			Vue.pGames.add(test[i]);
+		for(int i=0;i<games.length;i++) {
+			games[i] = Vue.cloneJButton(Vue.jbGameTabBackup.get(m.getReco(gameIndex, t[gameIndex])[i]));   
+			games[i].setPreferredSize(new Dimension((int) ((Vue.windowSize.width/100)*10.4),(Vue.windowSize.height/100)*28));
+			Vue.pGames.add(games[i]);
 		}
 		
         Vue.isGamePageLastPage = true;

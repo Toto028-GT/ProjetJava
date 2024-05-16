@@ -158,8 +158,8 @@ public class Vue {
 	static int numberOfElements = pBodyFav.getComponentCount();
 	
 	static Dimension windowSize = Toolkit.getDefaultToolkit().getScreenSize(); 	
-	static int maxXGame = windowSize.width/200;
-	static int maxYGame = windowSize.height/300;
+	static int maxXGame = (int) (windowSize.width/((windowSize.width/100)*11));
+	static int maxYGame = (int) (windowSize.height/((windowSize.height/100)*28));
 	
 	static JPanel pGames = new JPanel();
 	static JPanel pReviewTab = new JPanel();
