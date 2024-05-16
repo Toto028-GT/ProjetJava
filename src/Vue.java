@@ -338,7 +338,7 @@ public class Vue {
         
         // FILTRE SCORE
         JPanel pSortByScore = new JPanel();
-        cbCheckBox.setPreferredSize(new Dimension((int) ((windowSize.width/100)*6.25),(int) ((windowSize.height/100)*2.5))); // 120 25
+        cbCheckBox.setPreferredSize(new Dimension((int) ((windowSize.width/100)*9),(int) ((windowSize.height/100)*2.5))); // 120 25
         cbCheckBox.setForeground(Color.decode("#3c3f41"));
         cbCheckBox.setBackground(Color.decode("#bbbbbb"));
         pSortByScore.setBackground(colorHead);
@@ -349,7 +349,7 @@ public class Vue {
         // FILTRE GENRE
         JPanel pSortByGenre = new JPanel();
         pSortByGenre.setBackground(colorHead);
-        jbBoxGenre.setPreferredSize(new Dimension((int) ((windowSize.width/100)*6.25),(int) ((windowSize.height/100)*2.5))); // 120 25
+        jbBoxGenre.setPreferredSize(new Dimension((int) ((windowSize.width/100)*11),(int) ((windowSize.height/100)*2.5))); // 120 25
         jbBoxGenre.setForeground(colorHead);
         jbBoxGenre.setBackground(Color.decode("#3c3f41"));
         pSortByGenre.setBorder(BorderFactory.createEmptyBorder((int) ((windowSize.height/100)*2.53), 0, 0, 0));
@@ -358,7 +358,7 @@ public class Vue {
         // FILTRE PLATFORM
         JPanel pSortByPlatform = new JPanel();
         pSortByPlatform.setBackground(colorHead);
-        jbBoxPlatform.setPreferredSize(new Dimension((int) ((windowSize.width/100)*6.25),(int) ((windowSize.height/100)*2.5)));
+        jbBoxPlatform.setPreferredSize(new Dimension((int) ((windowSize.width/100)*9.5),(int) ((windowSize.height/100)*2.5)));
         jbBoxPlatform.setForeground(colorHead);
         jbBoxPlatform.setBackground(Color.decode("#3c3f41"));
         pSortByPlatform.setBorder(BorderFactory.createEmptyBorder((int) ((windowSize.height/100)*2.53), 0, 0, 0));
@@ -377,8 +377,8 @@ public class Vue {
         JPanel pValiderAndReset = new JPanel();
         pValiderAndReset.setBackground(colorHead);
         pValiderAndReset.setLayout(new FlowLayout(FlowLayout.CENTER));
-        bValider.setPreferredSize(new Dimension((int) ((windowSize.width/100)*6.25),(int) ((windowSize.height/100)*2.5))); // 120 25
-        bReset.setPreferredSize(new Dimension((int) ((windowSize.width/100)*6.25),(int) ((windowSize.height/100)*2.5))); // 120 25
+        bValider.setPreferredSize(new Dimension((int) ((windowSize.width/100)*7),(int) ((windowSize.height/100)*2.5))); // 120 25
+        bReset.setPreferredSize(new Dimension((int) ((windowSize.width/100)*7),(int) ((windowSize.height/100)*2.5))); // 120 25
         JPanel pValider = new JPanel();
         JPanel pReset = new JPanel();
         pReset.setBackground(colorHead);
@@ -449,7 +449,8 @@ public class Vue {
         
         pTextGame.setBorder(BorderFactory.createEmptyBorder(0, 0, (int) ((windowSize.height/100)*0.926), (int) ((windowSize.width/100)*0.521))); // 0 0 10 10
         pTextGame.setBackground(Color.decode("#3c3f41"));
-        pTextGame.setPreferredSize(new Dimension((int) ((windowSize.width/100)*5.3),(windowSize.height/100)*15));
+        pTextGame.setPreferredSize(new Dimension((int) ((windowSize.width/100)*5.3),(windowSize.height/100)*17));
+        pTextGame.setBorder(BorderFactory.createEmptyBorder(0,(int) ((windowSize.width/100)*0.26),0,0));
         pTextGame.setLayout(new BoxLayout(pTextGame, BoxLayout.Y_AXIS));
         lpBodyGamePage.add(pTextGame, BorderLayout.SOUTH);
         
