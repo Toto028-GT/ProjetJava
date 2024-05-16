@@ -228,6 +228,8 @@ public class Vue {
 		}
 		
 		if(pageIndex==2) {
+			
+			
 			pHead.remove(searchBar);
 			pHead.add(pFillerSearchBar, BorderLayout.EAST);
 			spTab[1].setVisible(true);
@@ -235,6 +237,9 @@ public class Vue {
 			c.RefreshGame();
 			
 			if(bFavGame.size() >0) {
+	           	if(bFavGame.size() >= (maxXGame* maxYGame) && bFavGame.size()%Vue.maxXGame == 0) {
+	           		pBodyFav.setPreferredSize(new Dimension((int) ((Vue.windowSize.width/100)*66.7),pBodyFav.getPreferredSize().height + (int) ((Vue.windowSize.height/100)*28)));
+	       		}
 		        for(int i=0; i<bFavGame.size();i++) {
 		        	JButton gameToAdd = cloneJButton(jbGameTabBackup.get(bFavGame.get(i)));
 		        	gameToAdd.setPreferredSize(new Dimension((int) ((windowSize.width/100)*10.4),(windowSize.height/100)*28));

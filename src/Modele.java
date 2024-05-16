@@ -270,7 +270,7 @@ public class Modele {
 		Modele p = new Modele("./BDDtest2.xml");
 		p.enregistrer();
 		/*System.out.println(p.toString());
-		
+		 
 		System.out.println(p.getGenre().get(0));
 		
 		System.out.println(p.getDev());
