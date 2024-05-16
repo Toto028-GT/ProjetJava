@@ -155,6 +155,7 @@ public class Vue {
 	static JTextArea[] lReviewGameHome = new JTextArea[9];
 	static JTextArea taGenre           = new JTextArea("GENRE");
 	static ImagePanel imagePanel       = new ImagePanel("https://static.metacritic.com/images/products/games/5/98ded8914dd98a1efd777a592289c756-98.jpg");
+	static JButton bAddFavorite = new JButton("AJOUTER AUX FAVORIS");
 	
 	static int numberOfElements = pBodyFav.getComponentCount();
 	
@@ -553,9 +554,10 @@ public class Vue {
         pNote.add(lNote);
         
         // BOUTTON AJOUTER FAVORIS
-        JButton bAddFavorite = new JButton("AJOUTER AUX FAVORIS");
         bAddFavorite.setFont(new Font("Arial", Font.PLAIN, (int) ((windowSize.width/100)*1.25))); // 24
         bAddFavorite.setPreferredSize((new Dimension((int) ((windowSize.width/100)*20.3125),(windowSize.height/100)*5))); // 390 50
+        bAddFavorite.setBackground(Color.decode("#3c3f41"));       
+        bAddFavorite.setForeground(colorHead);
         
         rpBodyGamePage.add(pGenreTag);
         rpBodyGamePage.add(pNote);
@@ -739,29 +741,8 @@ public class Vue {
         	c.setButtonClickable(jbGameTab.get(i), index);
         }
         
-        bAddFavorite.addMouseListener(new MouseAdapter() {
-            public void mouseClicked(MouseEvent e) {
-            	if(wayButton > 0) {
-            		for(int i=0;i<m.backupGame.length;i++) {
-                		if(m.backupGame[gameIndex].getGameTitle().equals(m.backupGame[i].getGameTitle())) {
-                			indexGameBDD = i;
-                		}
-                	}
-
-            	}else {
-                	for(int i=0;i<m.backupGame.length;i++) {
-                		if(m.game[gameIndex].getGameTitle().equals(m.backupGame[i].getGameTitle())) {
-                			indexGameBDD = i;
-                		}
-                	}
-            	}
-            	
-            	if(!bFavGame.contains(indexGameBDD)) {
-            		bFavGame.add(indexGameBDD);
-            	}
-            	isAddFavoriteLastPage = true;
-            }
-    	});
+        c.AddFavoriteButtonActionListener();
+        
         
         /* --------------------------------------- */
         

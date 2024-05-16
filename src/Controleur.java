@@ -297,6 +297,32 @@ public class Controleur {
 		e1.printStackTrace();
 	}
    }
+   
+   public void AddFavoriteButtonActionListener() {
+       Vue.bAddFavorite.addMouseListener(new MouseAdapter() {
+           public void mouseClicked(MouseEvent e) {
+           	if(Vue.wayButton > 0) {
+           		for(int i=0;i<Vue.m.backupGame.length;i++) {
+               		if(Vue.m.backupGame[Vue.gameIndex].getGameTitle().equals(Vue.m.backupGame[i].getGameTitle())) {
+               			Vue.indexGameBDD = i;
+               		}
+               	}
+
+           	}else {
+               	for(int i=0;i<Vue.m.backupGame.length;i++) {
+               		if(Vue.m.game[Vue.gameIndex].getGameTitle().equals(Vue.m.backupGame[i].getGameTitle())) {
+               			Vue.indexGameBDD = i;
+               		}
+               	}
+           	}
+           	
+           	if(!Vue.bFavGame.contains(Vue.indexGameBDD)) {
+           		Vue.bFavGame.add(Vue.indexGameBDD);
+           	}
+           	Vue.isAddFavoriteLastPage = true;
+           }
+   	});
+   }
 }
 	
 	
